@@ -162,14 +162,13 @@ body {
   z-index: 1;
 }
 .hero__deco svg { width: 100%; height: 100%; display: block; }
-.hero__deco--plane {
-  width: 56px; height: 56px;
-  top: 22px; right: 18px;
-  transform: rotate(-12deg);
+.hero__deco--plane {  /* 娘惹風飛機：鈷藍機身、粉紅尾翼、金色細節，後面拖著小花虛線 */
+  width: 64px; height: 56px;
+  top: 20px; right: 14px;
 }
-.hero__deco--champagne {
-  width: 30px; height: 58px;
-  top: 18px; left: 22px;
+.hero__deco--champagne {  /* 卓錦萬代蘭（新加坡國花）種在娘惹花磚盆裡 */
+  width: 36px; height: 65px;
+  top: 14px; left: 18px;
 }
 .hero__deco--seagull {
   width: 90px; height: 24px;
@@ -206,9 +205,9 @@ body {
   pointer-events: none;
 }
 .hero__bottom-icon svg { width: 100%; height: 100%; display: block; }
-.hero__bottom-icon--coconut  { width: 48px; height: 56px; opacity: 0.95; }  /* 魚尾獅噴泉 */
-.hero__bottom-icon--umbrella { width: 44px; height: 54px; opacity: 0.95; }  /* 娘惹店屋（黃色立面） */
-.hero__bottom-icon--chair    { width: 60px; height: 46px; opacity: 0.95; }  /* 濱海灣金沙 */
+.hero__bottom-icon--coconut  { width: 65px; height: 78px; opacity: 1; }  /* 魚尾獅噴泉（娘惹花磚底座） */
+.hero__bottom-icon--umbrella { width: 66px; height: 78px; opacity: 1; }  /* 娘惹店屋（華麗版） */
+.hero__bottom-icon--chair    { width: 94px; height: 73px; opacity: 1; }  /* 濱海灣金沙（華麗版） */
 
 .hero__divider {
   margin: 22px auto 0;
@@ -2294,6 +2293,100 @@ body {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23ec6f45' stroke-width='1.5'/><g fill='%23f8cdb6'><path d='M0 0H12A12 12 0 0 1 0 12Z'/><path d='M40 0V12A12 12 0 0 1 28 0Z'/><path d='M40 40H28A12 12 0 0 1 40 28Z'/><path d='M0 40V28A12 12 0 0 1 12 40Z'/></g><g fill='%23ec6f45'><path d='M20 9Q24 15 20 20Q16 15 20 9Z'/><path d='M20 31Q24 25 20 20Q16 25 20 31Z'/><path d='M9 20Q15 16 20 20Q15 24 9 20Z'/><path d='M31 20Q25 16 20 20Q25 24 31 20Z'/></g><circle cx='20' cy='20' r='2.6' fill='%23fffaf3'/></svg>") 72px 0 / 18px 18px no-repeat,
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%232f86e0' stroke-width='1.5'/><g fill='%232f86e0'><path d='M0 0H8A8 8 0 0 1 0 8Z'/><path d='M40 0V8A8 8 0 0 1 32 0Z'/><path d='M40 40H32A8 8 0 0 1 40 32Z'/><path d='M0 40V32A8 8 0 0 1 8 40Z'/></g><path d='M20 7L23 17L33 20L23 23L20 33L17 23L7 20L17 17Z' fill='%237fb6ec'/><circle cx='20' cy='20' r='3.2' fill='%23f2b632'/></svg>") 96px 0 / 18px 18px no-repeat;
 }
+
+/* 行前須知／新加坡介紹：方案 B（白色內框＋華麗小圖示＋四角迷你花磚），底色不變 */
+.quick-nav__pretrip,
+.city-item[data-phase] {
+  position: relative;
+  outline: 2px solid #ffffff;
+  outline-offset: -5px;
+}
+.quick-nav__thumb {
+  width: 52px;
+  height: 39px;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(80,55,25,0.12);
+  overflow: hidden;
+  background: #fdf1e8;
+}
+.quick-nav__thumb svg { width: 100%; height: 100%; display: block; }
+.quick-nav__pretrip::before, .quick-nav__pretrip::after,
+.city-item[data-phase]::before, .city-item[data-phase]::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  height: 11px;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") left center / 11px 11px no-repeat, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") right center / 11px 11px no-repeat;
+}
+.quick-nav__pretrip::before, .city-item[data-phase]::before { top: -6px; }
+.quick-nav__pretrip::after,  .city-item[data-phase]::after  { bottom: -6px; }
+
+/* 標題白邊更清楚：像店屋的白色線板——加粗白邊，外圍再描一圈淡藍細線＋輕微陰影 */
+.hero__season {
+  -webkit-text-stroke: 3px #ffffff;
+  text-shadow:
+    -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff,
+    -2.5px  2.5px 0 #fff, 2.5px  2.5px 0 #fff,
+    -3px  0   0 #fff, 3px  0   0 #fff,
+     0  -3px  0 #fff, 0   3px  0 #fff;
+  filter:
+    drop-shadow(1px 0 0 #a9c8ea) drop-shadow(-1px 0 0 #a9c8ea)
+    drop-shadow(0 1px 0 #a9c8ea) drop-shadow(0 -1px 0 #a9c8ea)
+    drop-shadow(0 2px 3px rgba(47, 100, 160, 0.18));
+}
+
+/* City Guides、DAYS 小標：同標題的白色線板邊（白邊＋外圍淡色細線） */
+.cities-header__title {
+  -webkit-text-stroke: 2.5px #ffffff;
+  paint-order: stroke fill;
+  filter:
+    drop-shadow(0.8px 0 0 #d6c3b5) drop-shadow(-0.8px 0 0 #d6c3b5)
+    drop-shadow(0 0.8px 0 #d6c3b5) drop-shadow(0 -0.8px 0 #d6c3b5);
+}
+.section-label {
+  -webkit-text-stroke: 2.5px #ffffff;
+  paint-order: stroke fill;
+  filter:
+    drop-shadow(0.7px 0 0 #d6c3b5) drop-shadow(-0.7px 0 0 #d6c3b5)
+    drop-shadow(0 0.7px 0 #d6c3b5) drop-shadow(0 -0.7px 0 #d6c3b5);
+}
+
+/* 副標：SINGAPORE 放大獨立一行（兩側迷你花磚），地區名縮小變淡放下一行 */
+.hero__country {
+  display: block;
+  font-size: 21px;
+  letter-spacing: 0.3em;
+  color: #2f6fbf;
+  -webkit-text-stroke: 2px #ffffff;
+  paint-order: stroke fill;
+  filter:
+    drop-shadow(0.8px 0 0 #a9c8ea) drop-shadow(-0.8px 0 0 #a9c8ea)
+    drop-shadow(0 0.8px 0 #a9c8ea) drop-shadow(0 -0.8px 0 #a9c8ea);
+  margin-bottom: 2px;
+}
+.hero__tile {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  vertical-align: 2px;
+  margin: 0 12px 0 10px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") center / contain no-repeat;
+  -webkit-text-stroke: 0;
+}
+.hero__tile:last-child { margin: 0 10px 0 6px; }
+.hero__cities .hero__city,
+.hero__cities .hero__dot {
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+}
+.hero__cities .hero__city { color: #7fa8d8; }
+
+/* 主標題與 SINGAPORE 之間的距離縮小 */
+.hero__season { margin-bottom: 10px; }
 </style>
 </head>
 
@@ -2310,14 +2403,12 @@ body {
     <header class="hero">
       <span class="hero__deco hero__deco--plane"     id="heroPlane"></span>
       <span class="hero__deco hero__deco--champagne" id="heroChampagne"></span>
-      <span class="hero__deco hero__deco--seagull"   id="heroSeagull"></span>
       <span class="hero__deco hero__deco--shell"     id="heroShell"></span>
       <span class="hero__deco hero__deco--palm"      id="heroPalm"></span>
 
       <h1 class="hero__season">2026 November</h1>
       <p class="hero__cities">
-        <span class="hero__city" data-phase="singapore">SINGAPORE</span>
-        <span class="hero__dot">·</span>
+        <span class="hero__country"><span class="hero__tile" aria-hidden="true"></span>SINGAPORE<span class="hero__tile" aria-hidden="true"></span></span>
         <span class="hero__city" data-phase="katong">KATONG</span>
         <span class="hero__dot">·</span>
         <span class="hero__city" data-phase="zoo">MANDAI</span>
@@ -2336,7 +2427,7 @@ body {
     <!-- Hand-drawn watercolor overview map (Travel Itinerary) -->
     <section class="overview-map">
       <div class="overview-map__frame">
-        <img class="overview-map__img" src="images/singapore/cover-map.png" alt="新加坡行程總覽手繪地圖" loading="lazy" onerror="this.closest('section').style.display='none'" />
+        <img class="overview-map__img" src="images/singapore/cover-map.jpg" alt="新加坡行程總覽手繪地圖" loading="lazy" onerror="this.closest('section').style.display='none'" />
       </div>
       <p class="overview-map__caption">— TRAVEL ITINERARY · 2026 —</p>
     </section>
@@ -2346,7 +2437,7 @@ body {
     <!-- Quick nav: 行前須知 + 城市跳轉 -->
     <section class="quick-nav">
       <button class="quick-nav__pretrip" type="button" id="btnPretrip">
-        <span class="quick-nav__icon">✦</span>
+        <span class="quick-nav__thumb"><svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#fdf1e8"/><g transform="rotate(-8 22 24)"><rect x="10" y="8" width="22" height="30" rx="2.5" fill="#2f7f9e"/><rect x="10" y="8" width="22" height="30" rx="2.5" fill="none" stroke="#1f5c75" stroke-width="0.8"/><circle cx="21" cy="20" r="5.5" fill="none" stroke="#f2b632" stroke-width="1.3"/><path d="M15.5 20 H26.5 M21 14.5 V25.5" stroke="#f2b632" stroke-width="0.8"/><path d="M15 30 H27 M17 33 H25" stroke="#f2b632" stroke-width="1.2" stroke-linecap="round"/></g><path d="M30 13 Q36 9 40 14" fill="none" stroke="#a8452f" stroke-width="1"/><g transform="rotate(10 46 28)"><path d="M36 17 H54 V39 H36 Z" fill="#fffaf3" stroke="#e0607f" stroke-width="1.2"/><circle cx="45" cy="20.5" r="1.3" fill="#fdf1e8" stroke="#a8452f" stroke-width="0.8"/><g fill="#f6c3cf"><circle cx="45" cy="26" r="2.6"/><circle cx="45" cy="33" r="2.6"/><circle cx="41.5" cy="29.5" r="2.6"/><circle cx="48.5" cy="29.5" r="2.6"/></g><circle cx="45" cy="29.5" r="1.8" fill="#ec6f45"/><g fill="#3fa362"><circle cx="38.5" cy="36.5" r="1"/><circle cx="51.5" cy="36.5" r="1"/><circle cx="38.5" cy="23" r="1"/><circle cx="51.5" cy="23" r="1"/></g></g><g fill="#e0607f"><ellipse cx="57" cy="8" rx="2.4" ry="1.4" transform="rotate(30 57 8)"/><ellipse cx="60" cy="11" rx="2.4" ry="1.4" transform="rotate(-40 60 11)"/></g><circle cx="58.5" cy="9.5" r="1" fill="#f2b632"/></svg></span>
         <span class="quick-nav__label">
           <span class="quick-nav__label-en">Pre-Trip Notes</span>
           <span class="quick-nav__label-zh">行前須知</span>
@@ -3001,48 +3092,58 @@ const DAY_MOTIFS = [
 ];
 
 const CITY_MOTIFS = {
-  singapore: `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <rect width="64" height="48" fill="#fdecef"/>
-    <circle cx="52" cy="11" r="4.5" fill="#f08c6e" opacity="0.6"/>
-    <g fill="#d4587a">
-      <rect x="18" y="16" width="5" height="20"/>
-      <rect x="27" y="16" width="5" height="20"/>
-      <rect x="36" y="16" width="5" height="20"/>
-      <path d="M 15 14 Q 28 11 44 13 L 44 16 L 15 16 Z"/>
-    </g>
-    <g fill="none" stroke="#2f7f9e" stroke-linecap="round">
-      <path d="M 0 39 Q 8 36.5 16 39 T 32 39 T 48 39 T 64 39" stroke-width="1.4"/>
-      <path d="M 0 43 Q 8 40.5 16 43 T 32 43 T 48 43 T 64 43" stroke-width="1.1" opacity="0.55"/>
-      <path d="M 0 47 Q 8 44.5 16 47 T 32 47 T 48 47 T 64 47" stroke-width="0.8" opacity="0.35"/>
-    </g>
-  </svg>`
+  singapore: `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="64" height="48" fill="#fdf1e8"/><svg x="1" y="2" width="62" height="46" viewBox="0 0 72 56">    <circle cx="60" cy="10" r="5.5" fill="#f08c6e"/>  <g stroke="#f2b632" stroke-width="1" stroke-linecap="round"><path d="M60 1.5 V3"/><path d="M68.5 10 H67"/><path d="M66 4 L65 5"/><path d="M54 4 L55 5"/><path d="M66 16 L65 15"/></g>  <path d="M10 13 Q36 9.5 62 12 L62 15 Q36 13 10 16 Z" fill="#2f7f9e"/>  <g fill="#3fa362"><circle cx="16" cy="12" r="1.6"/><circle cx="22" cy="11.2" r="1.8"/><circle cx="30" cy="10.8" r="1.6"/><circle cx="38" cy="10.6" r="1.8"/><circle cx="46" cy="10.8" r="1.6"/><circle cx="54" cy="11.3" r="1.7"/></g>  <g fill="#e0607f"><circle cx="19" cy="11.4" r="0.8"/><circle cx="34" cy="10.5" r="0.8"/><circle cx="50" cy="10.7" r="0.8"/></g>  <g fill="#2f7f9e">    <path d="M17 15.5 H25 L24 42 H18 Z"/>    <path d="M32 14.6 H40 L39.5 42 H32.5 Z"/>    <path d="M47 15 H55 L54 42 H48 Z"/>  </g>  <g stroke="#f2b632" stroke-width="0.7" opacity="0.95">    <path d="M19 19 H23 M19 22.5 H23 M19 26 H23 M19 29.5 H23 M19 33 H23 M19 36.5 H23"/>    <path d="M34 18.5 H38 M34 22 H38 M34 25.5 H38 M34 29 H38 M34 32.5 H38 M34 36 H38"/>    <path d="M49 19 H53 M49 22.5 H53 M49 26 H53 M49 29.5 H53 M49 33 H53 M49 36.5 H53"/>  </g>  <g fill="#fff6dc" stroke="#c9952e" stroke-width="0.4"><rect x="16" y="40" width="40" height="3.2"/></g>  <g fill="#e0607f"><circle cx="19" cy="41.6" r="0.7"/><circle cx="25" cy="41.6" r="0.7"/><circle cx="31" cy="41.6" r="0.7"/><circle cx="37" cy="41.6" r="0.7"/><circle cx="43" cy="41.6" r="0.7"/><circle cx="49" cy="41.6" r="0.7"/><circle cx="55" cy="41.6" r="0.7"/></g>  <g fill="#3fa362"><circle cx="22" cy="41.6" r="0.6"/><circle cx="28" cy="41.6" r="0.6"/><circle cx="34" cy="41.6" r="0.6"/><circle cx="40" cy="41.6" r="0.6"/><circle cx="46" cy="41.6" r="0.6"/><circle cx="52" cy="41.6" r="0.6"/></g>  <g stroke="#e0a0b0" stroke-width="0.6" fill="#fff6f2">    <path d="M3 43 Q4 34 8 30 Q8 37 9.5 43 Z"/>    <path d="M7 43 Q8 33 12 28.5 Q12.5 36 13 43 Z"/>    <path d="M11 43 Q13 33 17 31 Q15.5 37 15.5 43 Z"/>  </g>  <path d="M0 43 H72 V52 H0 Z" fill="#cfe7f5"/>  <g fill="none" stroke="#2f86e0" stroke-width="1.1" stroke-linecap="round">    <path d="M2 46.5 q3 -2.4 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0"/>  </g>  <g fill="none" stroke="#7fb6ec" stroke-width="0.8" stroke-linecap="round">    <path d="M5 50 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0"/>  </g>  <g fill="#f2b632"><circle cx="8" cy="46.5" r="0.7"/><circle cx="32" cy="46.5" r="0.7"/><circle cx="56" cy="46.5" r="0.7"/></g>  <path d="M0 52 H72 V53.4 H0 Z" fill="#2f7f9e" opacity="0.5"/></svg></svg>`
 };
 
 /* ============================================================
    DECORATIVE ORNAMENTS (lemon branch, bouquet)
    ============================================================ */
 /* Hero deco — small hand-drawn icons */
-const HERO_PLANE = `<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <g transform="rotate(-18 28 28)" fill="#2f7f9e">
-    <path d="M 6 30 L 38 25 L 46 25 Q 50 25 50 28 Q 50 31 46 31 L 38 31 L 6 30 Z"/>
-    <path d="M 22 18 L 25 18 L 20 25 L 17 25 Z"/>
-    <path d="M 22 38 L 25 38 L 20 31 L 17 31 Z"/>
-    <path d="M 38 21 L 41 21 L 38 25 L 36 25 Z"/>
-    <path d="M 38 35 L 41 35 L 38 31 L 36 31 Z"/>
-  </g>
-  <g fill="#2f7f9e" opacity="0.45">
-    <circle cx="14" cy="44" r="1.1"/>
-    <circle cx="9" cy="47" r="0.9"/>
-    <circle cx="5" cy="49" r="0.7"/>
+const HERO_PLANE = `<svg viewBox="0 0 64 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M4 48 Q14 44 22 36" fill="none" stroke="#e0607f" stroke-width="1.2" stroke-dasharray="2 2.6" stroke-linecap="round"/>
+  <g fill="#e0607f"><circle cx="6" cy="45" r="1.4"/><circle cx="14" cy="42" r="1.1"/></g>
+  <g fill="#f2b632"><circle cx="6" cy="45" r="0.5"/></g>
+  <g transform="rotate(-28 36 28)">
+    <path d="M24 26.5 Q22 26.5 21 28 Q22 29.5 24 29.5 L48 30 Q54 30 56 28 Q54 26 48 26 Z" fill="#2f86e0"/>
+    <path d="M49 26.4 Q53.5 26.6 55.5 28 L49 28 Z" fill="#bfe0f7"/>
+    <path d="M24 28 L50 28" stroke="#f2b632" stroke-width="0.9"/>
+    <g fill="#fffaf3"><circle cx="30" cy="27.2" r="0.6"/><circle cx="33" cy="27.2" r="0.6"/><circle cx="36" cy="27.2" r="0.6"/><circle cx="39" cy="27.2" r="0.6"/><circle cx="42" cy="27.2" r="0.6"/><circle cx="45" cy="27.2" r="0.6"/></g>
+    <path d="M36 27 L30 15 L33.5 15 L42 27 Z" fill="#2f7f9e"/>
+    <path d="M36 29 L30 41 L33.5 41 L42 29 Z" fill="#2f7f9e"/>
+    <path d="M24 27 L20 19 L23 19 L28 27 Z" fill="#e0607f"/>
+    <path d="M24 29 L21.5 33 L23.5 33 L27 29 Z" fill="#e0607f"/>
+    <circle cx="22.6" cy="21.6" r="1.2" fill="#fffaf3"/><circle cx="22.6" cy="21.6" r="0.5" fill="#f2b632"/>
+    <g fill="#f2b632"><rect x="32.5" y="18" width="1.6" height="1.6" transform="rotate(45 33.3 18.8)"/><rect x="32.5" y="36.4" width="1.6" height="1.6" transform="rotate(45 33.3 37.2)"/></g>
   </g>
 </svg>`;
 
-const HERO_CHAMPAGNE = `<svg viewBox="0 0 30 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M 15 57 Q 13 42 15 28 Q 16 20 15 16" stroke="#3f9e7a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-  <path d="M 14 46 Q 6 42 4 34 Q 11 37 14 44 Z" fill="#5fb8a6" opacity="0.9"/>
-  <path d="M 15 36 Q 19 33 22 31" stroke="#3f9e7a" stroke-width="1" fill="none" stroke-linecap="round"/>
-  <g transform="translate(15 12) scale(1.0)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
-  <g transform="translate(22.5 29) scale(0.62)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+const HERO_CHAMPAGNE = `<svg viewBox="0 0 40 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M20 54 Q18 40 22 28 Q25 18 21 8" fill="none" stroke="#3f9e7a" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M21 40 Q12 38 8 31 Q15 31 21 37" fill="#5fb8a6"/>
+  <path d="M20 47 Q29 46 33 39 Q26 39 20 44" fill="#3f9e7a"/>
+  <g transform="translate(22 14)">
+    <ellipse cx="0" cy="-6" rx="3" ry="5.5" fill="#f1a9c8"/>
+    <ellipse cx="-6" cy="-1" rx="5.5" ry="3" fill="#f1a9c8" transform="rotate(-20 -6 -1)"/>
+    <ellipse cx="6" cy="-1" rx="5.5" ry="3" fill="#f1a9c8" transform="rotate(20 6 -1)"/>
+    <path d="M-4.5 1 Q0 -1 4.5 1 Q5.5 8 0 10 Q-5.5 8 -4.5 1Z" fill="#c2457e"/>
+    <g fill="#f6d27a"><circle cx="-1.6" cy="4" r="0.6"/><circle cx="1.6" cy="4" r="0.6"/><circle cx="0" cy="6.5" r="0.6"/></g>
+    <circle cx="0" cy="0.6" r="1.6" fill="#f2b632"/>
+  </g>
+  <g transform="translate(14 30) scale(0.78)">
+    <ellipse cx="0" cy="-6" rx="3" ry="5.5" fill="#f1a9c8"/>
+    <ellipse cx="-6" cy="-1" rx="5.5" ry="3" fill="#f1a9c8" transform="rotate(-20 -6 -1)"/>
+    <ellipse cx="6" cy="-1" rx="5.5" ry="3" fill="#f1a9c8" transform="rotate(20 6 -1)"/>
+    <path d="M-4.5 1 Q0 -1 4.5 1 Q5.5 8 0 10 Q-5.5 8 -4.5 1Z" fill="#c2457e"/>
+    <circle cx="0" cy="0.6" r="1.6" fill="#f2b632"/>
+  </g>
+  <ellipse cx="21" cy="5" rx="1.6" ry="2.6" fill="#c9e3c4" transform="rotate(15 21 5)"/>
+  <ellipse cx="27" cy="25" rx="1.4" ry="2.4" fill="#f1a9c8" transform="rotate(-25 27 25)"/>
+  <path d="M8 54 H32 L30 70 H10 Z" fill="#fffaf3" stroke="#2f7f9e" stroke-width="1"/>
+  <rect x="7" y="52" width="26" height="3.5" rx="1" fill="#2f7f9e"/>
+  <rect x="9.2" y="64.5" width="21.6" height="2.4" fill="#f2b632"/>
+  <path d="M20 57.5 L24 61 L20 64.5 L16 61 Z" fill="#e0607f"/>
+  <circle cx="20" cy="61" r="1" fill="#f2b632"/>
+  <g fill="#3fa362"><circle cx="12.5" cy="60" r="1.1"/><circle cx="27.5" cy="60" r="1.1"/></g>
 </svg>`;
 
 const HERO_SEAGULL = `<svg viewBox="0 0 90 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3053,38 +3154,80 @@ const HERO_SEAGULL = `<svg viewBox="0 0 90 24" xmlns="http://www.w3.org/2000/svg
   </g>
 </svg>`;
 
-const HERO_CHAIR = `<svg viewBox="0 0 60 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <circle cx="50" cy="8" r="4" fill="#f08c6e" opacity="0.75"/>
+const HERO_CHAIR = `<svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  
+  <circle cx="60" cy="10" r="5.5" fill="#f08c6e"/>
+  <g stroke="#f2b632" stroke-width="1" stroke-linecap="round"><path d="M60 1.5 V3"/><path d="M68.5 10 H67"/><path d="M66 4 L65 5"/><path d="M54 4 L55 5"/><path d="M66 16 L65 15"/></g>
+  <path d="M10 13 Q36 9.5 62 12 L62 15 Q36 13 10 16 Z" fill="#2f7f9e"/>
+  <g fill="#3fa362"><circle cx="16" cy="12" r="1.6"/><circle cx="22" cy="11.2" r="1.8"/><circle cx="30" cy="10.8" r="1.6"/><circle cx="38" cy="10.6" r="1.8"/><circle cx="46" cy="10.8" r="1.6"/><circle cx="54" cy="11.3" r="1.7"/></g>
+  <g fill="#e0607f"><circle cx="19" cy="11.4" r="0.8"/><circle cx="34" cy="10.5" r="0.8"/><circle cx="50" cy="10.7" r="0.8"/></g>
   <g fill="#2f7f9e">
-    <path d="M 12 38 L 13 15 L 19 15 L 19.5 38 Z"/>
-    <path d="M 26 38 L 26.5 15 L 32.5 15 L 33 38 Z"/>
-    <path d="M 40 38 L 40.5 15 L 46.5 15 L 47 38 Z"/>
-    <path d="M 6 14.5 Q 30 9.5 55 12.5 L 55 15 Q 30 13 6 16.5 Z"/>
+    <path d="M17 15.5 H25 L24 42 H18 Z"/>
+    <path d="M32 14.6 H40 L39.5 42 H32.5 Z"/>
+    <path d="M47 15 H55 L54 42 H48 Z"/>
   </g>
-  <g fill="none" stroke="#5fb8a6" stroke-linecap="round">
-    <path d="M 2 41 Q 9 39 16 41 T 30 41 T 44 41 T 58 41" stroke-width="1.3"/>
-    <path d="M 6 44.5 Q 13 42.5 20 44.5 T 34 44.5 T 48 44.5" stroke-width="1" opacity="0.6"/>
+  <g stroke="#f2b632" stroke-width="0.7" opacity="0.95">
+    <path d="M19 19 H23 M19 22.5 H23 M19 26 H23 M19 29.5 H23 M19 33 H23 M19 36.5 H23"/>
+    <path d="M34 18.5 H38 M34 22 H38 M34 25.5 H38 M34 29 H38 M34 32.5 H38 M34 36 H38"/>
+    <path d="M49 19 H53 M49 22.5 H53 M49 26 H53 M49 29.5 H53 M49 33 H53 M49 36.5 H53"/>
   </g>
+  <g fill="#fff6dc" stroke="#c9952e" stroke-width="0.4"><rect x="16" y="40" width="40" height="3.2"/></g>
+  <g fill="#e0607f"><circle cx="19" cy="41.6" r="0.7"/><circle cx="25" cy="41.6" r="0.7"/><circle cx="31" cy="41.6" r="0.7"/><circle cx="37" cy="41.6" r="0.7"/><circle cx="43" cy="41.6" r="0.7"/><circle cx="49" cy="41.6" r="0.7"/><circle cx="55" cy="41.6" r="0.7"/></g>
+  <g fill="#3fa362"><circle cx="22" cy="41.6" r="0.6"/><circle cx="28" cy="41.6" r="0.6"/><circle cx="34" cy="41.6" r="0.6"/><circle cx="40" cy="41.6" r="0.6"/><circle cx="46" cy="41.6" r="0.6"/><circle cx="52" cy="41.6" r="0.6"/></g>
+  <g stroke="#e0a0b0" stroke-width="0.6" fill="#fff6f2">
+    <path d="M3 43 Q4 34 8 30 Q8 37 9.5 43 Z"/>
+    <path d="M7 43 Q8 33 12 28.5 Q12.5 36 13 43 Z"/>
+    <path d="M11 43 Q13 33 17 31 Q15.5 37 15.5 43 Z"/>
+  </g>
+  <path d="M0 43 H72 V52 H0 Z" fill="#cfe7f5"/>
+  <g fill="none" stroke="#2f86e0" stroke-width="1.1" stroke-linecap="round">
+    <path d="M2 46.5 q3 -2.4 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0"/>
+  </g>
+  <g fill="none" stroke="#7fb6ec" stroke-width="0.8" stroke-linecap="round">
+    <path d="M5 50 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0 t6 0"/>
+  </g>
+  <g fill="#f2b632"><circle cx="8" cy="46.5" r="0.7"/><circle cx="32" cy="46.5" r="0.7"/><circle cx="56" cy="46.5" r="0.7"/></g>
+  <path d="M0 52 H72 V53.4 H0 Z" fill="#2f7f9e" opacity="0.5"/>
 </svg>`;
 
 const HERO_SHELL = `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></svg>`;
 
-const HERO_UMBRELLA = `<svg viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <ellipse cx="22" cy="52.5" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>
-  <path d="M 3 13 L 41 13 L 37 6 L 7 6 Z" fill="#e2775a"/>
-  <rect x="5" y="13" width="34" height="39" fill="#f6d27a" stroke="#c9952e" stroke-width="1"/>
-  <g fill="#5fb8a6" stroke="#2f7f9e" stroke-width="0.7">
-    <path d="M 9 28 V 20 Q 12 16.5 15 20 V 28 Z"/>
-    <path d="M 19 28 V 20 Q 22 16.5 25 20 V 28 Z"/>
-    <path d="M 29 28 V 20 Q 32 16.5 35 20 V 28 Z"/>
+const HERO_UMBRELLA = `<svg viewBox="0 0 56 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="28" cy="64.6" rx="24" ry="1.2" fill="#a86b50" opacity="0.25"/>
+  <path d="M2 14 L54 14 L49 6 L7 6 Z" fill="#e07a55"/>
+  <g fill="none" stroke="#a8452f" stroke-width="0.7"><path d="M8 8.5 H48"/><path d="M5 11.5 H51"/></g>
+  <path d="M20 6 Q28 0.5 36 6 Z" fill="#f6d27a" stroke="#c9952e" stroke-width="0.7"/>
+  <circle cx="28" cy="4.4" r="1.3" fill="#e0607f"/>
+  <rect x="4" y="14" width="48" height="50" fill="#f6d27a" stroke="#c9952e" stroke-width="0.8"/>
+  <rect x="4" y="14" width="48" height="4" fill="#fff6dc"/>
+  <g fill="#e0607f"><circle cx="10" cy="16" r="1"/><circle cx="19" cy="16" r="1"/><circle cx="28" cy="16" r="1"/><circle cx="37" cy="16" r="1"/><circle cx="46" cy="16" r="1"/></g>
+  <g fill="#3fa362"><circle cx="14.5" cy="16" r="0.8"/><circle cx="23.5" cy="16" r="0.8"/><circle cx="32.5" cy="16" r="0.8"/><circle cx="41.5" cy="16" r="0.8"/></g>
+  <g fill="#fff6dc" stroke="#c9952e" stroke-width="0.5"><rect x="4" y="18" width="3" height="46"/><rect x="49" y="18" width="3" height="46"/><rect x="26.5" y="18" width="3" height="18"/></g>
+  <g>
+    <path d="M9 34 V24 Q13.5 19.5 18 24 V34 Z" fill="#2f86e0"/>
+    <path d="M38 34 V24 Q42.5 19.5 47 24 V34 Z" fill="#2f86e0"/>
+    <path d="M10 24.5 Q13.5 21 17 24.5 Z" fill="#bfe0f7"/><path d="M39 24.5 Q42.5 21 46 24.5 Z" fill="#bfe0f7"/>
+    <g stroke="#bfe0f7" stroke-width="0.6"><path d="M13.5 25 V34"/><path d="M42.5 25 V34"/><path d="M9.5 27 H17.5 M9.5 29 H17.5 M9.5 31 H17.5 M38.5 27 H46.5 M38.5 29 H46.5 M38.5 31 H46.5"/></g>
   </g>
-  <rect x="5" y="30" width="34" height="3" fill="#e2775a"/>
-  <g fill="#5fb8a6" stroke="#2f7f9e" stroke-width="0.7">
-    <rect x="8.5" y="37" width="6" height="8"/>
-    <rect x="29.5" y="37" width="6" height="8"/>
+  <g fill="#3fa362"><circle cx="21.5" cy="25" r="2.2"/><circle cx="34.5" cy="25" r="2.2"/></g>
+  <g fill="#e0607f"><circle cx="21.5" cy="25" r="0.9"/><circle cx="34.5" cy="25" r="0.9"/></g>
+  <rect x="4" y="35.5" width="48" height="3.5" fill="#e0607f"/>
+  <g fill="#fff6dc"><circle cx="9" cy="37.2" r="0.8"/><circle cx="15" cy="37.2" r="0.8"/><circle cx="21" cy="37.2" r="0.8"/><circle cx="28" cy="37.2" r="0.8"/><circle cx="35" cy="37.2" r="0.8"/><circle cx="41" cy="37.2" r="0.8"/><circle cx="47" cy="37.2" r="0.8"/></g>
+  <path d="M19 64 V48 Q28 39 37 48 V64 Z" fill="#fff6dc" stroke="#c9952e" stroke-width="0.6"/>
+  <path d="M22 64 V50 Q28 44 34 50 V64 Z" fill="#2f86e0"/>
+  <g fill="#f2b632" stroke="#c9952e" stroke-width="0.4"><rect x="22.5" y="54" width="5" height="8"/><rect x="28.5" y="54" width="5" height="8"/></g>
+  <g stroke="#c9952e" stroke-width="0.5"><path d="M24 54 V62 M26 54 V62 M30 54 V62 M32 54 V62"/></g>
+  <g>
+    <rect x="8" y="42" width="8" height="10" fill="#3fa362"/><rect x="40" y="42" width="8" height="10" fill="#3fa362"/>
+    <g stroke="#cfe9d4" stroke-width="0.6"><path d="M12 42 V52 M8 47 H16 M44 42 V52 M40 47 H48"/></g>
   </g>
-  <path d="M 18 52 V 40 Q 22 35.5 26 40 V 52 Z" fill="#2f7f9e"/>
-  <rect x="5" y="49" width="34" height="3" fill="#2f7f9e" opacity="0.35"/>
+  <g>
+    <rect x="7" y="55" width="10" height="9" fill="#fffaf3" stroke="#2f86e0" stroke-width="0.6"/>
+    <rect x="39" y="55" width="10" height="9" fill="#fffaf3" stroke="#2f86e0" stroke-width="0.6"/>
+    <g fill="#e0607f"><circle cx="12" cy="59.5" r="2"/><circle cx="44" cy="59.5" r="2"/></g>
+    <g fill="#3fa362"><circle cx="9" cy="57" r="0.9"/><circle cx="15" cy="57" r="0.9"/><circle cx="9" cy="62" r="0.9"/><circle cx="15" cy="62" r="0.9"/><circle cx="41" cy="57" r="0.9"/><circle cx="47" cy="57" r="0.9"/><circle cx="41" cy="62" r="0.9"/><circle cx="47" cy="62" r="0.9"/></g>
+    <g fill="#f2b632"><circle cx="12" cy="59.5" r="0.8"/><circle cx="44" cy="59.5" r="0.8"/></g>
+  </g>
 </svg>`;
 
 const HERO_PALM = `<svg viewBox="0 0 52 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3107,27 +3250,39 @@ const HERO_PALM = `<svg viewBox="0 0 52 36" xmlns="http://www.w3.org/2000/svg" a
   </g>
 </svg>`;
 
-const HERO_COCONUT = `<svg viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <ellipse cx="27" cy="54.3" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>
-  <path d="M 16.5 21 Q 5 23 4.5 47" fill="none" stroke="#6cc0de" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M 16.8 21.8 Q 9 26 8.5 47" fill="none" stroke="#a8dcef" stroke-width="1.2" stroke-linecap="round"/>
-  <g fill="#a8dcef"><circle cx="3" cy="48.6" r="1.1"/><circle cx="6.5" cy="49.2" r="0.9"/><circle cx="10" cy="48.5" r="0.8"/></g>
-  <path d="M 16 54 Q 16 47 22 46 L 42 46 Q 46.5 47 46.5 54 Z" fill="#2f7f9e"/>
-  <path d="M 18 50 Q 21 48 24 50 Q 27 52 30 50 Q 33 48 36 50 Q 39 52 42 50 Q 44 48.6 45.5 50" fill="none" stroke="#a8dcef" stroke-width="0.9"/>
-  <path d="M 38 45 Q 43.5 43 43 36.5 Q 46.5 40.5 45 45 Q 43 47.5 37.5 46.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M 26.5 29 Q 24.5 37 26.5 46.5 L 38.5 46.5 Q 40.5 39 36 30.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
-  <g fill="none" stroke="#5fb8a6" stroke-width="0.8">
-    <path d="M 28 35 q 2 2 4 0"/><path d="M 32 35 q 2 2 4 0"/>
-    <path d="M 27.5 39 q 2 2 4 0"/><path d="M 31.5 39 q 2 2 4 0"/>
-    <path d="M 28 43 q 2 2 4 0"/><path d="M 32 43 q 2 2 4 0"/>
+const HERO_COCONUT = `<svg viewBox="0 0 52 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="29" cy="60.6" rx="20" ry="1.1" fill="#a86b50" opacity="0.22"/>
+  <path d="M16.5 21 Q5 23 4.5 47" fill="none" stroke="#6cc0de" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M16.8 21.8 Q9 26 8.5 47" fill="none" stroke="#bfe0f7" stroke-width="1.3" stroke-linecap="round"/>
+  <g fill="#7fb6ec"><circle cx="2.6" cy="49" r="1.1"/><circle cx="6.3" cy="50" r="0.9"/><circle cx="10" cy="49" r="0.9"/><circle cx="12" cy="31" r="0.7"/><circle cx="6" cy="35" r="0.6"/></g>
+  <path d="M38 45 Q43.5 43 43 36.5 Q46.5 40.5 45 45 Q43 47.5 37.5 46.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M43 36.5 l1.6 -1.2 l0.2 1.9 Z" fill="#f2b632"/>
+  <path d="M26.5 29 Q24.5 37 26.5 46.5 L38.5 46.5 Q40.5 39 36 30.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <g fill="#cfe9e2" stroke="#2f9e8f" stroke-width="0.7">
+    <path d="M28 35 q2 2.4 4 0 q-2 -1 -4 0Z"/><path d="M32 35 q2 2.4 4 0 q-2 -1 -4 0Z"/>
+    <path d="M27.5 39 q2 2.4 4 0 q-2 -1 -4 0Z"/><path d="M31.5 39 q2 2.4 4 0 q-2 -1 -4 0Z"/><path d="M35.5 39 q1.6 2 3 0"/>
+    <path d="M28 43 q2 2.4 4 0 q-2 -1 -4 0Z"/><path d="M32 43 q2 2.4 4 0 q-2 -1 -4 0Z"/>
   </g>
-  <path d="M 24 8 Q 30 4 36 6.5 Q 41 9 39.5 13 Q 42.5 16.5 39 19.5 Q 42.5 23 38.5 26 Q 40.5 30 35 31.5 L 26.5 29.5 Q 22.5 27.5 22 24.8 L 18.5 23.8 Q 17.2 23 18.4 22.2 L 20.5 21.6 L 17.6 20.4 Q 15.9 19.3 16.6 17.8 Q 17.5 15.8 20.6 15.4 Q 21.3 11 24 8 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
-  <g fill="none" stroke="#5fb8a6" stroke-width="0.85" stroke-linecap="round">
-    <path d="M 30 9 Q 34 11 33.5 15"/><path d="M 33 16.5 Q 36.5 18.5 35 22.5"/><path d="M 32 23.5 Q 35 25.5 33.5 29"/>
-    <path d="M 26.5 10.5 Q 29 13 28 16.5"/><path d="M 28.5 18.5 Q 31 21 29.5 25"/>
+  <g fill="#f2b632"><circle cx="30" cy="36.4" r="0.45"/><circle cx="34" cy="36.4" r="0.45"/><circle cx="29.5" cy="40.4" r="0.45"/><circle cx="33.5" cy="40.4" r="0.45"/><circle cx="30" cy="44.4" r="0.45"/><circle cx="34" cy="44.4" r="0.45"/></g>
+  <path d="M24 8 Q30 4 36 6.5 Q41 9 39.5 13 Q42.5 16.5 39 19.5 Q42.5 23 38.5 26 Q40.5 30 35 31.5 L26.5 29.5 Q22.5 27.5 22 24.8 L18.5 23.8 Q17.2 23 18.4 22.2 L20.5 21.6 L17.6 20.4 Q15.9 19.3 16.6 17.8 Q17.5 15.8 20.6 15.4 Q21.3 11 24 8 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <g fill="none" stroke="#2f9e8f" stroke-width="0.9" stroke-linecap="round">
+    <path d="M30 9 Q34 11 33.5 15"/><path d="M33 16.5 Q36.5 18.5 35 22.5"/><path d="M32 23.5 Q35 25.5 33.5 29"/>
+    <path d="M26.5 10.5 Q29 13 28 16.5"/><path d="M28.5 18.5 Q31 21 29.5 25"/>
   </g>
-  <circle cx="22.6" cy="17" r="0.95" fill="#2f7f9e"/>
-  <path d="M 20.8 15 Q 22.6 14 24.4 15.2" fill="none" stroke="#2f7f9e" stroke-width="0.7"/>
+  <g fill="none" stroke="#f2b632" stroke-width="0.8" stroke-linecap="round">
+    <path d="M36.5 10 q1.6 0.6 1.2 2.2"/><path d="M38 17.5 q1.5 0.8 0.9 2.3"/><path d="M37 24.5 q1.4 0.9 0.6 2.4"/>
+  </g>
+  <circle cx="22.6" cy="17" r="1" fill="#2f7f9e"/>
+  <path d="M20.8 15 Q22.6 14 24.4 15.2" fill="none" stroke="#2f7f9e" stroke-width="0.7"/>
+  <circle cx="26" cy="7.6" r="1.1" fill="#e0607f"/><circle cx="26" cy="7.6" r="0.4" fill="#f2b632"/>
+  <rect x="15" y="46.5" width="34" height="13" rx="1" fill="#2f7f9e"/>
+  <g>
+    <rect x="17" y="48.5" width="9" height="9" fill="#fffaf3"/><rect x="27.5" y="48.5" width="9" height="9" fill="#fffaf3"/><rect x="38" y="48.5" width="9" height="9" fill="#fffaf3"/>
+    <g fill="#f6c3cf"><circle cx="21.5" cy="51" r="1.4"/><circle cx="21.5" cy="55" r="1.4"/><circle cx="19.5" cy="53" r="1.4"/><circle cx="23.5" cy="53" r="1.4"/><circle cx="42.5" cy="51" r="1.4"/><circle cx="42.5" cy="55" r="1.4"/><circle cx="40.5" cy="53" r="1.4"/><circle cx="44.5" cy="53" r="1.4"/></g>
+    <g fill="#e0607f"><circle cx="21.5" cy="53" r="0.9"/><circle cx="42.5" cy="53" r="0.9"/></g>
+    <path d="M32 49.5 L35.5 53 L32 56.5 L28.5 53 Z" fill="#cfe9d4" stroke="#3fa362" stroke-width="0.6"/>
+    <circle cx="32" cy="53" r="0.9" fill="#f2b632"/>
+  </g>
 </svg>`;
 
 const ORNAMENT_LEMON = `<svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3938,7 +4093,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const inject = (id, svg) => { const el = document.getElementById(id); if (el) el.innerHTML = svg; };
   inject("heroPlane",     HERO_PLANE);
   inject("heroChampagne", HERO_CHAMPAGNE);
-  inject("heroSeagull",   HERO_SEAGULL);
   inject("heroChair",     HERO_CHAIR);
   inject("heroCoconut",   HERO_COCONUT);
   inject("heroShell",     HERO_SHELL);
