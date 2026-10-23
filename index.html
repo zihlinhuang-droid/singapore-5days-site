@@ -2280,6 +2280,20 @@ body {
 }
 
 
+
+/* City Guides 標題下：五枚不同花色的小花磚（這趟五個人），顏色依序對應 D1–D5：黃、粉、綠、蜜桃、藍 */
+.cities-header__title::after {
+  width: 114px;
+  height: 18px;
+  margin: 10px auto 9px;
+  opacity: 1;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23d4911a' stroke-width='1.5'/><circle cx='20' cy='20' r='12' fill='%23fbe7a8'/><g stroke='%23d4911a' stroke-width='2' stroke-linecap='round'><path d='M20 6V11'/><path d='M20 29V34'/><path d='M6 20H11'/><path d='M29 20H34'/><path d='M10 10L13.5 13.5'/><path d='M30 10L26.5 13.5'/><path d='M10 30L13.5 26.5'/><path d='M30 30L26.5 26.5'/></g><circle cx='20' cy='20' r='4.5' fill='%23d4911a'/></svg>") 0 0 / 18px 18px no-repeat,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23e0607f' stroke-width='1.5'/><g fill='%23f6c3cf'><circle cx='20' cy='11' r='7'/><circle cx='20' cy='29' r='7'/><circle cx='11' cy='20' r='7'/><circle cx='29' cy='20' r='7'/></g><g fill='%23e0607f'><circle cx='20' cy='11' r='2.4'/><circle cx='20' cy='29' r='2.4'/><circle cx='11' cy='20' r='2.4'/><circle cx='29' cy='20' r='2.4'/></g><circle cx='20' cy='20' r='3.4' fill='%23ec6f45'/><g fill='%23e0607f'><path d='M0 0H5V5H0Z'/><path d='M35 0H40V5H35Z'/><path d='M0 35H5V40H0Z'/><path d='M35 35H40V40H35Z'/></g></svg>") 24px 0 / 18px 18px no-repeat,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%233fa362' stroke-width='1.5'/><path d='M20 4L36 20L20 36L4 20Z' fill='%23cfe9d4' stroke='%233fa362' stroke-width='1.2'/><g fill='%233fa362'><ellipse cx='20' cy='13' rx='2.6' ry='5'/><ellipse cx='20' cy='27' rx='2.6' ry='5'/><ellipse cx='13' cy='20' rx='5' ry='2.6'/><ellipse cx='27' cy='20' rx='5' ry='2.6'/></g><circle cx='20' cy='20' r='3' fill='%23f2b632'/></svg>") 48px 0 / 18px 18px no-repeat,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23ec6f45' stroke-width='1.5'/><g fill='%23f8cdb6'><path d='M0 0H12A12 12 0 0 1 0 12Z'/><path d='M40 0V12A12 12 0 0 1 28 0Z'/><path d='M40 40H28A12 12 0 0 1 40 28Z'/><path d='M0 40V28A12 12 0 0 1 12 40Z'/></g><g fill='%23ec6f45'><path d='M20 9Q24 15 20 20Q16 15 20 9Z'/><path d='M20 31Q24 25 20 20Q16 25 20 31Z'/><path d='M9 20Q15 16 20 20Q15 24 9 20Z'/><path d='M31 20Q25 16 20 20Q25 24 31 20Z'/></g><circle cx='20' cy='20' r='2.6' fill='%23fffaf3'/></svg>") 72px 0 / 18px 18px no-repeat,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23fffaf3'/><rect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%232f86e0' stroke-width='1.5'/><g fill='%232f86e0'><path d='M0 0H8A8 8 0 0 1 0 8Z'/><path d='M40 0V8A8 8 0 0 1 32 0Z'/><path d='M40 40H32A8 8 0 0 1 40 32Z'/><path d='M0 40V32A8 8 0 0 1 8 40Z'/></g><path d='M20 7L23 17L33 20L23 23L20 33L17 23L7 20L17 17Z' fill='%237fb6ec'/><circle cx='20' cy='20' r='3.2' fill='%23f2b632'/></svg>") 96px 0 / 18px 18px no-repeat;
+}
 </style>
 </head>
 
@@ -2343,7 +2357,6 @@ body {
 
     <!-- City list (TOC style, replaces former 3-button quick nav) -->
     <header class="cities-header">
-      <p class="cities-header__eyebrow">— Chapters —</p>
       <h2 class="cities-header__title">City Guides</h2>
       <p class="cities-header__sub">CULTURE · EATS · TRANSIT · NOTES</p>
     </header>
