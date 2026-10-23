@@ -40,7 +40,7 @@ body {
   --text-soft: #6e5b48;
   --text-faint: #9a8669;
   /* 統一底色（米白偏暖，淡到不會壓字色） */
-  --paper: #fdfaf5;
+  --paper: #fbf8f3;
   --paper-warm: #fffdf8;
   --paper-deep: #f7e3e8;
   --line: #c8ada3;
@@ -54,9 +54,11 @@ body {
 /* 娘惹磁磚風（Peranakan）：統一奶油底色，各 phase 只變字體 / 線條的顏色 */
 [data-phase="travel"]    { --accent: #5c9a68; --soft: #e2775a; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "移動日"; }
 [data-phase="singapore"] { --accent: #d4587a; --soft: #2f7f9e; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "新加坡"; }
-[data-phase="katong"]    { --accent: #d86a85; --soft: #2f6db5; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "加東"; }
-[data-phase="zoo"]       { --accent: #e2775a; --soft: #5c9a68; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "動物園"; }
-[data-phase="marina"]    { --accent: #2f6db5; --soft: #8a8dc0; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "濱海灣"; }
+[data-phase="katong"]    { --accent: #e0607f; --soft: #2f86e0; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "加東"; }
+[data-phase="zoo"]       { --accent: #3fa362; --soft: #f07a45; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "動物園"; }
+[data-phase="marina"]    { --accent: #ec6f45; --soft: #2f86e0; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "濱海灣"; }
+[data-phase="arrive"]    { --accent: #d4911a; --soft: #e8618c; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "移動日"; }
+[data-phase="depart"]    { --accent: #2f86e0; --soft: #3fa362; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "移動日"; }
 
 /* ---------------- App container & paper ---------------- */
 .app {
@@ -68,12 +70,10 @@ body {
   box-shadow: 0 0 28px rgba(80,55,30,0.18);
   overflow: clip;  /* allow sticky descendants */
 }
-/* 乾淨平滑的紙面（像磁磚釉面）：不用點紋與舊紙暈染，只留極淡的粉紅／孔雀綠漸層 */
+/* 乾淨平滑的紙面：店屋白色線板那種暖白 */
 .paper {
   position: relative;
   background:
-    radial-gradient(circle at 15% 8%, rgba(233,163,184,0.10) 0%, transparent 45%),
-    radial-gradient(circle at 85% 92%, rgba(95,184,166,0.08) 0%, transparent 50%),
     var(--paper);
 }
 .paper > * { position: relative; z-index: 1; }
@@ -115,7 +115,7 @@ body {
   font-size: 48px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #d4587a;
+  color: #3b82d0;  /* 天空藍：取自如切店屋的門框 */
   -webkit-text-stroke: 2.5px #ffffff;
   paint-order: stroke fill;
   text-shadow:
@@ -138,7 +138,7 @@ body {
   z-index: 2;
   line-height: 1.75;
 }
-.hero__city { color: #c9506f; }  /* 首頁城市名統一單色，避免太花 */
+.hero__city { color: #3b82d0; }  /* 首頁城市名：天空藍 */
 .hero__dot {
   color: var(--text-faint);
   font-weight: 400;
@@ -206,8 +206,8 @@ body {
   pointer-events: none;
 }
 .hero__bottom-icon svg { width: 100%; height: 100%; display: block; }
-.hero__bottom-icon--coconut  { width: 36px; height: 56px; opacity: 0.95; }  /* Supertree */
-.hero__bottom-icon--umbrella { width: 44px; height: 54px; opacity: 0.95; }  /* 娘惹店屋 */
+.hero__bottom-icon--coconut  { width: 48px; height: 56px; opacity: 0.95; }  /* 魚尾獅噴泉 */
+.hero__bottom-icon--umbrella { width: 44px; height: 54px; opacity: 0.95; }  /* 娘惹店屋（黃色立面） */
 .hero__bottom-icon--chair    { width: 60px; height: 46px; opacity: 0.95; }  /* 濱海灣金沙 */
 
 .hero__divider {
@@ -803,9 +803,11 @@ body {
 /* Watercolor wash by phase (top → fade) */
 .date-card[data-phase="travel"] { background: linear-gradient(180deg, rgba(92,154,104,0.07), var(--paper-warm) 60%); --phase-accent: #5c9a68; }
 .date-card[data-phase="singapore"] { background: linear-gradient(180deg, rgba(212,88,122,0.07), var(--paper-warm) 60%); --phase-accent: #d4587a; }
-.date-card[data-phase="katong"] { background: linear-gradient(180deg, rgba(216,106,133,0.07), var(--paper-warm) 60%); --phase-accent: #d86a85; }
-.date-card[data-phase="zoo"] { background: linear-gradient(180deg, rgba(226,119,90,0.07), var(--paper-warm) 60%); --phase-accent: #e2775a; }
-.date-card[data-phase="marina"] { background: linear-gradient(180deg, rgba(47,109,181,0.07), var(--paper-warm) 60%); --phase-accent: #2f6db5; }
+.date-card[data-phase="katong"] { background: linear-gradient(180deg, rgba(224,96,127,0.10), var(--paper-warm) 60%); --phase-accent: #e0607f; }
+.date-card[data-phase="zoo"] { background: linear-gradient(180deg, rgba(63,163,98,0.10), var(--paper-warm) 60%); --phase-accent: #3fa362; }
+.date-card[data-phase="marina"] { background: linear-gradient(180deg, rgba(236,111,69,0.10), var(--paper-warm) 60%); --phase-accent: #ec6f45; }
+.date-card[data-phase="arrive"] { background: linear-gradient(180deg, rgba(242,182,50,0.14), var(--paper-warm) 60%); --phase-accent: #d4911a; }
+.date-card[data-phase="depart"] { background: linear-gradient(180deg, rgba(47,134,224,0.10), var(--paper-warm) 60%); --phase-accent: #2f86e0; }
 
 .date-card.is-active {
   background: var(--phase-accent, var(--accent));
@@ -960,28 +962,46 @@ body {
 .day-tab:hover { color: var(--text); }
 
 
-/* ---------- 地點之間的移動方式 ---------- */
+/* ---------- 地點之間的移動方式：灰階小膠囊，靠圖示區分交通方式 ---------- */
 .trip-move {
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 10px;
-  align-items: center;
-  padding: 6px 0 2px;
+  align-items: start;
+  padding: 10px 0 0;
   margin-bottom: -6px;
 }
-.trip-move__line {
-  justify-self: center;
-  width: 0; height: 100%; min-height: 18px;
-  border-left: 2px dotted color-mix(in srgb, var(--accent) 55%, transparent);
+.trip-move__line { visibility: hidden; }  /* 左欄只留給時間，不畫交通虛線 */
+.move-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.move-chip {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  line-height: 1;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
-.trip-move__text {
+.move-chip--walk { background: #efebe6; color: #7a6f64; }  /* 步行：灰階，減少畫面顏色 */
+.move-chip--car  { background: #efebe6; color: #7a6f64; }
+.move-chip--mrt  { background: #efebe6; color: #7a6f64; }
+.move-chip--pin  { background: #eeeae4; color: #6e5b48; }
+.move-more {
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  background: none;
+  border: none;
+  border-bottom: 1px dashed var(--line);
+  padding: 0 1px;
+  cursor: pointer;
+}
+.move-detail {
   font-family: var(--font-sans);
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-soft);
-  background: color-mix(in srgb, var(--accent) 7%, transparent);
-  border-radius: 8px;
-  padding: 4px 9px;
+  margin: 6px 0 0;
 }
 
 /* ---------- Trip card (schedule) ---------- */
@@ -1092,6 +1112,7 @@ body {
   margin-top: 10px;
   margin-left: 54px;
 }
+.trip-card--dual .trip-card__actions { margin-left: 54px; }  /* 航班卡的地圖按鈕對齊內容欄 */
 .trip-card__name {
   font-size: 16px;
   font-weight: 600;
@@ -2180,6 +2201,85 @@ body {
   fill: var(--text-soft);
   letter-spacing: 0.1em;
 }
+
+
+/* 各天配色：D1 奶油黃（arrive）→ D2 粉紅（katong）→ D3 薄荷綠（zoo）→ D4 蜜桃（marina）→ D5 天空藍（depart） */
+/* ============================================================
+   如切（Koon Seng）店屋配色
+   - 紙面：白色線板的暖白
+   - 標題：門框天空藍
+   - 行前須知／新加坡介紹：紅瓦赤陶色（與標題脫鉤）
+   - D1–D5：一棟一色的粉彩外牆＋漸層，內圈白線像線板
+   ============================================================ */
+.quick-nav__pretrip { border-left-color: #c8553d; }
+.quick-nav__icon,
+.quick-nav__arrow { color: #c8553d; }
+.quick-nav__label-en { color: #a8452f; }
+.city-item[data-phase="singapore"] { --phase-accent: #c8553d; }
+.city-item[data-phase="singapore"] {
+  background: linear-gradient(to right, rgba(200, 85, 61, 0.12), var(--paper-warm) 38%);
+}
+.city-item[data-phase="singapore"]:hover {
+  background: linear-gradient(to right, rgba(200, 85, 61, 0.2), var(--paper-warm) 38%);
+}
+
+.ticket-stub[data-phase] {
+  border: 1px solid var(--house-line);
+  outline: 2.5px solid #ffffff;
+  outline-offset: -6px;
+  background: linear-gradient(to right, var(--house-strong), var(--house) 35%, #fffdf8 85%);
+}
+.ticket-stub[data-phase]:hover {
+  background: linear-gradient(to right, var(--house-line), var(--house-strong) 35%, #fffdf8 90%);
+}
+.ticket-stub[data-phase="travel"]    { --house-strong: #d3e9d1; --house: #e4f2e3; --house-light: #f4faf3; --house-line: #c7ddc6; --phase-accent: #4f8f5c; }
+.ticket-stub[data-phase="singapore"],
+.ticket-stub[data-phase="katong"]    { --house-strong: #f6ced6; --house: #fadfe4; --house-light: #fdf2f4; --house-line: #ebc4cc; --phase-accent: #c95b78; }
+.ticket-stub[data-phase="zoo"]       { --house-strong: #d3e9d1; --house: #e4f2e3; --house-light: #f4faf3; --house-line: #c7ddc6; --phase-accent: #4f8f5c; }
+.ticket-stub[data-phase="marina"]    { --house-strong: #f8d6c2; --house: #fbe3d6; --house-light: #fdf3ec; --house-line: #ecc9b5; --phase-accent: #c96a45; }
+.ticket-stub[data-phase="arrive"]    { --house-strong: #f6e3a8; --house: #fbf0cf; --house-light: #fdf8e8; --house-line: #e8d397; --phase-accent: #a67a1f; }
+.ticket-stub[data-phase="depart"]    { --house-strong: #d2e5f5; --house: #e3eff9; --house-light: #f2f8fc; --house-line: #bcd5ea; --phase-accent: #3a78b8; }
+
+/* Days 的 D1、D2… 字樣加白邊 */
+.ticket-stub__d {
+  -webkit-text-stroke: 3px #ffffff;
+  paint-order: stroke fill;
+  text-shadow: 0 1px 2px rgba(110, 60, 70, 0.12);
+}
+.ticket-stub__d span {
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+/* DAYS 標題下的一排屋瓦屋簷（全頁只出現這一次） */
+.roof-eave {
+  height: 13px;
+  margin: -4px 22px 16px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='11' viewBox='0 0 12 11'><rect width='12' height='3.2' fill='%23a8452f'/><path d='M0 3H12V4.6Q6 11.2 0 4.6Z' fill='%23e07a55' stroke='%23a8452f' stroke-width='0.7'/><path d='M2.6 5.2Q6 7.4 9.4 5.2' fill='none' stroke='%23f3a27f' stroke-width='0.8' stroke-linecap='round'/></svg>") repeat-x left top / 13px 12px;
+}
+
+/* Days 每天的小圖示（同新加坡介紹的明信片縮圖） */
+.ticket-stub { grid-template-columns: 52px 46px 1fr auto; gap: 12px; }
+.ticket-stub__thumb {
+  width: 52px;
+  height: 39px;
+  border: 1px solid var(--house-line, var(--line));
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(80,55,25,0.12);
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+.ticket-stub__thumb svg { width: 100%; height: 100%; display: block; }
+.ticket-stub__thumb::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(255,255,255,0.6);
+  pointer-events: none;
+}
+
+
 </style>
 </head>
 
@@ -2252,6 +2352,7 @@ body {
     <div class="home-ornament" id="ornamentLemon"></div>
 
     <h2 class="section-label">DAYS</h2>
+    <div class="roof-eave" aria-hidden="true"></div>
 
     <section class="day-tickets">
       <div class="day-tickets__strip" id="ticketStrip"></div>
@@ -2395,6 +2496,8 @@ body {
    ============================================================ */
 const PHASE_LABEL = {
   travel:    "移動日",
+  arrive:    "移動日",
+  depart:    "移動日",
   singapore: "新加坡",
   katong:    "加東",
   zoo:       "動物園",
@@ -2410,7 +2513,7 @@ const itineraryData = [
     date: "2026/11/07",
     dow: "SAT",
     dowZh: "六",
-    phase: "travel",
+    phase: "arrive",
     title: "台北 → 新加坡",
     subtitle: "JX771 抵達 · 中國城散步 · Pastaria Abate",
     routeCode: "TPE → SIN",
@@ -2433,7 +2536,8 @@ const itineraryData = [
         type: "fixed",
         time: "下午",
         place: "飯店 Check in · lyf Funan Singapore",
-        move: "🚇 機場 MRT：Changi Airport 搭 EW 線，Tanah Merah 同月台轉車到 City Hall，約 45 分｜🚕 Grab 約 25 分",
+        transit: [{ mode: "mrt", text: "EW 線 45 分" }, { mode: "car", text: "Grab 25 分" }],
+        route: "Changi Airport 搭 EW 線，在 Tanah Merah 同月台轉車到 City Hall。",
         mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
         description: "",
         note: "位於福南（Funan）商場樓上，近 City Hall 站。",
@@ -2443,7 +2547,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "巴拉灣海灘 Palawan Beach（optional）",
-        move: "🚇 Clarke Quay 搭 NE 線到 HarbourFront，轉 VivoCity 3 樓聖淘沙捷運到 Beach 站，步行 5 分，約 40 分",
+        transit: [{ mode: "mrt", text: "NE 線＋聖淘沙捷運 40 分" }],
+        route: "Clarke Quay 搭 NE 線到 HarbourFront，轉 VivoCity 3 樓聖淘沙捷運到 Beach 站，再步行 5 分。",
         mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
         description: "",
         note: "聖淘沙島上，走吊橋到「亞洲大陸最南端」小島觀景台。",
@@ -2453,7 +2558,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "牛車水 中國城 Chinatown",
-        move: "🚝 聖淘沙捷運回 VivoCity → HarbourFront 搭 NE 線到 Chinatown（2 站），約 35 分",
+        transit: [{ mode: "mrt", text: "聖淘沙捷運＋NE 線 35 分" }],
+        route: "聖淘沙捷運回 VivoCity，HarbourFront 搭 NE 線到 Chinatown（2 站）。",
         mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
         description: "",
         note: "佛牙寺、牛車水大廈小販中心一帶可逛。",
@@ -2463,7 +2569,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:30 Pastaria Abate",
-        move: "🚶 從牛車水步行約 10 分（86 Neil Rd）",
+        transit: [{ mode: "walk", text: "10 分" }],
         mapLink: "https://maps.google.com/?q=Pastaria+Abate+Singapore",
         hours: "11:30–22:30（週五、六至 23:00）",
         description: "",
@@ -2494,7 +2600,8 @@ const itineraryData = [
         type: "fixed",
         time: "早餐",
         place: "早餐：真美珍 Chin Mee Chin",
-        move: "🚕 Grab 約 15–20 分（最方便）｜🚇 City Hall 搭 NS 線到 Marina Bay 轉 TE 線到 Marine Parade，步行約 8 分，共約 35 分",
+        transit: [{ mode: "car", text: "Grab 15–20 分" }, { mode: "mrt", text: "35 分" }],
+        route: "City Hall 搭 NS 線到 Marina Bay，轉 TE 線到 Marine Parade，再步行約 8 分。",
         mapLink: "https://maps.google.com/?q=Chin+Mee+Chin+Confectionery+Singapore",
         hours: "08:00–16:00",
         description: "",
@@ -2505,7 +2612,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "如切路 Joo Chiat Road",
-        move: "🚶 步行約 5 分",
+        transit: [{ mode: "walk", text: "5 分" }],
         mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
         description: "",
         note: "娘惹（Peranakan）文化發源地，彩色娘惹排屋最好拍。",
@@ -2515,7 +2622,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Big Short Coffee",
-        move: "🚶 步行約 5 分（2 Fowlie Rd）",
+        transit: [{ mode: "walk", text: "5 分" }],
         mapLink: "https://maps.google.com/?q=Big+Short+Coffee+Joo+Chiat",
         hours: "08:00–17:00",
         description: "",
@@ -2526,7 +2633,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "SOJAO Home Goods Store",
-        move: "🚶 步行約 5 分（251 Joo Chiat Rd）",
+        transit: [{ mode: "walk", text: "5 分" }],
         mapLink: "https://maps.google.com/?q=SOJAO+Home+Goods+Store+Singapore",
         hours: "11:00–19:00",
         description: "",
@@ -2537,7 +2644,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：G7 Frog Porridge & Live Seafood（optional）",
-        move: "🚕 Grab 約 10–15 分（芽籠 Lorong 3）",
+        transit: [{ mode: "car", text: "Grab 10–15 分" }],
         mapLink: "https://maps.google.com/?q=G7+Frog+Porridge+Live+Seafood+Singapore",
         hours: "15:00–03:00",
         description: "",
@@ -2548,7 +2655,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "哈芝巷 Haji Lane",
-        move: "🚕 Grab 約 10 分｜🚇 步行到 Kallang 站搭 EW 線到 Bugis（2 站），再步行 5 分",
+        transit: [{ mode: "car", text: "Grab 10 分" }, { mode: "mrt", text: "EW 線 2 站" }],
+        route: "步行到 Kallang 站搭 EW 線到 Bugis（2 站），出站再步行 5 分。",
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         description: "",
         note: "彩色壁畫與個性小店的窄巷。",
@@ -2558,7 +2666,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "蘇丹回教堂 Masjid Sultan",
-        move: "🚶 就在哈芝巷旁，步行 2–3 分",
+        transit: [{ mode: "walk", text: "2–3 分" }],
         mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
         hours: "參觀 10:00–12:00、14:00–16:00（週五不開放）",
         description: "",
@@ -2569,7 +2677,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Yat Ka Yan Dessert（Tan Quee Lan）",
-        move: "🚶 步行約 8 分（Bugis 站旁的 Tan Quee Lan St）",
+        transit: [{ mode: "walk", text: "8 分" }],
         mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore",
         hours: "12:30–23:00（週二休）",
         description: "",
@@ -2580,7 +2688,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Apartment Coffee",
-        move: "🚶 步行約 10 分（139 Selegie Rd）",
+        transit: [{ mode: "walk", text: "10 分" }],
         mapLink: "https://maps.google.com/?q=Apartment+Coffee+Singapore",
         hours: "10:00–16:30（週三、四休）",
         description: "",
@@ -2591,7 +2699,8 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:45 JUMBO Seafood – The Riverwalk",
-        move: "🚇 Bencoolen 搭 DT 線到 Fort Canning（1 站），步行約 8 分｜🚕 Grab 約 10 分",
+        transit: [{ mode: "mrt", text: "DT 線 1 站" }, { mode: "car", text: "Grab 10 分" }],
+        route: "Bencoolen 搭 DT 線到 Fort Canning（1 站），出站步行約 8 分。",
         mapLink: "https://maps.google.com/?q=JUMBO+Seafood+The+Riverwalk+Singapore",
         hours: "11:30–23:00",
         description: "",
@@ -2631,7 +2740,8 @@ const itineraryData = [
         type: "fixed",
         time: "上午",
         place: "新加坡動物園 Singapore Zoo",
-        move: "🚇 City Hall 搭 NS 線到 Khatib（約 30 分），轉 Mandai Khatib Shuttle 接駁車（約 15 分）｜🚕 Grab 約 25–30 分",
+        transit: [{ mode: "mrt", text: "NS 線＋接駁車 45 分" }, { mode: "car", text: "Grab 25–30 分" }],
+        route: "City Hall 搭 NS 線到 Khatib（約 30 分），轉 Mandai Khatib Shuttle 接駁車（約 15 分）。",
         mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
@@ -2643,7 +2753,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：園內用餐",
-        move: "🚶 園區內",
+        transit: [{ mode: "walk", text: "園區內" }],
         description: "",
         note: "",
         foods: []
@@ -2652,7 +2762,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "好奇心之灣 Curiosity Cove",
-        move: "🚶 在動物園入口旁的 Mandai Wildlife EAST，步行約 5 分",
+        transit: [{ mode: "walk", text: "5 分" }],
+        route: "就在動物園入口旁的 Mandai Wildlife EAST。",
         mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
         hours: "平日 10:00–17:30（最後入場 16:30）",
         description: "",
@@ -2663,7 +2774,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:00 Mellben Seafood",
-        move: "🚕 Grab 約 15–20 分（宏茂橋 Ang Mo Kio）",
+        transit: [{ mode: "car", text: "Grab 15–20 分" }],
         mapLink: "https://maps.google.com/?q=Mellben+Seafood+232+Ang+Mo+Kio+Ave+3+Singapore",
         hours: "17:00–22:00（宏茂橋店）",
         description: "",
@@ -2695,7 +2806,8 @@ const itineraryData = [
         type: "fixed",
         time: "早餐",
         place: "早餐：亞坤咖椰吐司 Ya Kun Kaya Toast",
-        move: "🚶 依分店而定；遠東廣場本店（18 China St）從住宿步行約 15 分",
+        transit: [{ mode: "walk", text: "15 分" }],
+        route: "依分店而定；以遠東廣場本店（18 China St）計算。",
         mapLink: "https://maps.google.com/?q=Ya+Kun+Kaya+Toast+Singapore",
         hours: "07:15 開",
         description: "",
@@ -2706,7 +2818,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "魚尾獅公園 Merlion Park",
-        move: "🚶 從遠東廣場步行約 10 分",
+        transit: [{ mode: "walk", text: "10 分" }],
         mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
         description: "",
         note: "",
@@ -2716,7 +2828,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "濱海灣花園 Gardens by the Bay",
-        move: "🚶 沿海灣經濱海灣金沙步行約 25–30 分｜🚕 Grab 約 10 分",
+        transit: [{ mode: "walk", text: "25–30 分" }, { mode: "car", text: "Grab 10 分" }],
+        route: "步行沿海灣經濱海灣金沙。",
         mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
         hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
         description: "",
@@ -2727,7 +2840,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：附近找一家",
-        move: "🚶 花園內或濱海灣金沙商場",
+        transit: [{ mode: "walk", text: "花園內或金沙商場" }],
         description: "",
         note: "",
         foods: []
@@ -2736,7 +2849,8 @@ const itineraryData = [
         type: "fixed",
         time: "16:00",
         place: "回住宿稍作休息",
-        move: "🚕 Grab 約 10–15 分｜🚇 Bayfront 搭 DT 線到 Fort Canning（4 站），步行約 10 分",
+        transit: [{ mode: "car", text: "Grab 10–15 分" }, { mode: "mrt", text: "DT 線 4 站" }],
+        route: "Bayfront 搭 DT 線到 Fort Canning（4 站），出站步行約 10 分。",
         mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
         description: "",
         note: "抓 16:00–16:30 回 lyf Funan 安頓，準備晚上演唱會。",
@@ -2746,7 +2860,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚上",
         place: "MCR 演唱會（My Chemical Romance）",
-        move: "📍 依場館而定，場館確認後再補交通",
+        transit: [{ mode: "pin", text: "場館確認後再補" }],
         description: "",
         note: "",
         foods: []
@@ -2762,7 +2876,7 @@ const itineraryData = [
     date: "2026/11/11",
     dow: "WED",
     dowZh: "三",
-    phase: "travel",
+    phase: "depart",
     title: "新加坡 → 台北",
     subtitle: "星耀樟宜 → JX772 返程",
     routeCode: "SIN → TPE",
@@ -2774,7 +2888,8 @@ const itineraryData = [
         type: "fixed",
         time: "早上",
         place: "退房 · 出發樟宜機場",
-        move: "🚇 City Hall 搭 EW 線，Tanah Merah 同月台轉車到 Changi Airport，約 45 分｜🚕 Grab 約 25 分",
+        transit: [{ mode: "mrt", text: "EW 線 45 分" }, { mode: "car", text: "Grab 25 分" }],
+        route: "City Hall 搭 EW 線，在 Tanah Merah 同月台轉車到 Changi Airport。",
         mapLink: "https://maps.google.com/?q=Changi+Airport",
         description: "",
         note: "一起床就出發，到機場玩星耀樟宜。",
@@ -2784,7 +2899,8 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "星耀樟宜 Jewel：森林谷／雨漩渦",
-        move: "🚶 從 T1 直通，或從 T2／T3 走連通橋約 5–10 分",
+        transit: [{ mode: "walk", text: "T1 直通" }],
+        route: "從 T2／T3 走連通橋約 5–10 分。",
         mapImages: [{ image: "images/singapore/changi-terminal-map.png", title: "樟宜機場航廈地圖", label: "航廈地圖" }],
         mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
         hours: "雨漩渦 10:00–22:00",
@@ -2798,7 +2914,8 @@ const itineraryData = [
         from: "SIN",
         to: "TPE",
         flightNo: "JX772",
-        move: "🚶 從 Jewel 走連通橋回 T2 約 10 分，起飛前約 2 小時辦好報到",
+        transit: [{ mode: "walk", text: "回 T2 10 分" }],
+        route: "從 Jewel 走連通橋回 T2，起飛前約 2 小時辦好報到。",
         timeRange: "14:45 – 19:25",
         dualTime: true,
         note: "星宇航空返台。"
@@ -2861,6 +2978,15 @@ const CITY_ORDER = ["singapore"];
 /* ============================================================
    HAND-DRAWN SVG MOTIFS
    ============================================================ */
+/* 首頁 Days 每天的小圖示：D1 牛車水燈籠、D2 如切店屋、D3 吊在藤蔓上的紅毛猩猩、D4 魚尾獅、D5 星耀樟宜雨漩渦 */
+const DAY_MOTIFS = [
+  `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#fbf0cf"/><path d="M2 5 Q32 13 62 5" fill="none" stroke="#a8452f" stroke-width="0.8"/><g><line x1="14" y1="7.2" x2="14" y2="9" stroke="#a8452f" stroke-width="0.8"/><ellipse cx="14" cy="13" rx="4" ry="4.4" fill="#d9382f"/><rect x="12" y="8.4" width="4" height="1.4" fill="#f2c14e"/><rect x="12" y="16.6" width="4" height="1.4" fill="#f2c14e"/><line x1="14" y1="18" x2="14" y2="21" stroke="#f2c14e" stroke-width="0.8"/></g><g><line x1="32" y1="9" x2="32" y2="10.6" stroke="#a8452f" stroke-width="0.8"/><ellipse cx="32" cy="14.6" rx="4" ry="4.4" fill="#d9382f"/><rect x="30" y="10" width="4" height="1.4" fill="#f2c14e"/><rect x="30" y="18.2" width="4" height="1.4" fill="#f2c14e"/><line x1="32" y1="19.6" x2="32" y2="22.6" stroke="#f2c14e" stroke-width="0.8"/></g><g><line x1="50" y1="7.2" x2="50" y2="9" stroke="#a8452f" stroke-width="0.8"/><ellipse cx="50" cy="13" rx="4" ry="4.4" fill="#d9382f"/><rect x="48" y="8.4" width="4" height="1.4" fill="#f2c14e"/><rect x="48" y="16.6" width="4" height="1.4" fill="#f2c14e"/><line x1="50" y1="18" x2="50" y2="21" stroke="#f2c14e" stroke-width="0.8"/></g><path d="M12 30 Q22 29 32 24 Q42 29 52 30 L49 32 L15 32 Z" fill="#a8452f"/><rect x="18" y="32" width="28" height="16" fill="#e8a24a"/><path d="M14 38 Q23 37.5 32 35 Q41 37.5 50 38 L48 39.5 L16 39.5 Z" fill="#a8452f"/><g fill="#d9382f"><rect x="21" y="40" width="3" height="8"/><rect x="40" y="40" width="3" height="8"/></g><path d="M28.5 48 V42.5 Q32 39.5 35.5 42.5 V48 Z" fill="#7a2f22"/><g fill="#f2c14e"><rect x="22" y="33.5" width="5" height="2.5"/><rect x="37" y="33.5" width="5" height="2.5"/></g></svg>`,
+  `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#fdecef"/><g stroke="#ffffff" stroke-width="0.8"><rect x="8" y="13" width="16" height="35" fill="#cfe6cf"/><rect x="24" y="13" width="16" height="35" fill="#f6d27a"/><rect x="40" y="13" width="16" height="35" fill="#d6d6e8"/></g><path d="M6 13 L58 13 L55 8 L9 8 Z" fill="#e07a55"/><g fill="#3b82d0"><rect x="11" y="18" width="4" height="8"/><rect x="17" y="18" width="4" height="8"/><rect x="27" y="18" width="4" height="8"/><rect x="33" y="18" width="4" height="8"/><rect x="43" y="18" width="4" height="8"/><rect x="49" y="18" width="4" height="8"/></g><g fill="#fff"><rect x="8" y="29" width="48" height="2"/></g><g fill="#c95b78"><path d="M13 48 V38 Q16 34.5 19 38 V48 Z"/><path d="M29 48 V38 Q32 34.5 35 38 V48 Z"/><path d="M45 48 V38 Q48 34.5 51 38 V48 Z"/></g></svg>`,
+  `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#e4f2e3"/><g fill="#5c9a68"><ellipse cx="6" cy="6" rx="8" ry="4"/><ellipse cx="58" cy="7" rx="8" ry="4"/><ellipse cx="52" cy="3" rx="6" ry="3"/><ellipse cx="44" cy="44" rx="10" ry="4"/></g><path d="M0 8 Q32 3 64 9" fill="none" stroke="#8a5a3a" stroke-width="3" stroke-linecap="round"/><path d="M47 7.5 Q49 14 46 19" fill="none" stroke="#5c9a68" stroke-width="1.1"/><ellipse cx="46.5" cy="19.5" rx="1.8" ry="1" fill="#5c9a68"/><g fill="none" stroke="#c8642f" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6.5 L28 20" stroke-width="4.2"/><path d="M39 21 Q48 23 51 34" stroke-width="3.8"/><path d="M29 35 L26.5 41" stroke-width="3.6"/><path d="M37 35 L39.5 41" stroke-width="3.6"/></g><circle cx="23.8" cy="6" r="2.4" fill="#b3532a"/><circle cx="51.2" cy="35" r="2.2" fill="#b3532a"/><ellipse cx="26" cy="42" rx="2.4" ry="1.4" fill="#b3532a"/><ellipse cx="40" cy="42" rx="2.4" ry="1.4" fill="#b3532a"/><ellipse cx="33" cy="27.5" rx="8.2" ry="9.5" fill="#c8642f"/><g fill="none" stroke="#e08a52" stroke-width="0.9" stroke-linecap="round"><path d="M28 24 l-1.5 3"/><path d="M31 27 l-1 3.4"/><path d="M36 25 l1.2 3"/><path d="M34.5 31 l-0.6 3"/><path d="M38.5 30 l1 2.6"/></g><circle cx="32.5" cy="15.5" r="6" fill="#b3532a"/><ellipse cx="32.5" cy="16.8" rx="4.2" ry="3.9" fill="#f1b48a"/><circle cx="31" cy="15.6" r="0.85" fill="#3b2a1e"/><circle cx="34" cy="15.6" r="0.85" fill="#3b2a1e"/><g fill="#a8452f"><ellipse cx="31.9" cy="17.4" rx="0.5" ry="0.4"/><ellipse cx="33.1" cy="17.4" rx="0.5" ry="0.4"/></g><path d="M30.6 19 Q32.5 20.4 34.4 19" fill="none" stroke="#a8452f" stroke-width="0.8" stroke-linecap="round"/><path d="M28.5 11 l-1 -1.8 M31 9.8 l-0.3 -2 M34 9.8 l0.5 -2 M36.5 11 l1.2 -1.6" stroke="#b3532a" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+  `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#fdeee4"/><circle cx="12" cy="11" r="4.5" fill="#f08c6e" opacity="0.7"/><svg x="14" y="3" width="38" height="44" viewBox="0 0 48 56">  <ellipse cx="27" cy="54.3" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>  <path d="M 16.5 21 Q 5 23 4.5 47" fill="none" stroke="#6cc0de" stroke-width="2.4" stroke-linecap="round"/>  <path d="M 16.8 21.8 Q 9 26 8.5 47" fill="none" stroke="#a8dcef" stroke-width="1.2" stroke-linecap="round"/>  <g fill="#a8dcef"><circle cx="3" cy="48.6" r="1.1"/><circle cx="6.5" cy="49.2" r="0.9"/><circle cx="10" cy="48.5" r="0.8"/></g>  <path d="M 16 54 Q 16 47 22 46 L 42 46 Q 46.5 47 46.5 54 Z" fill="#2f7f9e"/>  <path d="M 18 50 Q 21 48 24 50 Q 27 52 30 50 Q 33 48 36 50 Q 39 52 42 50 Q 44 48.6 45.5 50" fill="none" stroke="#a8dcef" stroke-width="0.9"/>  <path d="M 38 45 Q 43.5 43 43 36.5 Q 46.5 40.5 45 45 Q 43 47.5 37.5 46.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>  <path d="M 26.5 29 Q 24.5 37 26.5 46.5 L 38.5 46.5 Q 40.5 39 36 30.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>  <g fill="none" stroke="#5fb8a6" stroke-width="0.8">    <path d="M 28 35 q 2 2 4 0"/><path d="M 32 35 q 2 2 4 0"/>    <path d="M 27.5 39 q 2 2 4 0"/><path d="M 31.5 39 q 2 2 4 0"/>    <path d="M 28 43 q 2 2 4 0"/><path d="M 32 43 q 2 2 4 0"/>  </g>  <path d="M 24 8 Q 30 4 36 6.5 Q 41 9 39.5 13 Q 42.5 16.5 39 19.5 Q 42.5 23 38.5 26 Q 40.5 30 35 31.5 L 26.5 29.5 Q 22.5 27.5 22 24.8 L 18.5 23.8 Q 17.2 23 18.4 22.2 L 20.5 21.6 L 17.6 20.4 Q 15.9 19.3 16.6 17.8 Q 17.5 15.8 20.6 15.4 Q 21.3 11 24 8 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>  <g fill="none" stroke="#5fb8a6" stroke-width="0.85" stroke-linecap="round">    <path d="M 30 9 Q 34 11 33.5 15"/><path d="M 33 16.5 Q 36.5 18.5 35 22.5"/><path d="M 32 23.5 Q 35 25.5 33.5 29"/>    <path d="M 26.5 10.5 Q 29 13 28 16.5"/><path d="M 28.5 18.5 Q 31 21 29.5 25"/>  </g>  <circle cx="22.6" cy="17" r="0.95" fill="#2f7f9e"/>  <path d="M 20.8 15 Q 22.6 14 24.4 15.2" fill="none" stroke="#2f7f9e" stroke-width="0.7"/></svg></svg>`,
+  `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="64" height="48" fill="#e3eff9"/><path d="M6 44 Q6 10 32 8 Q58 10 58 44 Z" fill="#eaf4fb" stroke="#3b82d0" stroke-width="1.2"/><g fill="none" stroke="#9cc4e8" stroke-width="0.7"><path d="M14 44 Q13 18 32 8"/><path d="M50 44 Q51 18 32 8"/><path d="M23 44 Q22 14 32 8"/><path d="M41 44 Q42 14 32 8"/><path d="M8 32 Q32 26 56 32"/><path d="M11 21 Q32 15 53 21"/></g><ellipse cx="32" cy="9.5" rx="4.5" ry="1.6" fill="#3b82d0"/><path d="M28.5 10 L35.5 10 L34 38 L30 38 Z" fill="#6cc0de"/><path d="M30.5 10 L32 10 L31.6 38 L30.6 38 Z" fill="#c9e8f5"/><ellipse cx="32" cy="38.5" rx="6" ry="1.6" fill="#a8dcef"/><g fill="#5c9a68"><ellipse cx="13" cy="41" rx="7" ry="4"/><ellipse cx="22" cy="42" rx="6" ry="3.5"/><ellipse cx="42" cy="42" rx="6" ry="3.5"/><ellipse cx="51" cy="41" rx="7" ry="4"/></g><g fill="#3f9e7a"><ellipse cx="17" cy="38" rx="4" ry="2.5"/><ellipse cx="47" cy="38" rx="4" ry="2.5"/></g><rect x="0" y="44" width="64" height="4" fill="#bcd5ea"/></svg>`
+];
+
 const CITY_MOTIFS = {
   singapore: `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
     <rect width="64" height="48" fill="#fdecef"/>
@@ -2932,15 +3058,15 @@ const HERO_SHELL = `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" 
 
 const HERO_UMBRELLA = `<svg viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <ellipse cx="22" cy="52.5" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>
-  <path d="M 3 13 L 41 13 L 37 6 L 7 6 Z" fill="#c9506f"/>
-  <rect x="5" y="13" width="34" height="39" fill="#f8c9d4" stroke="#c9506f" stroke-width="1"/>
-  <g fill="#5fb8a6" stroke="#3aa58f" stroke-width="0.6">
+  <path d="M 3 13 L 41 13 L 37 6 L 7 6 Z" fill="#e2775a"/>
+  <rect x="5" y="13" width="34" height="39" fill="#f6d27a" stroke="#c9952e" stroke-width="1"/>
+  <g fill="#5fb8a6" stroke="#2f7f9e" stroke-width="0.7">
     <path d="M 9 28 V 20 Q 12 16.5 15 20 V 28 Z"/>
     <path d="M 19 28 V 20 Q 22 16.5 25 20 V 28 Z"/>
     <path d="M 29 28 V 20 Q 32 16.5 35 20 V 28 Z"/>
   </g>
-  <rect x="5" y="30" width="34" height="3" fill="#f2c14e"/>
-  <g fill="#5fb8a6" stroke="#3aa58f" stroke-width="0.6">
+  <rect x="5" y="30" width="34" height="3" fill="#e2775a"/>
+  <g fill="#5fb8a6" stroke="#2f7f9e" stroke-width="0.7">
     <rect x="8.5" y="37" width="6" height="8"/>
     <rect x="29.5" y="37" width="6" height="8"/>
   </g>
@@ -2968,20 +3094,27 @@ const HERO_PALM = `<svg viewBox="0 0 52 36" xmlns="http://www.w3.org/2000/svg" a
   </g>
 </svg>`;
 
-const HERO_COCONUT = `<svg viewBox="0 0 36 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <ellipse cx="18" cy="54" rx="8" ry="0.9" fill="#a86b50" opacity="0.25"/>
-  <path d="M 15.5 54 L 20.5 54 L 19.2 25 L 16.8 25 Z" fill="#3f9e7a"/>
-  <path d="M 4 11 Q 18 21 32 11 Q 27 26 18 26 Q 9 26 4 11 Z" fill="#5fb8a6"/>
-  <g stroke="#3f9e7a" stroke-width="0.7" fill="none" opacity="0.8">
-    <path d="M 9 14 Q 13 22 18 25"/><path d="M 18 15 L 18 25"/><path d="M 27 14 Q 23 22 18 25"/>
-    <path d="M 7 17 Q 18 21 29 17"/>
+const HERO_COCONUT = `<svg viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="27" cy="54.3" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>
+  <path d="M 16.5 21 Q 5 23 4.5 47" fill="none" stroke="#6cc0de" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M 16.8 21.8 Q 9 26 8.5 47" fill="none" stroke="#a8dcef" stroke-width="1.2" stroke-linecap="round"/>
+  <g fill="#a8dcef"><circle cx="3" cy="48.6" r="1.1"/><circle cx="6.5" cy="49.2" r="0.9"/><circle cx="10" cy="48.5" r="0.8"/></g>
+  <path d="M 16 54 Q 16 47 22 46 L 42 46 Q 46.5 47 46.5 54 Z" fill="#2f7f9e"/>
+  <path d="M 18 50 Q 21 48 24 50 Q 27 52 30 50 Q 33 48 36 50 Q 39 52 42 50 Q 44 48.6 45.5 50" fill="none" stroke="#a8dcef" stroke-width="0.9"/>
+  <path d="M 38 45 Q 43.5 43 43 36.5 Q 46.5 40.5 45 45 Q 43 47.5 37.5 46.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M 26.5 29 Q 24.5 37 26.5 46.5 L 38.5 46.5 Q 40.5 39 36 30.5 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <g fill="none" stroke="#5fb8a6" stroke-width="0.8">
+    <path d="M 28 35 q 2 2 4 0"/><path d="M 32 35 q 2 2 4 0"/>
+    <path d="M 27.5 39 q 2 2 4 0"/><path d="M 31.5 39 q 2 2 4 0"/>
+    <path d="M 28 43 q 2 2 4 0"/><path d="M 32 43 q 2 2 4 0"/>
   </g>
-  <ellipse cx="18" cy="11" rx="14" ry="3" fill="none" stroke="#3f9e7a" stroke-width="1.2"/>
-  <g>
-    <circle cx="10" cy="11" r="1" fill="#d4587a"/><circle cx="18" cy="8.6" r="1" fill="#f2c14e"/>
-    <circle cx="26" cy="11" r="1" fill="#d4587a"/><circle cx="14" cy="13.4" r="0.8" fill="#f2c14e"/>
-    <circle cx="22" cy="13.4" r="0.8" fill="#f2c14e"/>
+  <path d="M 24 8 Q 30 4 36 6.5 Q 41 9 39.5 13 Q 42.5 16.5 39 19.5 Q 42.5 23 38.5 26 Q 40.5 30 35 31.5 L 26.5 29.5 Q 22.5 27.5 22 24.8 L 18.5 23.8 Q 17.2 23 18.4 22.2 L 20.5 21.6 L 17.6 20.4 Q 15.9 19.3 16.6 17.8 Q 17.5 15.8 20.6 15.4 Q 21.3 11 24 8 Z" fill="#fbf7ef" stroke="#2f7f9e" stroke-width="1" stroke-linejoin="round"/>
+  <g fill="none" stroke="#5fb8a6" stroke-width="0.85" stroke-linecap="round">
+    <path d="M 30 9 Q 34 11 33.5 15"/><path d="M 33 16.5 Q 36.5 18.5 35 22.5"/><path d="M 32 23.5 Q 35 25.5 33.5 29"/>
+    <path d="M 26.5 10.5 Q 29 13 28 16.5"/><path d="M 28.5 18.5 Q 31 21 29.5 25"/>
   </g>
+  <circle cx="22.6" cy="17" r="0.95" fill="#2f7f9e"/>
+  <path d="M 20.8 15 Q 22.6 14 24.4 15.2" fill="none" stroke="#2f7f9e" stroke-width="0.7"/>
 </svg>`;
 
 const ORNAMENT_LEMON = `<svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3006,6 +3139,7 @@ function renderHome() {
     const dateParts = d.date.split("/");
     return `
       <button class="ticket-stub" data-phase="${d.phase}" data-day-idx="${i}" type="button">
+        <span class="ticket-stub__thumb">${DAY_MOTIFS[i] || ""}</span>
         <span class="ticket-stub__d">${d.day.replace("Day ", "D")}<span>${d.dow}</span></span>
         <span class="ticket-stub__content">
           <span class="ticket-stub__phase">${PHASE_LABEL[d.phase]}</span>
@@ -3352,7 +3486,7 @@ function renderDayContent() {
     </nav>
 
     <div class="day-panel" data-panel="schedule">
-      ${(day.schedule || []).map(it => (it.move ? `<div class="trip-move"><span class="trip-move__line"></span><span class="trip-move__text">${escapeHTML(it.move)}</span></div>` : "") + renderTripCard(it)).join("")}
+      ${(day.schedule || []).map(it => renderTransit(it) + renderTripCard(it)).join("")}
       ${day.hotel && day.hotel.name ? renderHotel(day.hotel) : ""}
     </div>
 
@@ -3394,6 +3528,29 @@ function renderDayContent() {
     });
   });
 }
+
+/* ---------- 兩站之間的交通：彩色小膠囊，路線點開才顯示 ---------- */
+const TRANSIT_ICON = { walk: "🚶", car: "🚕", mrt: "🚇", pin: "📍" };
+function renderTransit(it) {
+  if (!Array.isArray(it.transit) || !it.transit.length) return "";
+  const chips = it.transit.map(c =>
+    `<span class="move-chip move-chip--${escapeHTML(c.mode)}">${TRANSIT_ICON[c.mode] || ""} ${escapeHTML(c.text)}</span>`).join("");
+  const more = it.route
+    ? `<button class="move-more" type="button" aria-expanded="false">路線 ›</button>`
+    : "";
+  const detail = it.route ? `<p class="move-detail" hidden>${escapeHTML(it.route)}</p>` : "";
+  return `<div class="trip-move"><span class="trip-move__line"></span><div class="trip-move__body"><div class="move-chips">${chips}${more}</div>${detail}</div></div>`;
+}
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".move-more");
+  if (!btn) return;
+  const d = btn.closest(".trip-move__body").querySelector(".move-detail");
+  if (!d) return;
+  const open = d.hidden;
+  d.hidden = !open;
+  btn.setAttribute("aria-expanded", String(open));
+  btn.textContent = open ? "收起 ‹" : "路線 ›";
+});
 
 /* ---------- Trip card render ---------- */
 function renderTripCard(item) {
