@@ -959,6 +959,31 @@ body {
 }
 .day-tab:hover { color: var(--text); }
 
+
+/* ---------- 地點之間的移動方式 ---------- */
+.trip-move {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0 2px;
+  margin-bottom: -6px;
+}
+.trip-move__line {
+  justify-self: center;
+  width: 0; height: 100%; min-height: 18px;
+  border-left: 2px dotted color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.trip-move__text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  border-radius: 8px;
+  padding: 4px 9px;
+}
+
 /* ---------- Trip card (schedule) ---------- */
 .trip-card {
   display: grid;
@@ -2408,6 +2433,7 @@ const itineraryData = [
         type: "fixed",
         time: "下午",
         place: "飯店 Check in · lyf Funan Singapore",
+        move: "🚇 機場 MRT：Changi Airport 搭 EW 線，Tanah Merah 同月台轉車到 City Hall，約 45 分｜🚕 Grab 約 25 分",
         mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
         description: "",
         note: "位於福南（Funan）商場樓上，近 City Hall 站。",
@@ -2417,6 +2443,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "巴拉灣海灘 Palawan Beach（optional）",
+        move: "🚇 Clarke Quay 搭 NE 線到 HarbourFront，轉 VivoCity 3 樓聖淘沙捷運到 Beach 站，步行 5 分，約 40 分",
         mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
         description: "",
         note: "聖淘沙島上，走吊橋到「亞洲大陸最南端」小島觀景台。",
@@ -2426,6 +2453,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "牛車水 中國城 Chinatown",
+        move: "🚝 聖淘沙捷運回 VivoCity → HarbourFront 搭 NE 線到 Chinatown（2 站），約 35 分",
         mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
         description: "",
         note: "佛牙寺、牛車水大廈小販中心一帶可逛。",
@@ -2435,6 +2463,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:30 Pastaria Abate",
+        move: "🚶 從牛車水步行約 10 分（86 Neil Rd）",
         mapLink: "https://maps.google.com/?q=Pastaria+Abate+Singapore",
         hours: "11:30–22:30（週五、六至 23:00）",
         description: "",
@@ -2465,6 +2494,7 @@ const itineraryData = [
         type: "fixed",
         time: "早餐",
         place: "早餐：真美珍 Chin Mee Chin",
+        move: "🚕 Grab 約 15–20 分（最方便）｜🚇 City Hall 搭 NS 線到 Marina Bay 轉 TE 線到 Marine Parade，步行約 8 分，共約 35 分",
         mapLink: "https://maps.google.com/?q=Chin+Mee+Chin+Confectionery+Singapore",
         hours: "08:00–16:00",
         description: "",
@@ -2475,6 +2505,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "如切路 Joo Chiat Road",
+        move: "🚶 步行約 5 分",
         mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
         description: "",
         note: "娘惹（Peranakan）文化發源地，彩色娘惹排屋最好拍。",
@@ -2484,6 +2515,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Big Short Coffee",
+        move: "🚶 步行約 5 分（2 Fowlie Rd）",
         mapLink: "https://maps.google.com/?q=Big+Short+Coffee+Joo+Chiat",
         hours: "08:00–17:00",
         description: "",
@@ -2494,6 +2526,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "SOJAO Home Goods Store",
+        move: "🚶 步行約 5 分（251 Joo Chiat Rd）",
         mapLink: "https://maps.google.com/?q=SOJAO+Home+Goods+Store+Singapore",
         hours: "11:00–19:00",
         description: "",
@@ -2504,6 +2537,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：G7 Frog Porridge & Live Seafood（optional）",
+        move: "🚕 Grab 約 10–15 分（芽籠 Lorong 3）",
         mapLink: "https://maps.google.com/?q=G7+Frog+Porridge+Live+Seafood+Singapore",
         hours: "15:00–03:00",
         description: "",
@@ -2514,6 +2548,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "哈芝巷 Haji Lane",
+        move: "🚕 Grab 約 10 分｜🚇 步行到 Kallang 站搭 EW 線到 Bugis（2 站），再步行 5 分",
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         description: "",
         note: "彩色壁畫與個性小店的窄巷。",
@@ -2523,6 +2558,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "蘇丹回教堂 Masjid Sultan",
+        move: "🚶 就在哈芝巷旁，步行 2–3 分",
         mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
         hours: "參觀 10:00–12:00、14:00–16:00（週五不開放）",
         description: "",
@@ -2533,6 +2569,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Yat Ka Yan Dessert（Tan Quee Lan）",
+        move: "🚶 步行約 8 分（Bugis 站旁的 Tan Quee Lan St）",
         mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore",
         hours: "12:30–23:00（週二休）",
         description: "",
@@ -2543,6 +2580,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "Apartment Coffee",
+        move: "🚶 步行約 10 分（139 Selegie Rd）",
         mapLink: "https://maps.google.com/?q=Apartment+Coffee+Singapore",
         hours: "10:00–16:30（週三、四休）",
         description: "",
@@ -2553,6 +2591,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:45 JUMBO Seafood – The Riverwalk",
+        move: "🚇 Bencoolen 搭 DT 線到 Fort Canning（1 站），步行約 8 分｜🚕 Grab 約 10 分",
         mapLink: "https://maps.google.com/?q=JUMBO+Seafood+The+Riverwalk+Singapore",
         hours: "11:30–23:00",
         description: "",
@@ -2563,7 +2602,8 @@ const itineraryData = [
     introCards: [],
     extraNotes: [
       "蘇丹回教堂有服裝規定，可帶一件薄外套或長裙。",
-      "加東到甘榜格南建議搭 Grab，約 15–20 分鐘。"
+      "加東到甘榜格南建議搭 Grab，約 15–20 分鐘。",
+      "晚餐後回住宿：從 Riverwalk 過河步行約 10 分。"
     ]
   },
   {
@@ -2591,6 +2631,7 @@ const itineraryData = [
         type: "fixed",
         time: "上午",
         place: "新加坡動物園 Singapore Zoo",
+        move: "🚇 City Hall 搭 NS 線到 Khatib（約 30 分），轉 Mandai Khatib Shuttle 接駁車（約 15 分）｜🚕 Grab 約 25–30 分",
         mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
@@ -2602,6 +2643,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：園內用餐",
+        move: "🚶 園區內",
         description: "",
         note: "",
         foods: []
@@ -2610,6 +2652,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "好奇心之灣 Curiosity Cove",
+        move: "🚶 在動物園入口旁的 Mandai Wildlife EAST，步行約 5 分",
         mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
         hours: "平日 10:00–17:30（最後入場 16:30）",
         description: "",
@@ -2620,6 +2663,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:00 Mellben Seafood",
+        move: "🚕 Grab 約 15–20 分（宏茂橋 Ang Mo Kio）",
         mapLink: "https://maps.google.com/?q=Mellben+Seafood+232+Ang+Mo+Kio+Ave+3+Singapore",
         hours: "17:00–22:00（宏茂橋店）",
         description: "",
@@ -2630,7 +2674,8 @@ const itineraryData = [
     introCards: [],
     extraNotes: [
       "萬禮園區交通：可搭 Mandai Khatib Shuttle 或 Grab。",
-      "熱帶午後易下雨，帶傘與防蚊液。"
+      "熱帶午後易下雨，帶傘與防蚊液。",
+      "晚餐後回住宿：Ang Mo Kio 站搭 NS 線到 City Hall 約 25 分，或 Grab 約 20 分。"
     ]
   },
   {
@@ -2650,6 +2695,7 @@ const itineraryData = [
         type: "fixed",
         time: "早餐",
         place: "早餐：亞坤咖椰吐司 Ya Kun Kaya Toast",
+        move: "🚶 依分店而定；遠東廣場本店（18 China St）從住宿步行約 15 分",
         mapLink: "https://maps.google.com/?q=Ya+Kun+Kaya+Toast+Singapore",
         hours: "07:15 開",
         description: "",
@@ -2660,6 +2706,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "魚尾獅公園 Merlion Park",
+        move: "🚶 從遠東廣場步行約 10 分",
         mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
         description: "",
         note: "",
@@ -2669,6 +2716,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "濱海灣花園 Gardens by the Bay",
+        move: "🚶 沿海灣經濱海灣金沙步行約 25–30 分｜🚕 Grab 約 10 分",
         mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
         hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
         description: "",
@@ -2679,6 +2727,7 @@ const itineraryData = [
         type: "fixed",
         time: "中餐",
         place: "中餐：附近找一家",
+        move: "🚶 花園內或濱海灣金沙商場",
         description: "",
         note: "",
         foods: []
@@ -2687,6 +2736,7 @@ const itineraryData = [
         type: "fixed",
         time: "16:00",
         place: "回住宿稍作休息",
+        move: "🚕 Grab 約 10–15 分｜🚇 Bayfront 搭 DT 線到 Fort Canning（4 站），步行約 10 分",
         mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
         description: "",
         note: "抓 16:00–16:30 回 lyf Funan 安頓，準備晚上演唱會。",
@@ -2696,6 +2746,7 @@ const itineraryData = [
         type: "fixed",
         time: "晚上",
         place: "MCR 演唱會（My Chemical Romance）",
+        move: "📍 依場館而定，場館確認後再補交通",
         description: "",
         note: "",
         foods: []
@@ -2723,6 +2774,7 @@ const itineraryData = [
         type: "fixed",
         time: "早上",
         place: "退房 · 出發樟宜機場",
+        move: "🚇 City Hall 搭 EW 線，Tanah Merah 同月台轉車到 Changi Airport，約 45 分｜🚕 Grab 約 25 分",
         mapLink: "https://maps.google.com/?q=Changi+Airport",
         description: "",
         note: "一起床就出發，到機場玩星耀樟宜。",
@@ -2732,6 +2784,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "星耀樟宜 Jewel：森林谷／雨漩渦",
+        move: "🚶 從 T1 直通，或從 T2／T3 走連通橋約 5–10 分",
         mapImages: [{ image: "images/singapore/changi-terminal-map.png", title: "樟宜機場航廈地圖", label: "航廈地圖" }],
         mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
         hours: "雨漩渦 10:00–22:00",
@@ -2745,6 +2798,7 @@ const itineraryData = [
         from: "SIN",
         to: "TPE",
         flightNo: "JX772",
+        move: "🚶 從 Jewel 走連通橋回 T2 約 10 分，起飛前約 2 小時辦好報到",
         timeRange: "14:45 – 19:25",
         dualTime: true,
         note: "星宇航空返台。"
@@ -3298,7 +3352,7 @@ function renderDayContent() {
     </nav>
 
     <div class="day-panel" data-panel="schedule">
-      ${(day.schedule || []).map(renderTripCard).join("")}
+      ${(day.schedule || []).map(it => (it.move ? `<div class="trip-move"><span class="trip-move__line"></span><span class="trip-move__text">${escapeHTML(it.move)}</span></div>` : "") + renderTripCard(it)).join("")}
       ${day.hotel && day.hotel.name ? renderHotel(day.hotel) : ""}
     </div>
 
