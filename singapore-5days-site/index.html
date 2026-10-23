@@ -1,0 +1,3764 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#d4587a" />
+<title>Singapore 遊記 · 5 Days</title>
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Singapore" />
+<style>
+/* ============================================================
+   Singapore 5 Days · Mobile-First Travel Notebook
+   配色：移動日 / 新加坡 / 加東 / 動物園 / 濱海灣
+   風格：手帳 + 明信片 + 車票存根 + 手繪地圖（首頁）
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { font-size: 16px; }
+body {
+  font-family: "Noto Serif TC", "Source Han Serif TC", "PingFang TC", "Songti TC", serif;
+  color: var(--text);
+  background: #f7efe6 url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23f7efe6'/%3E%3Cg opacity='.2'%3E%3Cpath d='M0 0H9A9 9 0 0 1 0 9Z' fill='%235fb8a6'/%3E%3Cpath d='M40 0V9A9 9 0 0 1 31 0Z' fill='%235fb8a6'/%3E%3Cpath d='M40 40H31A9 9 0 0 1 40 31Z' fill='%235fb8a6'/%3E%3Cpath d='M0 40V31A9 9 0 0 1 9 40Z' fill='%235fb8a6'/%3E%3Cg fill='%233aa58f' opacity='.9'%3E%3Cellipse cx='12' cy='12' rx='1.8' ry='4.2' transform='rotate(-45 12 12)'/%3E%3Cellipse cx='28' cy='12' rx='1.8' ry='4.2' transform='rotate(45 28 12)'/%3E%3Cellipse cx='28' cy='28' rx='1.8' ry='4.2' transform='rotate(-45 28 28)'/%3E%3Cellipse cx='12' cy='28' rx='1.8' ry='4.2' transform='rotate(45 12 28)'/%3E%3C/g%3E%3Cg fill='%23e9a3b8'%3E%3Cellipse cx='20' cy='12.5' rx='3.6' ry='6'/%3E%3Cellipse cx='20' cy='27.5' rx='3.6' ry='6'/%3E%3Cellipse cx='12.5' cy='20' rx='6' ry='3.6'/%3E%3Cellipse cx='27.5' cy='20' rx='6' ry='3.6'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3.4' fill='%23f2c14e'/%3E%3Ccircle cx='20' cy='20' r='1.3' fill='%23c9506f'/%3E%3Crect x='.5' y='.5' width='39' height='39' fill='none' stroke='%232f7f9e' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E") repeat; background-size: 56px 56px;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------------- Phase color variables ---------------- */
+:root {
+  --text: #2b1f12;
+  --text-soft: #6e5b48;
+  --text-faint: #9a8669;
+  /* 統一底色（米白偏暖，淡到不會壓字色） */
+  --paper: #fdfaf5;
+  --paper-warm: #fffdf8;
+  --paper-deep: #f7e3e8;
+  --line: #c8ada3;
+  --line-soft: #e7d4ce;
+  --accent: #d4587a;
+  --soft: #2f7f9e;
+  --phase-label: "新加坡";
+  --font-sans: "Helvetica Neue", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+}
+
+/* 娘惹磁磚風（Peranakan）：統一奶油底色，各 phase 只變字體 / 線條的顏色 */
+[data-phase="travel"]    { --accent: #5c9a68; --soft: #e2775a; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "移動日"; }
+[data-phase="singapore"] { --accent: #d4587a; --soft: #2f7f9e; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "新加坡"; }
+[data-phase="katong"]    { --accent: #d86a85; --soft: #2f6db5; --line: #c8ada3; --line-soft: #e7d4ce; --phase-label: "加東"; }
+[data-phase="zoo"]       { --accent: #e2775a; --soft: #5c9a68; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "動物園"; }
+[data-phase="marina"]    { --accent: #2f6db5; --soft: #8a8dc0; --line: #bfb0a2; --line-soft: #e2d6cb; --phase-label: "濱海灣"; }
+
+/* ---------------- App container & paper ---------------- */
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--paper);
+  min-height: 100vh;
+  box-shadow: 0 0 28px rgba(80,55,30,0.18);
+  overflow: clip;  /* allow sticky descendants */
+}
+.paper {
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,250,235,0.6) 0%, transparent 40%),
+    radial-gradient(circle at 80% 88%, rgba(170,130,75,0.07) 0%, transparent 45%),
+    var(--paper);
+}
+.paper::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(120,85,40,0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+}
+.paper > * { position: relative; z-index: 1; }
+
+
+
+/* 首頁精簡：拿掉斜放磁磚、草叢、三格小磁磚，留白多一點 */
+.hero__deco--shell, .hero__deco--palm, #ornamentBouquet { display: none; }
+
+/* ---------- Peranakan tile band ---------- */
+.tile-band {
+  height: 22px;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23fffaf3'/%3E%3Cpath d='M0 0H9A9 9 0 0 1 0 9Z' fill='%235fb8a6'/%3E%3Cpath d='M40 0V9A9 9 0 0 1 31 0Z' fill='%235fb8a6'/%3E%3Cpath d='M40 40H31A9 9 0 0 1 40 31Z' fill='%235fb8a6'/%3E%3Cpath d='M0 40V31A9 9 0 0 1 9 40Z' fill='%235fb8a6'/%3E%3Cg fill='%233aa58f' opacity='.9'%3E%3Cellipse cx='12' cy='12' rx='1.8' ry='4.2' transform='rotate(-45 12 12)'/%3E%3Cellipse cx='28' cy='12' rx='1.8' ry='4.2' transform='rotate(45 28 12)'/%3E%3Cellipse cx='28' cy='28' rx='1.8' ry='4.2' transform='rotate(-45 28 28)'/%3E%3Cellipse cx='12' cy='28' rx='1.8' ry='4.2' transform='rotate(45 12 28)'/%3E%3C/g%3E%3Cg fill='%23e9a3b8'%3E%3Cellipse cx='20' cy='12.5' rx='3.6' ry='6'/%3E%3Cellipse cx='20' cy='27.5' rx='3.6' ry='6'/%3E%3Cellipse cx='12.5' cy='20' rx='6' ry='3.6'/%3E%3Cellipse cx='27.5' cy='20' rx='6' ry='3.6'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3.4' fill='%23f2c14e'/%3E%3Ccircle cx='20' cy='20' r='1.3' fill='%23c9506f'/%3E%3Crect x='.5' y='.5' width='39' height='39' fill='none' stroke='%232f7f9e' stroke-width='1'/%3E%3C/svg%3E") repeat-x;
+  background-size: 22px 22px;
+  border-top: 2px solid #2f7f9e;
+  border-bottom: 2px solid #2f7f9e;
+}
+.tile-band--thin { height: 14px; background-size: 14px 14px; border-width: 1px; }
+
+/* ---------------- View toggling ---------------- */
+[data-view="home"] .day-view,
+[data-view="home"] .city-view { display: none; }
+[data-view="day"] .home-view,
+[data-view="day"] .city-view { display: none; }
+[data-view="city"] .home-view,
+[data-view="city"] .day-view { display: none; }
+
+/* ============================================================
+   HOME VIEW
+   ============================================================ */
+.hero {
+  padding: 56px 28px 12px;
+  text-align: center;
+  position: relative;
+}
+.hero__season {
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-style: italic;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #d4587a;
+  -webkit-text-stroke: 2.5px #ffffff;
+  paint-order: stroke fill;
+  text-shadow:
+    -2px -2px 0 #fff, 2px -2px 0 #fff,
+    -2px  2px 0 #fff, 2px  2px 0 #fff,
+    -2px  0   0 #fff, 2px  0   0 #fff,
+     0  -2px  0 #fff, 0   2px  0 #fff;
+  line-height: 1;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
+}
+.hero__cities {
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+  line-height: 1.75;
+}
+.hero__city { color: #c9506f; }  /* 首頁城市名統一單色，避免太花 */
+.hero__dot {
+  color: var(--text-faint);
+  font-weight: 400;
+  margin: 0 4px;
+}
+.hero__dates {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative ornaments around hero (absolute positioned) */
+.hero__deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero__deco svg { width: 100%; height: 100%; display: block; }
+.hero__deco--plane {
+  width: 56px; height: 56px;
+  top: 22px; right: 18px;
+  transform: rotate(-12deg);
+}
+.hero__deco--champagne {
+  width: 30px; height: 58px;
+  top: 18px; left: 22px;
+}
+.hero__deco--seagull {
+  width: 90px; height: 24px;
+  top: 40px; left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.75;
+}
+
+.hero__deco--shell {
+  width: 34px; height: 34px;
+  top: 78px; left: 10px;
+  transform: rotate(-12deg);
+  opacity: 0.9;
+}
+.hero__deco--palm {
+  width: 52px; height: 36px;
+  top: 68px; right: 6px;
+  transform: rotate(22deg);
+  opacity: 0.85;
+}
+
+/* Bottom decoration row — flows inline below the dates */
+.hero__bottom-deco {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 36px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 2;
+}
+.hero__bottom-icon {
+  display: inline-block;
+  pointer-events: none;
+}
+.hero__bottom-icon svg { width: 100%; height: 100%; display: block; }
+.hero__bottom-icon--coconut  { width: 36px; height: 56px; opacity: 0.95; }  /* Supertree */
+.hero__bottom-icon--umbrella { width: 44px; height: 54px; opacity: 0.95; }  /* 娘惹店屋 */
+.hero__bottom-icon--chair    { width: 60px; height: 46px; opacity: 0.95; }  /* 濱海灣金沙 */
+
+.hero__divider {
+  margin: 22px auto 0;
+  width: 60px;
+  height: 18px;
+  position: relative;
+}
+.hero__divider::before,
+.hero__divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 1px;
+  background: var(--text-soft);
+}
+.hero__divider::before { left: 0; }
+.hero__divider::after { right: 0; }
+.hero__divider span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+/* ---------- Overview map ---------- */
+.overview-map {
+  padding: 2px 20px 8px;
+}
+.overview-map__frame {
+  position: relative;
+  background: #fdeef1;
+  border: 1px solid rgba(180,140,55,0.35);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 40px rgba(180,140,55,0.15),
+    0 2px 10px rgba(80,55,25,0.1);
+}
+.overview-map__svg,
+.overview-map__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overview-map__caption {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ---------- Quick nav (pre-trip + cities) ---------- */
+.quick-nav {
+  padding: 22px 20px 6px;
+}
+.quick-nav__pretrip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-left: 3px solid #d4587a;
+  border-radius: 2px;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, transform 0.15s;
+}
+.quick-nav__pretrip:hover { background: var(--paper-deep); }
+.quick-nav__pretrip:active { transform: translateY(1px); }
+.quick-nav__icon {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #d4587a;
+  font-weight: 500;
+  line-height: 1;
+}
+.quick-nav__label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.quick-nav__label-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 500;
+  color: #9c3d5a;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+.quick-nav__label-zh {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--text-soft);
+}
+.quick-nav__arrow {
+  font-size: 20px;
+  color: #d4587a;
+  font-family: "Cormorant Garamond", serif;
+  line-height: 1;
+}
+
+.quick-nav__cities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+.quick-nav__city {
+  padding: 14px 6px 12px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  position: relative;
+}
+.quick-nav__city::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -1px;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 2px;
+  background: var(--phase-accent);
+}
+.quick-nav__city:hover { background: var(--paper-deep); }
+.quick-nav__city:active { transform: translateY(1px); }
+.quick-nav__city-en {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--phase-accent);
+  line-height: 1.1;
+}
+.quick-nav__city-zh {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+.quick-nav__city[data-phase="singapore"] { --phase-accent: #d4587a; }
+
+/* ---------- Cities header (chapter opener) ---------- */
+.cities-header {
+  text-align: center;
+  margin: 14px 0 16px;
+  padding: 0 24px;
+}
+.cities-header__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+.cities-header__title {
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.cities-header__title::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: #d4587a;
+  margin: 9px auto 8px;
+  opacity: 0.6;
+}
+.cities-header__sub {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-soft);
+}
+
+/* ---------- Cities list (home TOC) ---------- */
+.cities-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.city-item {
+  display: grid;
+  grid-template-columns: 64px 1fr 16px;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 14px 10px 10px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-left: 4px solid var(--phase-accent, var(--line));
+  border-radius: 2px;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  transition: background 0.15s, transform 0.15s;
+}
+.city-item:active { transform: translateY(1px); }
+.city-item[data-phase="singapore"] {
+  background: linear-gradient(to right, rgba(212, 88, 122,0.13), var(--paper-warm) 38%);
+}
+.city-item[data-phase="singapore"]:hover {
+  background: linear-gradient(to right, rgba(212, 88, 122,0.22), var(--paper-warm) 38%);
+}
+
+.city-item__thumb {
+  width: 64px;
+  height: 48px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(80,55,25,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.city-item__thumb img,
+.city-item__thumb svg { width: 100%; height: 100%; display: block; }
+.city-item__thumb img { object-fit: cover; }
+.city-item__thumb::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255,255,255,0.5);
+  pointer-events: none;
+}
+
+/* ---------- Home decorative ornaments (hand-drawn motifs) ---------- */
+.home-ornament {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px 0 2px;
+  opacity: 0.85;
+}
+.home-ornament svg {
+  width: 92px;
+  height: auto;
+  display: block;
+}
+
+.city-item__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.city-item__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.city-item__en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--phase-accent);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.city-item__zh {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text);
+}
+.city-item__days {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+.city-item__sub {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.03em;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.city-item__arrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  color: var(--phase-accent);
+  font-weight: 400;
+  line-height: 1;
+}
+.city-item[data-phase="singapore"] { --phase-accent: #d4587a; }
+
+/* ---------- Section label ---------- */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  color: var(--text-soft);
+  text-align: center;
+  margin: 28px 0 14px;
+  position: relative;
+}
+.section-label::before,
+.section-label::after {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--text-soft);
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+/* ---------- Day tickets strip (home) ---------- */
+.day-tickets {
+  padding: 0 20px 40px;
+}
+.day-tickets__strip {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ticket-stub {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-left: 2px solid var(--phase-accent, var(--line));
+  border-radius: 2px;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  position: relative;
+  transition: background 0.15s, transform 0.15s;
+}
+.ticket-stub:hover { background: var(--paper-deep); }
+.ticket-stub:active { transform: translateY(1px); }
+
+.ticket-stub__d {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--phase-accent, var(--accent));
+  text-align: center;
+  line-height: 1;
+}
+.ticket-stub__d span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--text-faint);
+  margin-top: 6px;
+}
+.ticket-stub__title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.ticket-stub__sub {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+.ticket-stub__date {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: right;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+.ticket-stub__date strong {
+  font-weight: 500;
+}
+.ticket-stub[data-phase="travel"]    { --phase-accent: #5c9a68; }
+.ticket-stub[data-phase="singapore"] { --phase-accent: #d4587a; }
+.ticket-stub[data-phase="katong"]    { --phase-accent: #d86a85; }
+.ticket-stub[data-phase="zoo"]       { --phase-accent: #e2775a; }
+.ticket-stub[data-phase="marina"]    { --phase-accent: #2f6db5; }
+
+/* watercolor wash by phase (matching cities) */
+.ticket-stub[data-phase="travel"] { background: linear-gradient(to right, rgba(92,154,104,0.12), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="travel"]:hover { background: linear-gradient(to right, rgba(92,154,104,0.22), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="singapore"] { background: linear-gradient(to right, rgba(212,88,122,0.12), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="singapore"]:hover { background: linear-gradient(to right, rgba(212,88,122,0.22), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="katong"] { background: linear-gradient(to right, rgba(216,106,133,0.12), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="katong"]:hover { background: linear-gradient(to right, rgba(216,106,133,0.22), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="zoo"] { background: linear-gradient(to right, rgba(226,119,90,0.12), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="zoo"]:hover { background: linear-gradient(to right, rgba(226,119,90,0.22), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="marina"] { background: linear-gradient(to right, rgba(47,109,181,0.12), var(--paper-warm) 38%); }
+.ticket-stub[data-phase="marina"]:hover { background: linear-gradient(to right, rgba(47,109,181,0.22), var(--paper-warm) 38%); }
+
+.ticket-stub__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ticket-stub__phase {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--phase-accent);
+  display: inline-block;
+  width: fit-content;
+  border-bottom: 1px solid var(--phase-accent);
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+}
+
+/* ---------- Home footer ---------- */
+.home-foot {
+  padding: 18px 28px 36px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--text-faint);
+}
+
+/* ============================================================
+   DAY VIEW
+   ============================================================ */
+.day-view {
+  min-height: 100vh;
+}
+
+/* ---------- Day nav (top) ---------- */
+.day-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--paper);
+  padding: 10px 16px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  box-shadow: 0 4px 12px rgba(80,55,30,0.06);
+}
+.day-nav__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.day-nav__home {
+  font: inherit;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  padding: 6px 10px 6px 0;
+  cursor: pointer;
+}
+.day-nav__home:hover { color: var(--accent); }
+.day-nav__progress {
+  margin-left: auto;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.day-nav__strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.day-nav__strip::-webkit-scrollbar { display: none; }
+.date-card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 72px;
+  padding: 0;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  text-align: center;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s;
+}
+.date-card__top {
+  height: 2px;
+  background: var(--phase-accent, var(--line));
+  opacity: 0.7;
+}
+.date-card__inner {
+  padding: 5px 4px 6px;
+}
+.date-card__dow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  color: var(--text-soft);
+}
+.date-card__day {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  color: var(--text-faint);
+  letter-spacing: 0.14em;
+  margin-top: 1px;
+}
+.date-card__date {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text);
+  font-size: 18px;
+  margin: 4px 0;
+  line-height: 1.1;
+}
+.date-card__mon,
+.date-card__num {
+  font-size: inherit;
+  vertical-align: baseline;
+}
+.date-card__sep {
+  font-size: inherit;
+  margin: 0 1px;
+  color: var(--text-soft);
+}
+.date-card__city {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--phase-accent, var(--text-soft));
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 2px;
+  opacity: 0.85;
+}
+
+/* Watercolor wash by phase (top → fade) */
+.date-card[data-phase="travel"] { background: linear-gradient(180deg, rgba(92,154,104,0.07), var(--paper-warm) 60%); --phase-accent: #5c9a68; }
+.date-card[data-phase="singapore"] { background: linear-gradient(180deg, rgba(212,88,122,0.07), var(--paper-warm) 60%); --phase-accent: #d4587a; }
+.date-card[data-phase="katong"] { background: linear-gradient(180deg, rgba(216,106,133,0.07), var(--paper-warm) 60%); --phase-accent: #d86a85; }
+.date-card[data-phase="zoo"] { background: linear-gradient(180deg, rgba(226,119,90,0.07), var(--paper-warm) 60%); --phase-accent: #e2775a; }
+.date-card[data-phase="marina"] { background: linear-gradient(180deg, rgba(47,109,181,0.07), var(--paper-warm) 60%); --phase-accent: #2f6db5; }
+
+.date-card.is-active {
+  background: var(--phase-accent, var(--accent));
+  border-color: var(--phase-accent, var(--accent));
+}
+.date-card.is-active .date-card__top { background: rgba(255,255,255,0.55); }
+.date-card.is-active .date-card__dow,
+.date-card.is-active .date-card__day,
+.date-card.is-active .date-card__date,
+.date-card.is-active .date-card__mon,
+.date-card.is-active .date-card__num,
+.date-card.is-active .date-card__sep,
+.date-card.is-active .date-card__city { color: #fff; }
+
+/* ---------- Day content ---------- */
+.day-content {
+  padding: 4px 20px 60px;
+}
+
+/* ---------- Postcard cover ---------- */
+.postcard {
+  position: relative;
+  background: var(--paper-warm);
+  padding: 10px 10px 14px;
+  margin: 6px 0 22px;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(80,55,25,0.12);
+  transform: rotate(-0.4deg);
+}
+.postcard__img,
+.postcard__placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background:
+    linear-gradient(135deg, var(--paper-deep) 0%, var(--paper-warm) 100%);
+  border-radius: 2px;
+  position: relative;
+}
+.postcard__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+}
+.postcard__placeholder::before {
+  content: "POSTCARD · " var(--phase-label);
+  white-space: pre;
+}
+.postcard__caption {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  color: var(--text-soft);
+  text-align: center;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+.postcard__stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 54px;
+  height: 64px;
+  border: 1.5px solid var(--accent);
+  background: rgba(245,236,221,0.85);
+  padding: 4px;
+  font-family: var(--font-sans);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.4;
+  transform: rotate(6deg);
+}
+.postcard__stamp strong {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ---------- Day meta ---------- */
+.day-meta {
+  text-align: center;
+  margin: 18px 0 12px;
+}
+.day-meta__phase {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: #fff;
+  background: var(--accent);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.day-meta__title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1.3;
+}
+.day-meta__subtitle {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+
+/* ---------- Day tabs ---------- */
+.day-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 26px 0 22px;
+  padding: 5px;
+  background: var(--paper-warm);
+  border-radius: 30px;
+  box-shadow: inset 0 1px 3px rgba(80,55,25,0.06);
+}
+.day-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-soft);
+  padding: 9px 4px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.day-tab.is-active {
+  background: color-mix(in srgb, var(--soft) 15%, var(--paper-warm));
+  color: color-mix(in srgb, var(--soft) 82%, #3a2a18);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--soft) 34%, transparent);
+}
+.day-tab:hover { color: var(--text); }
+
+/* ---------- Trip card (schedule) ---------- */
+.trip-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line);
+  position: relative;
+}
+.trip-card:last-child { border-bottom: none; }
+
+.trip-card__time {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--soft);
+  line-height: 1.3;
+  padding-top: 3px;
+  letter-spacing: 0.02em;
+}
+.trip-card__time--empty {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+/* Single-endpoint transit: time displayed as a ticket-stub badge */
+.trip-card__time--stub {
+  padding: 4px 4px;
+  background: var(--paper-warm);
+  border: 1px dashed var(--soft);
+  border-radius: 3px;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  align-self: start;
+  margin-top: 2px;
+  line-height: 1;
+}
+/* Single-endpoint transit content: location + small label */
+.trip-card__leg-loc {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin-right: 10px;
+  line-height: 1;
+  vertical-align: middle;
+}
+.trip-card__leg-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-soft);
+  vertical-align: middle;
+}
+.trip-card__sub {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-soft);
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+/* Dual-time transit: single card spanning two time slots */
+.trip-card.trip-card--dual {
+  display: block;
+  grid-template-columns: unset;
+}
+.trip-card__dual-main {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+.trip-card__time-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 0;
+  min-height: 56px;
+}
+.trip-card__time--depart {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--soft);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.trip-card__time--arrive {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--soft);
+  opacity: 0.78;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.trip-card__note--dual {
+  margin-top: 10px;
+  margin-left: 54px;
+}
+.trip-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+.trip-card__name a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1.5px dotted currentColor;
+  padding-bottom: 1px;
+}
+.trip-card__name a:hover { color: var(--soft); }
+/* Business hours appended after the place name: smaller, muted, never accent color */
+.trip-card__hours {
+  margin-left: 4px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--text-soft);
+  opacity: 0.85;
+}
+.trip-card__hours .nb { white-space: nowrap; }
+
+/* Optional / flexible item badge (top-right corner) */
+.trip-card__opt {
+  position: absolute;
+  top: 13px;
+  right: 0;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  background: var(--paper-warm);
+  border: 1px dashed var(--accent);
+  border-radius: 999px;
+  padding: 2px 9px;
+  line-height: 1.4;
+  white-space: nowrap;
+  transform: rotate(2deg);
+}
+.trip-card--opt .trip-card__name { padding-right: 50px; }
+
+/* Meal rows (早餐/午餐/晚餐): soft-colour title as AM/PM/evening dividers */
+.trip-card--meal .trip-card__name,
+.trip-card--meal .trip-card__name a { color: var(--soft); }
+.trip-card--meal .trip-card__name a:hover { color: var(--accent); }
+
+.trip-card__desc,
+.trip-card__note {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-soft);
+  margin-top: 6px;
+  white-space: pre-line;
+}
+.trip-card__note {
+  position: relative;
+  background: var(--paper-warm);
+  border-left: 2px solid var(--soft);
+  padding: 8px 10px 8px 12px;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  color: var(--text);
+}
+.trip-card__note::before {
+  content: "註";
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--soft);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.trip-card__actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.btn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 5px 11px;
+  background: transparent;
+  border: 1px solid var(--soft);
+  color: var(--soft);
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-chip:hover { background: var(--soft); color: #fff; }
+.btn-chip--tip {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-chip--tip:hover { background: var(--accent); color: #fff; }
+
+/* Tip modal — numbered steps list */
+.tip-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: tip-step;
+}
+.tip-steps li {
+  counter-increment: tip-step;
+  position: relative;
+  padding: 12px 0 12px 40px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  border-bottom: 1px dashed var(--line);
+}
+.tip-steps li:last-child { border-bottom: none; }
+.tip-steps li::before {
+  content: counter(tip-step);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ---------- Ticket-stub style trip card (transit) ---------- */
+.trip-card--transit .trip-card__content { padding: 0; }
+.ticket-row {
+  display: flex;
+  align-items: stretch;
+  background: var(--paper-warm);
+  border: 1px dashed var(--soft);
+  border-radius: 8px;
+  padding: 12px 14px;
+  position: relative;
+  margin-top: 4px;
+}
+.ticket-row::before,
+.ticket-row::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px; height: 8px;
+  background: var(--paper);
+  border-radius: 50%;
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.1);
+}
+.ticket-row::before { left: -4px; }
+.ticket-row::after { right: -4px; }
+.ticket-row__route {
+  flex: 1;
+}
+.ticket-row__from,
+.ticket-row__to {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.ticket-row__arrow {
+  font-family: var(--font-sans);
+  margin: 0 8px;
+  color: var(--text-soft);
+}
+.ticket-row__num {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-soft);
+  margin-left: 14px;
+  vertical-align: middle;
+}
+.ticket-row__time {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.ticket-row__time strong {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 17px;
+  display: block;
+}
+
+/* ---------- Intro card ---------- */
+.intro-card {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.intro-card__img,
+.intro-card__img-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--paper-deep), var(--paper-warm));
+  position: relative;
+}
+.intro-card__img-placeholder::after {
+  content: "INTRO · " var(--phase-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+}
+.intro-card__body { padding: 14px 14px 16px; }
+.intro-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.intro-card__title a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1.5px dotted currentColor;
+}
+.intro-card__text {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text);
+  white-space: pre-line;
+}
+.intro-card__text a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+/* ---------- Notes list ---------- */
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notes-list li {
+  position: relative;
+  padding: 12px 0 12px 22px;
+  border-bottom: 1px dashed var(--line);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.notes-list li:last-child { border-bottom: none; }
+.notes-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--soft);
+  font-size: 12px;
+}
+.notes-panel {
+  margin-top: 16px;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--soft) 8%, transparent);
+}
+.notes-panel__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+.notes-panel__text {
+  font-size: 13.5px;
+  line-height: 1.85;
+  white-space: pre-line;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.notes-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---------- Travel French phrasebook ---------- */
+.phrasebook { margin: 30px 0 8px; }
+.phrasebook__head { text-align: center; margin-bottom: 14px; }
+.phrasebook__eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  color: var(--soft);
+  font-size: 13px;
+  margin: 0;
+}
+.phrasebook__title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2px 0 0;
+}
+.phrasebook__sub { font-size: 12px; color: var(--text-soft); margin: 4px 0 0; }
+.phrasebook__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.phrase {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.phrase__say {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--soft) 14%, transparent);
+  color: var(--accent);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phrase__say:hover { background: color-mix(in srgb, var(--soft) 24%, transparent); }
+.phrase__say:active { transform: scale(0.92); }
+.phrase__say.is-speaking { background: var(--accent); }
+.phrase__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.phrase__fr { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.45; }
+.phrase__zh { font-size: 12.5px; color: var(--soft); }
+.phrasebook__note { font-size: 11px; color: var(--text-faint); margin: 10px 2px 0; line-height: 1.6; }
+
+/* ---------- Hotel block ---------- */
+.day-hotel {
+  margin-top: 22px;
+  padding: 12px 14px;
+  background: var(--paper-warm);
+  border: 1px dashed var(--soft);
+  border-radius: 8px;
+}
+.day-hotel__label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--soft);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+.day-hotel__name {
+  font-size: 15px;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  padding: 36px 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+/* ============================================================
+   CITY VIEW (chapter page)
+   ============================================================ */
+.city-view { min-height: 100vh; }
+
+.city-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 80%, rgba(245,236,221,0));
+  padding: 14px 16px 12px;
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.city-nav__breadcrumb {
+  margin-left: auto;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.city-content { padding: 4px 20px 60px; }
+
+.city-banner {
+  margin: 6px 0 24px;
+  padding: 10px 10px 14px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(80,55,25,0.12);
+  position: relative;
+  transform: rotate(-0.3deg);
+}
+.city-banner__img,
+.city-banner__placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--paper-deep), var(--paper-warm));
+  border-radius: 2px;
+  position: relative;
+}
+.city-banner__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+}
+.city-banner__placeholder::before {
+  content: "POSTCARD · " var(--phase-label);
+  white-space: pre;
+}
+.city-banner__caption {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  color: var(--soft);
+  text-align: center;
+  margin-top: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.city-banner__caption-sep {
+  color: var(--text-faint);
+  font-weight: 400;
+  margin: 0 8px;
+}
+
+.city-meta {
+  text-align: center;
+  margin: 18px 0 12px;
+}
+.city-meta__name {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  line-height: 1;
+}
+.city-meta__zh {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: var(--text);
+  margin-top: 6px;
+}
+.city-meta__days {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--soft);
+  margin-top: 12px;
+  padding: 3px 12px;
+  border: 1px solid var(--soft);
+  border-radius: 14px;
+}
+.city-meta__sub {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-soft);
+  margin-top: 10px;
+}
+
+/* City tabs (介紹/美食/交通/須知) — segmented pill control */
+.city-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 26px 0 22px;
+  padding: 5px;
+  background: var(--paper-warm);
+  border-radius: 30px;
+  box-shadow: inset 0 1px 3px rgba(80,55,25,0.06);
+}
+.city-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-soft);
+  padding: 9px 4px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.city-tab:hover { color: var(--text); }
+.city-tab.is-active {
+  background: color-mix(in srgb, var(--soft) 15%, var(--paper-warm));
+  color: color-mix(in srgb, var(--soft) 82%, #3a2a18);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--soft) 34%, transparent);
+}
+
+.city-panel { padding-top: 4px; }
+
+/* Panel section header (decorative italic label at top of each tab) */
+.panel-header {
+  text-align: center;
+  margin: 4px 0 24px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--soft);
+  letter-spacing: 0.18em;
+  position: relative;
+}
+.panel-header::before,
+.panel-header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 1px;
+  background: var(--soft);
+  opacity: 0.5;
+}
+.panel-header::before { left: calc(50% - 110px); }
+.panel-header::after  { right: calc(50% - 110px); }
+.panel-header__zh {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-faint);
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+/* Intro panel */
+.city-intro {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--text);
+}
+.city-intro p { margin-bottom: 16px; }
+.city-intro p:last-child { margin-bottom: 0; }
+
+/* Food items */
+.food-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.food-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 12px 12px 14px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.food-card + .food-card {
+  margin-top: 18px;
+}
+.food-card + .food-card::before {
+  content: "·  ·  ·";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--soft);
+  letter-spacing: 0.6em;
+  font-size: 14px;
+  opacity: 0.6;
+}
+/* Sub-grouping for foods (e.g. Nice chapter has 7 towns) */
+.food-group {
+  margin-bottom: 32px;
+}
+.food-group:last-child { margin-bottom: 0; }
+.food-group__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--soft);
+}
+.food-group__name {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.food-group__zh {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--soft);
+}
+
+/* Sub-grouping for notes (same pattern as food-group) */
+.note-group {
+  margin-bottom: 26px;
+}
+.note-group:last-child { margin-bottom: 0; }
+.note-group__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--soft);
+}
+.note-group__name {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.note-group__zh {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--soft);
+}
+.food-card__img,
+.food-card__img-ph {
+  width: 96px;
+  height: 96px;
+  background: linear-gradient(135deg, var(--paper-deep), var(--paper-warm));
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+}
+.food-card__img-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+}
+.food-card__body { min-width: 0; }
+.food-card__local {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.food-card__local-romaji {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--text-soft);
+  display: block;
+  margin-top: 2px;
+}
+.food-card__zh {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.food-card__desc {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+
+/* Transit blocks */
+.transit-map {
+  margin-top: 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: #fffdf8;
+}
+.transit-map svg { display: block; width: 100%; height: auto; }
+.transit-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent);
+}
+.transit-block,
+.notes-block {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.transit-block:last-child,
+.notes-block:last-child { border-bottom: none; padding-bottom: 0; }
+.transit-block h4,
+.notes-block h4 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.transit-block h4::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--soft);
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.transit-block p,
+.notes-block ul { margin: 0; }
+.transit-block p {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre-line;
+  padding-left: 18px;
+  border-left: 1px solid var(--line-soft);
+}
+.notes-block ul { list-style: none; padding: 0; }
+.notes-block li {
+  position: relative;
+  padding: 5px 0 5px 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.notes-block li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  color: var(--soft);
+  font-size: 9px;
+}
+.notes-block li:nth-child(odd)::before {
+  color: var(--accent);
+}
+
+/* City days links */
+.city-days {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+}
+.city-days__label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.city-days__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 8px;
+}
+.city-day-chip {
+  background: var(--paper-warm);
+  border: 1px solid var(--line-soft);
+  border-left: 2px solid var(--accent);
+  border-radius: 4px;
+  padding: 10px 4px 11px;
+  text-align: center;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.city-day-chip:hover { background: var(--paper-deep); }
+.city-day-chip:active { transform: translateY(1px); }
+.city-day-chip__d {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+.city-day-chip__date {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+.city-day-chip__loc {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-top: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 2px;
+  opacity: 0.85;
+}
+
+/* ============================================================
+   FOOD MODAL
+   ============================================================ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal.is-open { visibility: visible; pointer-events: auto; }
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(40,28,18,0);
+  transition: background 0.2s;
+}
+.modal.is-open .modal__backdrop { background: rgba(40,28,18,0.5); }
+.modal__sheet {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 80vh;
+  background: var(--paper);
+  border-radius: 18px 18px 0 0;
+  padding: 14px 18px 36px;
+  transform: translateY(100%);
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+  box-shadow: 0 -8px 40px rgba(40,28,18,0.3);
+  overflow-y: auto;
+}
+.modal.is-open .modal__sheet { transform: translateY(0); }
+.modal__handle {
+  width: 36px; height: 4px;
+  background: var(--line);
+  border-radius: 2px;
+  margin: 0 auto 12px;
+}
+.modal__close {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-soft);
+  cursor: pointer;
+  width: 32px; height: 32px;
+}
+.modal__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.modal__subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.modal__map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--line-soft);
+  background: var(--paper-warm);
+}
+.modal__food-item {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.modal__food-item:last-child { border-bottom: none; }
+.modal__food-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+.modal__food-info {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 4px;
+  line-height: 1.7;
+}
+/* Pre-trip tabbed structure */
+.pretrip-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  padding: 4px;
+  background: var(--paper-deep);
+  border-radius: 24px;
+}
+.pretrip-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  padding: 7px 4px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.pretrip-tab.is-active {
+  background: var(--paper);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgba(80,55,25,0.12);
+}
+.pretrip-tab[data-phase-tab="budapest"].is-active { color: #d4587a; }
+.pretrip-tab[data-phase-tab="nice"].is-active     { color: #2f7f9e; }
+.pretrip-tab[data-phase-tab="vienna"].is-active   { color: #8e6bb8; }
+
+.pretrip-panel { padding-bottom: 8px; }
+.pretrip-section {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.pretrip-section:last-child { border-bottom: none; padding-bottom: 0; }
+.pretrip-section:nth-child(1) { --section-color: #3aa58f; }
+.pretrip-section:nth-child(2) { --section-color: #d4587a; }
+.pretrip-section:nth-child(3) { --section-color: #2f7f9e; }
+.pretrip-section:nth-child(4) { --section-color: #f08c6e; }
+.pretrip-section:nth-child(5) { --section-color: #8e6bb8; }
+
+.pretrip-section__h4 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.pretrip-section__title {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--section-color, #d4587a);
+  line-height: 1.1;
+}
+.pretrip-section__sub {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--text-soft);
+}
+.pretrip-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pretrip-section li {
+  position: relative;
+  padding: 4px 0 4px 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.pretrip-section li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  color: var(--section-color, #d4587a);
+  font-weight: 700;
+}
+
+/* ============================================================
+   Wider screens (still keep mobile look, just larger)
+   ============================================================ */
+@media (min-width: 600px) {
+  .app {
+    margin: 24px auto;
+    border-radius: 16px;
+    min-height: calc(100vh - 48px);
+  }
+  .hero__title { font-size: 64px; }
+}
+
+/* SVG map text styles */
+.map-label {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 11px;
+  fill: var(--text);
+}
+.map-label-sm {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 10px;
+  fill: var(--text-soft);
+}
+.map-tiny {
+  font-family: sans-serif;
+  font-size: 7px;
+  fill: var(--text-soft);
+  letter-spacing: 0.1em;
+}
+</style>
+</head>
+
+<body data-view="home" data-phase="singapore">
+
+<main class="app">
+
+  <!-- ============================================================
+       HOME VIEW
+       ============================================================ -->
+  <section class="home-view paper">
+    <div class="tile-band"></div>
+
+    <header class="hero">
+      <span class="hero__deco hero__deco--plane"     id="heroPlane"></span>
+      <span class="hero__deco hero__deco--champagne" id="heroChampagne"></span>
+      <span class="hero__deco hero__deco--seagull"   id="heroSeagull"></span>
+      <span class="hero__deco hero__deco--shell"     id="heroShell"></span>
+      <span class="hero__deco hero__deco--palm"      id="heroPalm"></span>
+
+      <h1 class="hero__season">2026 November</h1>
+      <p class="hero__cities">
+        <span class="hero__city" data-phase="singapore">SINGAPORE</span>
+        <span class="hero__dot">·</span>
+        <span class="hero__city" data-phase="katong">KATONG</span>
+        <span class="hero__dot">·</span>
+        <span class="hero__city" data-phase="zoo">MANDAI</span>
+        <span class="hero__dot">·</span>
+        <span class="hero__city" data-phase="marina">MARINA BAY</span>
+      </p>
+      <p class="hero__dates">11/07 — 11/11</p>
+
+      <div class="hero__bottom-deco">
+        <span class="hero__bottom-icon hero__bottom-icon--umbrella" id="heroUmbrella"></span>
+        <span class="hero__bottom-icon hero__bottom-icon--chair"    id="heroChair"></span>
+        <span class="hero__bottom-icon hero__bottom-icon--coconut"  id="heroCoconut"></span>
+      </div>
+    </header>
+
+    <!-- Hand-drawn watercolor overview map (Travel Itinerary) -->
+    <section class="overview-map">
+      <div class="overview-map__frame">
+        <img class="overview-map__img" src="images/singapore/cover-map.png" alt="新加坡行程總覽手繪地圖" loading="lazy" onerror="this.closest('section').style.display='none'" />
+      </div>
+      <p class="overview-map__caption">— TRAVEL ITINERARY · 2026 —</p>
+    </section>
+
+    <div class="home-ornament" id="ornamentBouquet"></div>
+
+    <!-- Quick nav: 行前須知 + 城市跳轉 -->
+    <section class="quick-nav">
+      <button class="quick-nav__pretrip" type="button" id="btnPretrip">
+        <span class="quick-nav__icon">✦</span>
+        <span class="quick-nav__label">
+          <span class="quick-nav__label-en">Pre-Trip Notes</span>
+          <span class="quick-nav__label-zh">行前須知</span>
+        </span>
+        <span class="quick-nav__arrow">›</span>
+      </button>
+    </section>
+
+    <!-- City list (TOC style, replaces former 3-button quick nav) -->
+    <header class="cities-header">
+      <p class="cities-header__eyebrow">— Chapters —</p>
+      <h2 class="cities-header__title">City Guides</h2>
+      <p class="cities-header__sub">CULTURE · EATS · TRANSIT · NOTES</p>
+    </header>
+    <section class="cities-list" id="citiesList"></section>
+
+    <div class="home-ornament" id="ornamentLemon"></div>
+
+    <h2 class="section-label">DAYS</h2>
+
+    <section class="day-tickets">
+      <div class="day-tickets__strip" id="ticketStrip"></div>
+    </section>
+
+    <div class="tile-band tile-band--thin"></div>
+    <footer class="home-foot">
+      SINGAPORE · 2026/11 · 5 DAYS · ❦
+    </footer>
+
+  </section>
+
+  <!-- ============================================================
+       DAY VIEW
+       ============================================================ -->
+  <section class="day-view paper">
+    <div class="tile-band tile-band--thin"></div>
+    <header class="day-nav">
+      <div class="day-nav__top">
+        <button class="day-nav__home" type="button" id="btnHome">← 首頁</button>
+        <span class="day-nav__progress" id="dayProgress">Day 1 / 14</span>
+      </div>
+      <div class="day-nav__strip" id="dateStrip"></div>
+    </header>
+
+    <article class="day-content" id="dayContent"></article>
+  </section>
+
+  <!-- ============================================================
+       CITY VIEW (city chapter page)
+       ============================================================ -->
+  <section class="city-view paper">
+    <div class="tile-band tile-band--thin"></div>
+    <header class="city-nav">
+      <button class="day-nav__home" type="button" id="btnCityHome">← 首頁</button>
+      <span class="city-nav__breadcrumb" id="cityBreadcrumb"></span>
+    </header>
+    <article class="city-content" id="cityContent"></article>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     PRE-TRIP MODAL
+     ============================================================ -->
+<div class="modal" id="pretripModal" role="dialog" aria-modal="true" aria-labelledby="pretripModalTitle">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__sheet">
+    <div class="modal__handle"></div>
+    <button class="modal__close" data-close aria-label="關閉">×</button>
+    <h3 class="modal__title" id="pretripModalTitle">行前須知</h3>
+    <p class="modal__subtitle">PRE-TRIP NOTES · 2026</p>
+
+    <div class="pretrip-panel">
+      <section class="pretrip-section">
+        <h4 class="pretrip-section__h4"><span class="pretrip-section__title">Documents</span><span class="pretrip-section__sub">護照 / 入境</span></h4>
+        <ul>
+          <li>護照效期至少 6 個月</li>
+          <li>台灣護照入境新加坡免簽（觀光 30 天內）</li>
+          <li>入境前 3 天內上網填寫 SG Arrival Card（電子入境卡）</li>
+          <li>機票、訂房、演唱會票券截圖或紙本備份</li>
+        </ul>
+      </section>
+      <section class="pretrip-section">
+        <h4 class="pretrip-section__h4"><span class="pretrip-section__title">Currency</span><span class="pretrip-section__sub">貨幣 / 支付</span></h4>
+        <ul>
+          <li>使用新加坡幣 SGD</li>
+          <li>大多數地方可刷卡／感應；MRT 可直接用信用卡感應進站</li>
+          <li>小販中心、老咖啡店建議備一些現金</li>
+        </ul>
+      </section>
+      <section class="pretrip-section">
+        <h4 class="pretrip-section__h4"><span class="pretrip-section__title">Connectivity</span><span class="pretrip-section__sub">通訊</span></h4>
+        <ul>
+          <li>eSIM 預先購買（新加坡或東南亞方案）</li>
+          <li>必裝 app：Grab、Google Maps</li>
+          <li>Google Maps 先下載新加坡離線地圖</li>
+        </ul>
+      </section>
+      <section class="pretrip-section">
+        <h4 class="pretrip-section__h4"><span class="pretrip-section__title">Packing</span><span class="pretrip-section__sub">行李 / 衣著</span></h4>
+        <ul>
+          <li>熱帶濕熱約 30°C，輕便透氣衣物</li>
+          <li>11 月午後常有雷陣雨，帶摺疊傘</li>
+          <li>室內冷氣很強，帶一件薄外套</li>
+          <li>插座為英式三孔（Type G），記得帶轉接頭</li>
+          <li>動物園日：防曬、防蚊液、好走的鞋</li>
+        </ul>
+      </section>
+      <section class="pretrip-section">
+        <h4 class="pretrip-section__h4"><span class="pretrip-section__title">Itinerary</span><span class="pretrip-section__sub">班機總表</span></h4>
+        <ul>
+          <li>D1 JX771 08:25–13:25 TPE→SIN（樟宜 T2）</li>
+          <li>D5 JX772 14:45–19:25 SIN→TPE</li>
+        </ul>
+      </section>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOD MODAL
+     ============================================================ -->
+<div class="modal" id="foodModal" role="dialog" aria-modal="true" aria-labelledby="foodModalTitle">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__sheet">
+    <div class="modal__handle"></div>
+    <button class="modal__close" data-close aria-label="關閉">×</button>
+    <h3 class="modal__title" id="foodModalTitle">附近吃食</h3>
+    <p class="modal__subtitle" id="foodModalSubtitle">NEARBY EATS</p>
+    <div class="modal__list" id="foodModalList"></div>
+  </div>
+</div>
+
+<div class="modal" id="tipModal" role="dialog" aria-modal="true" aria-labelledby="tipModalTitle">
+  <div class="modal__backdrop" data-tip-close></div>
+  <div class="modal__sheet">
+    <div class="modal__handle"></div>
+    <button class="modal__close" data-tip-close aria-label="關閉">×</button>
+    <h3 class="modal__title" id="tipModalTitle">小提示</h3>
+    <p class="modal__subtitle" id="tipModalSubtitle">TIP</p>
+    <ol class="tip-steps" id="tipModalSteps"></ol>
+  </div>
+</div>
+
+<div class="modal" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle">
+  <div class="modal__backdrop" data-map-close></div>
+  <div class="modal__sheet">
+    <div class="modal__handle"></div>
+    <button class="modal__close" data-map-close aria-label="關閉">×</button>
+    <h3 class="modal__title" id="mapModalTitle">路線圖</h3>
+    <p class="modal__subtitle" id="mapModalSubtitle">ROUTE MAP</p>
+    <img class="modal__map-img" id="mapModalImg" src="" alt="路線圖" loading="lazy" />
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PHASE CONFIG
+   ============================================================ */
+const PHASE_LABEL = {
+  travel:    "移動日",
+  singapore: "新加坡",
+  katong:    "加東",
+  zoo:       "動物園",
+  marina:    "濱海灣"
+};
+
+/* ============================================================
+   ITINERARY DATA (5 days, filled from your Excel)
+   ============================================================ */
+const itineraryData = [
+  {
+    day: "Day 1",
+    date: "2026/11/07",
+    dow: "SAT",
+    dowZh: "六",
+    phase: "travel",
+    title: "台北 → 新加坡",
+    subtitle: "JX771 抵達 · 中國城散步 · Pastaria Abate",
+    routeCode: "TPE → SIN",
+    coverImage: "",
+    coverAlt: "台北 → 新加坡",
+    hotel: { name: "lyf Funan Singapore", mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore" },
+    schedule: [
+      {
+        type: "transit",
+        time: "08:25",
+        from: "TPE",
+        to: "SIN",
+        flightNo: "JX771",
+        timeRange: "08:25 – 13:25",
+        dualTime: true,
+        note: "星宇航空，抵達樟宜機場第二航廈（T2）。"
+      },
+      {
+        type: "fixed",
+        time: "下午",
+        place: "飯店 Check in · lyf Funan Singapore",
+        mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
+        description: "",
+        note: "位於福南（Funan）商場樓上，近 City Hall 站。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "巴拉灣海灘 Palawan Beach（optional）",
+        mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
+        description: "",
+        note: "聖淘沙島上，走吊橋到「亞洲大陸最南端」小島觀景台。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "牛車水 中國城 Chinatown",
+        mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
+        description: "",
+        note: "佛牙寺、牛車水大廈小販中心一帶可逛。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "晚餐",
+        place: "晚餐：已訂位 18:30 Pastaria Abate",
+        mapLink: "https://maps.google.com/?q=Pastaria+Abate+Singapore",
+        hours: "11:30–22:30（週五、六至 23:00）",
+        description: "",
+        note: "已訂位 18:30。",
+        foods: []
+      }
+    ],
+    introCards: [],
+    extraNotes: [
+      "入境前 3 天內上網填寫 SG Arrival Card。",
+      "樟宜機場到市區可搭 MRT 或 Grab，約 30 分鐘。"
+    ]
+  },
+  {
+    day: "Day 2",
+    date: "2026/11/08",
+    dow: "SUN",
+    dowZh: "日",
+    phase: "katong",
+    title: "加東 · 甘榜格南",
+    subtitle: "娘惹文化 → 哈芝巷 → JUMBO 辣椒螃蟹",
+    routeCode: "SINGAPORE",
+    coverImage: "",
+    coverAlt: "加東 · 甘榜格南",
+    hotel: { name: "lyf Funan Singapore", mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore" },
+    schedule: [
+      {
+        type: "fixed",
+        time: "早餐",
+        place: "早餐：真美珍 Chin Mee Chin",
+        mapLink: "https://maps.google.com/?q=Chin+Mee+Chin+Confectionery+Singapore",
+        hours: "08:00–16:00",
+        description: "",
+        note: "加東老字號咖啡店，咖椰吐司、蛋撻。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "如切路 Joo Chiat Road",
+        mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
+        description: "",
+        note: "娘惹（Peranakan）文化發源地，彩色娘惹排屋最好拍。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "Big Short Coffee",
+        mapLink: "https://maps.google.com/?q=Big+Short+Coffee+Joo+Chiat",
+        hours: "08:00–17:00",
+        description: "",
+        note: "如切（Joo Chiat）一帶的咖啡店。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "SOJAO Home Goods Store",
+        mapLink: "https://maps.google.com/?q=SOJAO+Home+Goods+Store+Singapore",
+        hours: "11:00–19:00",
+        description: "",
+        note: "居家選物小店。⚠ 11:00 才開門，早上排在這裡可能還沒開，可挪到中午前後再來。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "中餐",
+        place: "中餐：G7 Frog Porridge & Live Seafood（optional）",
+        mapLink: "https://maps.google.com/?q=G7+Frog+Porridge+Live+Seafood+Singapore",
+        hours: "15:00–03:00",
+        description: "",
+        note: "田雞粥名店。⚠ 15:00 才開，中午吃不到；可改成下午點心或晚一點再來。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "哈芝巷 Haji Lane",
+        mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
+        description: "",
+        note: "彩色壁畫與個性小店的窄巷。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "蘇丹回教堂 Masjid Sultan",
+        mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
+        hours: "參觀 10:00–12:00、14:00–16:00（週五不開放）",
+        description: "",
+        note: "金色圓頂清真寺；參觀請著有袖上衣與長褲／長裙。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "Yat Ka Yan Dessert（Tan Quee Lan）",
+        mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore",
+        hours: "12:30–23:00（週二休）",
+        description: "",
+        note: "港式糖水甜品。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "Apartment Coffee",
+        mapLink: "https://maps.google.com/?q=Apartment+Coffee+Singapore",
+        hours: "10:00–16:30（週三、四休）",
+        description: "",
+        note: "",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "晚餐",
+        place: "晚餐：已訂位 18:45 JUMBO Seafood – The Riverwalk",
+        mapLink: "https://maps.google.com/?q=JUMBO+Seafood+The+Riverwalk+Singapore",
+        hours: "11:30–23:00",
+        description: "",
+        note: "招牌辣椒螃蟹、黑胡椒螃蟹，記得加點炸饅頭沾醬。",
+        foods: []
+      }
+    ],
+    introCards: [],
+    extraNotes: [
+      "蘇丹回教堂有服裝規定，可帶一件薄外套或長裙。",
+      "加東到甘榜格南建議搭 Grab，約 15–20 分鐘。"
+    ]
+  },
+  {
+    day: "Day 3",
+    date: "2026/11/09",
+    dow: "MON",
+    dowZh: "一",
+    phase: "zoo",
+    title: "新加坡動物園",
+    subtitle: "日間動物園 → 好奇心之灣 → Mellben 螃蟹",
+    routeCode: "MANDAI",
+    coverImage: "",
+    coverAlt: "新加坡動物園",
+    hotel: { name: "lyf Funan Singapore", mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore" },
+    schedule: [
+      {
+        type: "fixed",
+        time: "早餐",
+        place: "早餐：住宿吃",
+        description: "",
+        note: "前一天先買好早餐。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "上午",
+        place: "新加坡動物園 Singapore Zoo",
+        mapLink: "https://maps.google.com/?q=Singapore+Zoo",
+        hours: "08:30–18:00（最後入園 17:00）",
+        description: "",
+        note: "位於萬禮（Mandai）野生動物保育區。非洲企鵝館整修中，11/30 前不開放。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "中餐",
+        place: "中餐：園內用餐",
+        description: "",
+        note: "",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "好奇心之灣 Curiosity Cove",
+        mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
+        hours: "平日 10:00–17:30（最後入場 16:30）",
+        description: "",
+        note: "萬禮園區內的互動式展館。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "晚餐",
+        place: "晚餐：已訂位 18:00 Mellben Seafood",
+        mapLink: "https://maps.google.com/?q=Mellben+Seafood+232+Ang+Mo+Kio+Ave+3+Singapore",
+        hours: "17:00–22:00（宏茂橋店）",
+        description: "",
+        note: "螃蟹米粉湯是招牌。",
+        foods: []
+      }
+    ],
+    introCards: [],
+    extraNotes: [
+      "萬禮園區交通：可搭 Mandai Khatib Shuttle 或 Grab。",
+      "熱帶午後易下雨，帶傘與防蚊液。"
+    ]
+  },
+  {
+    day: "Day 4",
+    date: "2026/11/10",
+    dow: "TUE",
+    dowZh: "二",
+    phase: "marina",
+    title: "濱海灣 · MCR 演唱會",
+    subtitle: "亞坤 → 魚尾獅 → 濱海灣花園 → 演唱會",
+    routeCode: "MARINA BAY",
+    coverImage: "",
+    coverAlt: "濱海灣 · MCR 演唱會",
+    hotel: { name: "lyf Funan Singapore", mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore" },
+    schedule: [
+      {
+        type: "fixed",
+        time: "早餐",
+        place: "早餐：亞坤咖椰吐司 Ya Kun Kaya Toast",
+        mapLink: "https://maps.google.com/?q=Ya+Kun+Kaya+Toast+Singapore",
+        hours: "07:15 開",
+        description: "",
+        note: "經典咖椰吐司＋半熟蛋＋Kopi。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "魚尾獅公園 Merlion Park",
+        mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
+        description: "",
+        note: "",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "濱海灣花園 Gardens by the Bay",
+        mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
+        hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
+        description: "",
+        note: "導航設「濱海灣花園 花穹／雲霧林」（Flower Dome／Cloud Forest，恐龍主題區）。雲霧林人造霧 10、12、14、16 點整。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "中餐",
+        place: "中餐：附近找一家",
+        description: "",
+        note: "",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "16:00",
+        place: "回住宿稍作休息",
+        mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
+        description: "",
+        note: "抓 16:00–16:30 回 lyf Funan 安頓，準備晚上演唱會。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "晚上",
+        place: "MCR 演唱會（My Chemical Romance）",
+        description: "",
+        note: "",
+        foods: []
+      }
+    ],
+    introCards: [],
+    extraNotes: [
+      "演唱會前先查場館交通與入場時間。"
+    ]
+  },
+  {
+    day: "Day 5",
+    date: "2026/11/11",
+    dow: "WED",
+    dowZh: "三",
+    phase: "travel",
+    title: "新加坡 → 台北",
+    subtitle: "星耀樟宜 → JX772 返程",
+    routeCode: "SIN → TPE",
+    coverImage: "",
+    coverAlt: "新加坡 → 台北",
+    hotel: { name: "", mapLink: "" },
+    schedule: [
+      {
+        type: "fixed",
+        time: "早上",
+        place: "退房 · 出發樟宜機場",
+        mapLink: "https://maps.google.com/?q=Changi+Airport",
+        description: "",
+        note: "一起床就出發，到機場玩星耀樟宜。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "星耀樟宜 Jewel：森林谷／雨漩渦",
+        mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
+        hours: "雨漩渦 10:00–22:00",
+        description: "",
+        note: "雨漩渦燈光音樂秀只在晚上（週一至四 20:00、21:00），返程當天看不到，白天看瀑布就好。",
+        foods: []
+      },
+      {
+        type: "transit",
+        time: "14:45",
+        from: "SIN",
+        to: "TPE",
+        flightNo: "JX772",
+        timeRange: "14:45 – 19:25",
+        dualTime: true,
+        note: "星宇航空返台。"
+      }
+    ],
+    introCards: [],
+    extraNotes: [
+      "星耀樟宜在出境管制前的公共區，先逛完再過海關。"
+    ]
+  }
+];
+
+/* ============================================================
+   CITY DATA (city chapters)
+   ============================================================ */
+const SG_MRT_SVG = `<svg viewBox="0 0 360 380" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, PingFang TC, Noto Sans TC, sans-serif" role="img" aria-label="新加坡 MRT 行程相關路線簡圖"><rect width="360" height="380" rx="10" fill="#fffdf8"/><text x="58" y="22" font-size="9.5" font-weight="700" fill="#009645">東西線</text><text x="344" y="22" font-size="8.5" fill="#6e5b48" text-anchor="end">D1・D5 機場｜D2 甘榜格南</text><rect x="8" y="31" width="38" height="18" rx="9" fill="#009645"/><text x="27" y="43.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">EW</text><line x1="58" y1="40" x2="344" y2="40" stroke="#009645" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="40" r="4" fill="#fff" stroke="#009645" stroke-width="2"/><text x="54.0" y="57" font-size="8.6" fill="#2b1f12" text-anchor="start">Changi Airport</text><circle cx="153.3" cy="40" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="153.3" y="57" font-size="8.6" fill="#2b1f12" text-anchor="middle">Tanah Merah</text><circle cx="248.7" cy="40" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="248.7" y="57" font-size="8.6" fill="#2b1f12" text-anchor="middle">Bugis</text><circle cx="344.0" cy="40" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="344.0" y="31" font-size="10" fill="#d4587a" text-anchor="middle">★</text><text x="348.0" y="57" font-size="8.6" fill="#2b1f12" text-anchor="end">City Hall</text><text x="58" y="80" font-size="9.5" font-weight="700" fill="#D42E12">南北線</text><text x="344" y="80" font-size="8.5" fill="#6e5b48" text-anchor="end">D3 動物園接駁｜D4 魚尾獅</text><rect x="8" y="89" width="38" height="18" rx="9" fill="#D42E12"/><text x="27" y="101.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">NS</text><line x1="58" y1="98" x2="344" y2="98" stroke="#D42E12" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="98" r="4" fill="#fff" stroke="#D42E12" stroke-width="2"/><text x="54.0" y="115" font-size="8.6" fill="#2b1f12" text-anchor="start">Khatib</text><circle cx="153.3" cy="98" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="153.3" y="89" font-size="10" fill="#d4587a" text-anchor="middle">★</text><text x="153.3" y="115" font-size="8.6" fill="#2b1f12" text-anchor="middle">City Hall</text><circle cx="248.7" cy="98" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="248.7" y="115" font-size="8.6" fill="#2b1f12" text-anchor="middle">Raffles Place</text><circle cx="344.0" cy="98" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="348.0" y="115" font-size="8.6" fill="#2b1f12" text-anchor="end">Marina Bay</text><text x="58" y="138" font-size="9.5" font-weight="700" fill="#9900AA">東北線</text><text x="344" y="138" font-size="8.5" fill="#6e5b48" text-anchor="end">D1 中國城・聖淘沙</text><rect x="8" y="147" width="38" height="18" rx="9" fill="#9900AA"/><text x="27" y="159.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">NE</text><line x1="58" y1="156" x2="344" y2="156" stroke="#9900AA" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="156" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="54.0" y="173" font-size="8.6" fill="#2b1f12" text-anchor="start">HarbourFront</text><circle cx="201.0" cy="156" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="201.0" y="173" font-size="8.6" fill="#2b1f12" text-anchor="middle">Chinatown</text><circle cx="344.0" cy="156" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="344.0" y="147" font-size="10" fill="#d4587a" text-anchor="middle">★</text><text x="348.0" y="173" font-size="8.6" fill="#2b1f12" text-anchor="end">Clarke Quay</text><text x="58" y="196" font-size="9.5" font-weight="700" fill="#005EC4">濱海市區線</text><text x="344" y="196" font-size="8.5" fill="#6e5b48" text-anchor="end">D4 濱海灣花園</text><rect x="8" y="205" width="38" height="18" rx="9" fill="#005EC4"/><text x="27" y="217.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">DT</text><line x1="58" y1="214" x2="344" y2="214" stroke="#005EC4" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="214" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="54.0" y="231" font-size="8.6" fill="#2b1f12" text-anchor="start">Chinatown</text><circle cx="201.0" cy="214" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="201.0" y="231" font-size="8.6" fill="#2b1f12" text-anchor="middle">Bayfront</text><circle cx="344.0" cy="214" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="348.0" y="231" font-size="8.6" fill="#2b1f12" text-anchor="end">Bugis</text><text x="58" y="254" font-size="9.5" font-weight="700" fill="#9D5B25">湯申－東海岸線</text><text x="344" y="254" font-size="8.5" fill="#6e5b48" text-anchor="end">D2 加東・如切｜D4</text><rect x="8" y="263" width="38" height="18" rx="9" fill="#9D5B25"/><text x="27" y="275.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">TE</text><line x1="58" y1="272" x2="344" y2="272" stroke="#9D5B25" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="272" r="4" fill="#fff" stroke="#9D5B25" stroke-width="2"/><text x="54.0" y="289" font-size="8.6" fill="#2b1f12" text-anchor="start">Marine Parade</text><circle cx="153.3" cy="272" r="4" fill="#fff" stroke="#9D5B25" stroke-width="2"/><text x="153.3" y="289" font-size="8.6" fill="#2b1f12" text-anchor="middle">Tanjong Katong</text><circle cx="248.7" cy="272" r="4" fill="#fff" stroke="#9D5B25" stroke-width="2"/><text x="248.7" y="289" font-size="8.6" fill="#2b1f12" text-anchor="middle">Gardens by the Bay</text><circle cx="344.0" cy="272" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="348.0" y="289" font-size="8.6" fill="#2b1f12" text-anchor="end">Marina Bay</text><text x="58" y="312" font-size="9.5" font-weight="700" fill="#FA9E0D">環線（2026/7 全線通車）</text><text x="344" y="312" font-size="8.5" fill="#6e5b48" text-anchor="end">聖淘沙 ↔ 濱海灣直達</text><rect x="8" y="321" width="38" height="18" rx="9" fill="#FA9E0D"/><text x="27" y="333.5" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">CC</text><line x1="58" y1="330" x2="344" y2="330" stroke="#FA9E0D" stroke-width="5" stroke-linecap="round"/><circle cx="58.0" cy="330" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="54.0" y="347" font-size="8.6" fill="#2b1f12" text-anchor="start">HarbourFront</text><circle cx="153.3" cy="330" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="153.3" y="347" font-size="8.6" fill="#2b1f12" text-anchor="middle">Marina Bay</text><circle cx="248.7" cy="330" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="248.7" y="347" font-size="8.6" fill="#2b1f12" text-anchor="middle">Bayfront</text><circle cx="344.0" cy="330" r="5.2" fill="#fff" stroke="#2b1f12" stroke-width="1.8"/><text x="348.0" y="347" font-size="8.6" fill="#2b1f12" text-anchor="end">Promenade</text><text x="10" y="370" font-size="8.5" fill="#6e5b48">★ 離 lyf Funan 最近　◯ 黑框＝轉乘站　僅列本趟會用到的站，非完整路網</text></svg>`;
+
+const cityData = {
+  singapore: {
+    en: "Singapore", zh: "新加坡",
+    phase: "singapore",
+    dayIndices: [0, 1, 2, 3, 4],
+    daysLabel: "Day 1 – Day 5",
+    subtitle: "花園城市 · 小販美食 · 多元文化",
+    coverImage: "",
+    coverAlt: "新加坡",
+    hasTransit: true,
+    intro: "新加坡位於馬來半島南端，是一座城市國家，國土不大卻以整潔、高效與綠化聞名，常被稱為「花園城市」。高樓、熱帶植物與水岸步道交織，讓整座城市即使現代，也處處有綠意。\n\n這裡是華人、馬來人、印度人與娘惹（Peranakan）文化交會之地。牛車水、甘榜格南、小印度與加東各有鮮明風貌，一天之內就能從中式廟宇走到清真寺，再到彩色娘惹排屋。\n\n新加坡也是美食之都。小販中心（Hawker Centre）是在地人的日常餐桌，海南雞飯、叻沙、辣椒螃蟹、咖椰吐司都是必吃；小販文化更已被列入聯合國教科文組織人類非物質文化遺產。\n\n濱海灣一帶則展現新加坡的未來感：濱海灣金沙、魚尾獅與濱海灣花園的超級樹，夜晚點燈後成為最具代表性的城市天際線。",
+    foods: [
+      { local: "Hainanese Chicken Rice", image: "", romaji: "—", zh: "海南雞飯", desc: "嫩滑白斬雞配雞油飯，沾辣椒醬、薑蓉與黑醬油，新加坡國民美食。" },
+      { local: "Chilli Crab", image: "", romaji: "—", zh: "辣椒螃蟹", desc: "甜辣濃郁的番茄辣椒醬汁，必點炸饅頭（mantou）沾醬。" },
+      { local: "Laksa", image: "", romaji: "LAHK·sah", zh: "叻沙", desc: "椰奶咖哩湯底配粗米粉、蝦、魚餅，加東叻沙最有名。" },
+      { local: "Kaya Toast", image: "", romaji: "KAH·yah", zh: "咖椰吐司", desc: "烤吐司夾咖椰醬與奶油，配半熟蛋與 Kopi，是經典早餐。" },
+      { local: "Bak Kut Teh", image: "", romaji: "bak·kut·teh", zh: "肉骨茶", desc: "新加坡潮州式胡椒湯底，排骨燉得軟嫩，湯可續加。" }
+    ],
+    transit: [
+      { title: "MRT 地鐵", body: "路線清楚、冷氣強；可直接用感應式信用卡進出站（SimplyGo），不必另外買卡。住宿 lyf Funan 最近的站是 City Hall（EW／NS），Clarke Quay（NE）也很近。環線（CC）已在 2026 年 7 月全線通車，HarbourFront（聖淘沙）可直達濱海灣。點下方路線圖可放大。", svg: SG_MRT_SVG, link: { text: "LTA 官方互動路線圖", url: "https://www.lta.gov.sg/content/ltagov/en/map/train.html" } },
+      { title: "Grab", body: "東南亞最普及的叫車 app，跨區移動或趕時間很方便，可綁信用卡。" },
+      { title: "樟宜機場 ↔ 市區", body: "MRT 東西線（需在 Tanah Merah 轉車）或 Grab，約 30 分鐘。" }
+    ],
+    notes: [
+      "新加坡法規嚴格：禁止嚼口香糖入境販售、公共場所禁菸區多，亂丟垃圾會罰款",
+      "MRT 車廂內禁止飲食（包含喝水）",
+      "小販中心可用紙巾或小物「佔位」，是當地習慣",
+      "熱帶午後常下雷陣雨，隨身帶傘",
+      "室內冷氣強，帶薄外套"
+    ],
+    souvenirs: [
+      { local: "Bengawan Solo", romaji: "—", zh: "娘惹糕點", desc: "知名娘惹糕與鳳梨酥品牌，機場與商場都有分店。", image: "" },
+      { local: "TWG Tea", romaji: "—", zh: "TWG 茶葉", desc: "新加坡精品茶品牌，包裝精美適合送禮。", image: "" },
+      { local: "Irvins Salted Egg", romaji: "—", zh: "鹹蛋魚皮／洋芋片", desc: "人氣鹹蛋黃口味零食，機場有專櫃。", image: "" },
+      { local: "Kaya Jam", romaji: "—", zh: "咖椰醬", desc: "亞坤等店家有販售瓶裝咖椰醬，帶回家做咖椰吐司。", image: "" },
+      { local: "Bee Cheng Hiang", romaji: "—", zh: "美珍香肉乾", desc: "新加坡知名肉乾；注意肉製品帶回台灣有檢疫限制，建議當地享用。", image: "" }
+    ]
+  }
+};
+
+const CITY_ORDER = ["singapore"];
+
+/* ============================================================
+   HAND-DRAWN SVG MOTIFS
+   ============================================================ */
+const CITY_MOTIFS = {
+  singapore: `<svg viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <rect width="64" height="48" fill="#fdecef"/>
+    <circle cx="52" cy="11" r="4.5" fill="#f08c6e" opacity="0.6"/>
+    <g fill="#d4587a">
+      <rect x="18" y="16" width="5" height="20"/>
+      <rect x="27" y="16" width="5" height="20"/>
+      <rect x="36" y="16" width="5" height="20"/>
+      <path d="M 15 14 Q 28 11 44 13 L 44 16 L 15 16 Z"/>
+    </g>
+    <g fill="none" stroke="#2f7f9e" stroke-linecap="round">
+      <path d="M 0 39 Q 8 36.5 16 39 T 32 39 T 48 39 T 64 39" stroke-width="1.4"/>
+      <path d="M 0 43 Q 8 40.5 16 43 T 32 43 T 48 43 T 64 43" stroke-width="1.1" opacity="0.55"/>
+      <path d="M 0 47 Q 8 44.5 16 47 T 32 47 T 48 47 T 64 47" stroke-width="0.8" opacity="0.35"/>
+    </g>
+  </svg>`
+};
+
+/* ============================================================
+   DECORATIVE ORNAMENTS (lemon branch, bouquet)
+   ============================================================ */
+/* Hero deco — small hand-drawn icons */
+const HERO_PLANE = `<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g transform="rotate(-18 28 28)" fill="#2f7f9e">
+    <path d="M 6 30 L 38 25 L 46 25 Q 50 25 50 28 Q 50 31 46 31 L 38 31 L 6 30 Z"/>
+    <path d="M 22 18 L 25 18 L 20 25 L 17 25 Z"/>
+    <path d="M 22 38 L 25 38 L 20 31 L 17 31 Z"/>
+    <path d="M 38 21 L 41 21 L 38 25 L 36 25 Z"/>
+    <path d="M 38 35 L 41 35 L 38 31 L 36 31 Z"/>
+  </g>
+  <g fill="#2f7f9e" opacity="0.45">
+    <circle cx="14" cy="44" r="1.1"/>
+    <circle cx="9" cy="47" r="0.9"/>
+    <circle cx="5" cy="49" r="0.7"/>
+  </g>
+</svg>`;
+
+const HERO_CHAMPAGNE = `<svg viewBox="0 0 30 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M 15 57 Q 13 42 15 28 Q 16 20 15 16" stroke="#3f9e7a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <path d="M 14 46 Q 6 42 4 34 Q 11 37 14 44 Z" fill="#5fb8a6" opacity="0.9"/>
+  <path d="M 15 36 Q 19 33 22 31" stroke="#3f9e7a" stroke-width="1" fill="none" stroke-linecap="round"/>
+  <g transform="translate(15 12) scale(1.0)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+  <g transform="translate(22.5 29) scale(0.62)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+</svg>`;
+
+const HERO_SEAGULL = `<svg viewBox="0 0 90 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#2f7f9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 4 14 Q 10 5 16 14 Q 22 5 28 14" stroke-width="1.6"/>
+    <path d="M 38 18 Q 44 11 50 18 Q 56 11 62 18" stroke-width="1.3" opacity="0.75"/>
+    <path d="M 70 12 Q 74 6 78 12 Q 82 6 86 11" stroke-width="1" opacity="0.6"/>
+  </g>
+</svg>`;
+
+const HERO_CHAIR = `<svg viewBox="0 0 60 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle cx="50" cy="8" r="4" fill="#f08c6e" opacity="0.75"/>
+  <g fill="#2f7f9e">
+    <path d="M 12 38 L 13 15 L 19 15 L 19.5 38 Z"/>
+    <path d="M 26 38 L 26.5 15 L 32.5 15 L 33 38 Z"/>
+    <path d="M 40 38 L 40.5 15 L 46.5 15 L 47 38 Z"/>
+    <path d="M 6 14.5 Q 30 9.5 55 12.5 L 55 15 Q 30 13 6 16.5 Z"/>
+  </g>
+  <g fill="none" stroke="#5fb8a6" stroke-linecap="round">
+    <path d="M 2 41 Q 9 39 16 41 T 30 41 T 44 41 T 58 41" stroke-width="1.3"/>
+    <path d="M 6 44.5 Q 13 42.5 20 44.5 T 34 44.5 T 48 44.5" stroke-width="1" opacity="0.6"/>
+  </g>
+</svg>`;
+
+const HERO_SHELL = `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></svg>`;
+
+const HERO_UMBRELLA = `<svg viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="22" cy="52.5" rx="18" ry="1" fill="#a86b50" opacity="0.25"/>
+  <path d="M 3 13 L 41 13 L 37 6 L 7 6 Z" fill="#c9506f"/>
+  <rect x="5" y="13" width="34" height="39" fill="#f8c9d4" stroke="#c9506f" stroke-width="1"/>
+  <g fill="#5fb8a6" stroke="#3aa58f" stroke-width="0.6">
+    <path d="M 9 28 V 20 Q 12 16.5 15 20 V 28 Z"/>
+    <path d="M 19 28 V 20 Q 22 16.5 25 20 V 28 Z"/>
+    <path d="M 29 28 V 20 Q 32 16.5 35 20 V 28 Z"/>
+  </g>
+  <rect x="5" y="30" width="34" height="3" fill="#f2c14e"/>
+  <g fill="#5fb8a6" stroke="#3aa58f" stroke-width="0.6">
+    <rect x="8.5" y="37" width="6" height="8"/>
+    <rect x="29.5" y="37" width="6" height="8"/>
+  </g>
+  <path d="M 18 52 V 40 Q 22 35.5 26 40 V 52 Z" fill="#2f7f9e"/>
+  <rect x="5" y="49" width="34" height="3" fill="#2f7f9e" opacity="0.35"/>
+</svg>`;
+
+const HERO_PALM = `<svg viewBox="0 0 52 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#3f9e7a" stroke-width="1.2" fill="none" stroke-linecap="round">
+    <path d="M 4 32 Q 18 22 48 8"/>
+  </g>
+  <g fill="#3f9e7a" opacity="0.55">
+    <path d="M 10 26 Q 4 22 2 16 Q 8 18 14 24 Z"/>
+    <path d="M 18 22 Q 12 16 10 8 Q 18 12 22 20 Z"/>
+    <path d="M 26 18 Q 22 10 22 2 Q 28 8 30 16 Z"/>
+    <path d="M 34 14 Q 32 7 34 0 Q 38 6 38 12 Z"/>
+    <path d="M 42 11 Q 42 5 46 2 Q 46 7 44 10 Z"/>
+  </g>
+  <g stroke="#3f9e7a" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.85">
+    <path d="M 10 26 Q 4 22 2 16"/>
+    <path d="M 18 22 Q 12 16 10 8"/>
+    <path d="M 26 18 Q 22 10 22 2"/>
+    <path d="M 34 14 Q 32 7 34 0"/>
+    <path d="M 42 11 Q 42 5 46 2"/>
+  </g>
+</svg>`;
+
+const HERO_COCONUT = `<svg viewBox="0 0 36 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="18" cy="54" rx="8" ry="0.9" fill="#a86b50" opacity="0.25"/>
+  <path d="M 15.5 54 L 20.5 54 L 19.2 25 L 16.8 25 Z" fill="#3f9e7a"/>
+  <path d="M 4 11 Q 18 21 32 11 Q 27 26 18 26 Q 9 26 4 11 Z" fill="#5fb8a6"/>
+  <g stroke="#3f9e7a" stroke-width="0.7" fill="none" opacity="0.8">
+    <path d="M 9 14 Q 13 22 18 25"/><path d="M 18 15 L 18 25"/><path d="M 27 14 Q 23 22 18 25"/>
+    <path d="M 7 17 Q 18 21 29 17"/>
+  </g>
+  <ellipse cx="18" cy="11" rx="14" ry="3" fill="none" stroke="#3f9e7a" stroke-width="1.2"/>
+  <g>
+    <circle cx="10" cy="11" r="1" fill="#d4587a"/><circle cx="18" cy="8.6" r="1" fill="#f2c14e"/>
+    <circle cx="26" cy="11" r="1" fill="#d4587a"/><circle cx="14" cy="13.4" r="0.8" fill="#f2c14e"/>
+    <circle cx="22" cy="13.4" r="0.8" fill="#f2c14e"/>
+  </g>
+</svg>`;
+
+const ORNAMENT_LEMON = `<svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M 8 34 Q 38 20 60 24 Q 86 28 112 16" stroke="#3f9e7a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <g fill="#5fb8a6" opacity="0.9">
+    <path d="M 26 28 Q 18 20 20 12 Q 28 18 28 27 Z"/>
+    <path d="M 74 27 Q 82 36 92 36 Q 86 28 76 26 Z"/>
+  </g>
+  <g transform="translate(42 19) scale(0.8)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+  <g transform="translate(62 23) scale(0.95)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+  <g transform="translate(98 16) scale(0.75)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+</svg>`;
+
+const ORNAMENT_BOUQUET = `<svg viewBox="0 0 132 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(0 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g><g transform="translate(46 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g><g transform="translate(92 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g></svg>`;
+
+/* ============================================================
+   RENDER · HOME (ticket strip)
+   ============================================================ */
+function renderHome() {
+  const strip = document.getElementById("ticketStrip");
+  strip.innerHTML = itineraryData.map((d, i) => {
+    const dateParts = d.date.split("/");
+    return `
+      <button class="ticket-stub" data-phase="${d.phase}" data-day-idx="${i}" type="button">
+        <span class="ticket-stub__d">${d.day.replace("Day ", "D")}<span>${d.dow}</span></span>
+        <span class="ticket-stub__content">
+          <span class="ticket-stub__phase">${PHASE_LABEL[d.phase]}</span>
+          <span class="ticket-stub__title">${escapeHTML(d.title)}</span>
+          <span class="ticket-stub__sub">${escapeHTML(d.subtitle || "")}</span>
+        </span>
+        <span class="ticket-stub__date">
+          <strong>${dateParts[1]}/${dateParts[2]}</strong>
+        </span>
+      </button>
+    `;
+  }).join("");
+
+  strip.querySelectorAll(".ticket-stub").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const idx = Number(btn.dataset.dayIdx);
+      gotoDay(idx);
+    });
+  });
+}
+
+/* ============================================================
+   RENDER · CITY LIST (home page)
+   ============================================================ */
+function renderCityList() {
+  const list = document.getElementById("citiesList");
+  list.innerHTML = CITY_ORDER.map(key => {
+    const c = cityData[key];
+    // Home thumbnail always uses the hand-drawn SVG motif (coverImage is
+    // reserved for the city chapter banner photo).
+    const thumb = CITY_MOTIFS[key] || "";
+    return `
+      <button class="city-item" data-phase="${c.phase}" data-city-key="${key}" type="button">
+        <div class="city-item__thumb">${thumb}</div>
+        <div class="city-item__body">
+          <div class="city-item__head">
+            <span class="city-item__en">${escapeHTML(c.en)}</span>
+            <span class="city-item__zh">${escapeHTML(c.zh)}</span>
+          </div>
+          <div class="city-item__days">${escapeHTML(c.daysLabel)}</div>
+          <div class="city-item__sub">${escapeHTML(c.subtitle)}</div>
+        </div>
+        <span class="city-item__arrow">›</span>
+      </button>
+    `;
+  }).join("");
+
+  list.querySelectorAll(".city-item").forEach(btn => {
+    btn.addEventListener("click", () => gotoCity(btn.dataset.cityKey));
+  });
+}
+
+/* ============================================================
+   CITY VIEW
+   ============================================================ */
+let currentCityKey = null;
+let currentCityTab = "intro";
+
+function gotoCity(key) {
+  if (!cityData[key]) return;
+  currentCityKey = key;
+  currentCityTab = "intro";
+  const c = cityData[key];
+  document.body.setAttribute("data-view", "city");
+  document.body.setAttribute("data-phase", c.phase);
+  document.documentElement.style.setProperty("--phase-label", `"${PHASE_LABEL[c.phase]}"`);
+  document.getElementById("cityBreadcrumb").textContent = `${c.en} · ${c.zh}`;
+  renderCityContent();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderCityContent() {
+  const c = cityData[currentCityKey];
+  const tabs = c.hasTransit
+    ? [["intro", "介紹"], ["food", "美食"], ["souvenirs", "伴手禮"], ["transit", "交通"], ["notes", "須知"]]
+    : [["intro", "介紹"], ["food", "美食"], ["souvenirs", "伴手禮"], ["notes", "須知"]];
+
+  const html = `
+    <div class="city-banner">
+      ${c.coverImage
+        ? `<img class="city-banner__img" src="${escapeHTML(c.coverImage)}" alt="${escapeHTML(c.coverAlt || c.en)}" loading="lazy" />`
+        : `<div class="city-banner__placeholder"></div>`
+      }
+      <p class="city-banner__caption">
+        ${escapeHTML(c.en.toUpperCase())}
+        <span class="city-banner__caption-sep">·</span>
+        ${escapeHTML(c.daysLabel.replace("Day ", "D"))}
+      </p>
+    </div>
+
+    <div class="city-meta">
+      <h2 class="city-meta__name">${escapeHTML(c.en)}</h2>
+      <p class="city-meta__zh">${escapeHTML(c.zh)}</p>
+      <p class="city-meta__days">${escapeHTML(c.daysLabel)}</p>
+      <p class="city-meta__sub">${escapeHTML(c.subtitle)}</p>
+    </div>
+
+    <nav class="city-tabs" role="tablist">
+      ${tabs.map(([k, label], i) => `
+        <button class="city-tab ${k === currentCityTab ? "is-active" : ""}" data-city-tab="${k}" type="button">${label}</button>
+      `).join("")}
+    </nav>
+
+    <div class="city-panel" id="cityPanel">${renderCityPanel(c, currentCityTab)}</div>
+
+    <div class="city-days">
+      <div class="city-days__label">— DAYS IN ${escapeHTML(c.en.toUpperCase())} —</div>
+      <div class="city-days__list">
+        ${c.dayIndices.map(i => {
+          const d = itineraryData[i];
+          const dp = d.date.split("/");
+          const loc = DAY_CHIP_LABELS[i] || "";
+          return `<button class="city-day-chip" data-goto-day-idx="${i}" type="button">
+            <div class="city-day-chip__d">D${i+1}</div>
+            <div class="city-day-chip__date">${parseInt(dp[1],10)}/${parseInt(dp[2],10)}</div>
+            <div class="city-day-chip__loc">${loc}</div>
+          </button>`;
+        }).join("")}
+      </div>
+    </div>
+  `;
+
+  document.getElementById("cityContent").innerHTML = html;
+
+  // Tab switching
+  document.querySelectorAll(".city-tab").forEach(t => {
+    t.addEventListener("click", () => {
+      currentCityTab = t.dataset.cityTab;
+      document.querySelectorAll(".city-tab").forEach(x => x.classList.toggle("is-active", x === t));
+      document.getElementById("cityPanel").innerHTML = renderCityPanel(c, currentCityTab);
+    });
+  });
+
+  // Day chips
+  document.querySelectorAll(".city-day-chip").forEach(chip => {
+    chip.addEventListener("click", () => gotoDay(Number(chip.dataset.gotoDayIdx)));
+  });
+}
+
+function renderCityPanel(c, tab) {
+  function header(en, zh) {
+    return `<div class="panel-header">${en}<span class="panel-header__zh">${zh}</span></div>`;
+  }
+
+  if (tab === "intro") {
+    const paragraphs = (c.intro || "").split(/\n\n+/).map(p => `<p>${escapeHTML(p)}</p>`).join("");
+    return header("City Notes", "介紹") + `<div class="city-intro">${paragraphs}</div>` + renderPhrasebook(c.phrasebook);
+  }
+
+  if (tab === "food") {
+    let groups = null;
+    if (c.foodGroups && c.foodGroups.length) {
+      groups = c.foodGroups;
+    } else if (c.foods && c.foods.length) {
+      groups = [{ name: null, zh: null, items: c.foods }];
+    }
+    if (!groups) return header("Must Eat", "必吃") + `<div class="empty">— 待補 —</div>`;
+    const renderFood = f => `
+      <article class="food-card">
+        ${f.image
+          ? `<img class="food-card__img" src="${escapeHTML(f.image)}" alt="${escapeHTML(f.local)}" loading="lazy" />`
+          : `<div class="food-card__img-ph">FOOD</div>`}
+        <div class="food-card__body">
+          <h4 class="food-card__local">${escapeHTML(f.local)}</h4>
+          ${f.romaji ? `<span class="food-card__local-romaji">${escapeHTML(f.romaji)}</span>` : ""}
+          ${f.zh ? `<div class="food-card__zh">${escapeHTML(f.zh)}</div>` : ""}
+          ${f.desc ? `<p class="food-card__desc">${applyInlineLinks(escapeHTML(f.desc), f.links)}</p>` : ""}
+        </div>
+      </article>`;
+    return header("Must Eat", "必吃") + groups.map(g => `
+      <div class="food-group">
+        ${g.name ? `<div class="food-group__header">
+          <span class="food-group__name">${escapeHTML(g.name)}</span>
+          ${g.zh ? `<span class="food-group__zh">${escapeHTML(g.zh)}</span>` : ""}
+        </div>` : ""}
+        <div class="food-grid">${(g.items || []).map(renderFood).join("")}</div>
+      </div>
+    `).join("");
+  }
+
+  if (tab === "souvenirs") {
+    let groups = null;
+    if (c.souvenirGroups && c.souvenirGroups.length) {
+      groups = c.souvenirGroups;
+    } else if (c.souvenirs && c.souvenirs.length) {
+      groups = [{ name: null, zh: null, items: c.souvenirs }];
+    }
+    if (!groups) return header("Souvenirs", "伴手禮") + `<div class="empty">— 待補 —</div>`;
+    const renderSouv = f => `
+      <article class="food-card">
+        ${f.image
+          ? `<img class="food-card__img" src="${escapeHTML(f.image)}" alt="${escapeHTML(f.local)}" loading="lazy" />`
+          : `<div class="food-card__img-ph">GIFT</div>`}
+        <div class="food-card__body">
+          <h4 class="food-card__local">${escapeHTML(f.local)}</h4>
+          ${f.romaji ? `<span class="food-card__local-romaji">${escapeHTML(f.romaji)}</span>` : ""}
+          ${f.zh ? `<div class="food-card__zh">${escapeHTML(f.zh)}</div>` : ""}
+          ${f.desc ? `<p class="food-card__desc">${applyInlineLinks(escapeHTML(f.desc), f.links)}</p>` : ""}
+        </div>
+      </article>`;
+    return header("Souvenirs", "伴手禮") + groups.map(g => `
+      <div class="food-group">
+        ${g.name ? `<div class="food-group__header">
+          <span class="food-group__name">${escapeHTML(g.name)}</span>
+          ${g.zh ? `<span class="food-group__zh">${escapeHTML(g.zh)}</span>` : ""}
+        </div>` : ""}
+        <div class="food-grid">${(g.items || []).map(renderSouv).join("")}</div>
+      </div>
+    `).join("");
+  }
+
+  if (tab === "transit") {
+    if (!c.transit || !c.transit.length) return header("Getting Around", "交通") + `<div class="empty">— 不適用 —</div>`;
+    return header("Getting Around", "交通") + c.transit.map(t => `
+      <section class="transit-block">
+        <h4>${escapeHTML(t.title)}</h4>
+        <p>${escapeHTML(t.body)}</p>
+        ${t.svg ? `<div class="transit-map" role="button" tabindex="0" data-mapimg="${escapeHTML("data:image/svg+xml;charset=utf-8," + encodeURIComponent(t.svg))}" data-mapimg-title="${escapeHTML(t.title)} 路線圖">${t.svg}</div>` : ""}
+        ${t.link ? `<a class="transit-link" href="${escapeHTML(t.link.url)}" target="_blank" rel="noopener">${escapeHTML(t.link.text)} ›</a>` : ""}
+      </section>
+    `).join("");
+  }
+
+  if (tab === "notes") {
+    let groups = null;
+    if (c.noteGroups && c.noteGroups.length) {
+      groups = c.noteGroups;
+    } else if (c.notes && c.notes.length) {
+      groups = [{ name: null, zh: null, items: c.notes }];
+    }
+    if (!groups) return header("Good to Know", "須知") + `<div class="empty">— 待補 —</div>`;
+    return header("Good to Know", "須知") + groups.map(g => `
+      <div class="note-group">
+        ${g.name ? `<div class="note-group__header">
+          <span class="note-group__name">${escapeHTML(g.name)}</span>
+          ${g.zh ? `<span class="note-group__zh">${escapeHTML(g.zh)}</span>` : ""}
+        </div>` : ""}
+        <section class="notes-block">
+          <ul>${(g.items || []).map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>
+        </section>
+      </div>
+    `).join("");
+  }
+
+  return "";
+}
+
+/* ============================================================
+   RENDER · DAY VIEW
+   ============================================================ */
+let currentDayIdx = 0;
+
+function gotoDay(idx) {
+  currentDayIdx = idx;
+  const day = itineraryData[idx];
+  document.body.setAttribute("data-view", "day");
+  document.body.setAttribute("data-phase", day.phase);
+  document.documentElement.style.setProperty("--phase-label", `"${PHASE_LABEL[day.phase]}"`);
+  document.getElementById("dayProgress").textContent = `${day.day} / ${itineraryData.length}`;
+  renderDateStrip();
+  renderDayContent();
+  // scroll active date card into view
+  setTimeout(() => {
+    const active = document.querySelector(".date-card.is-active");
+    if (active) active.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, 50);
+  // scroll to top of day content
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function gotoHome() {
+  document.body.setAttribute("data-view", "home");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+const DAY_CITY_LABELS = [
+  "Taipei",   // D1
+  "Katong",   // D2
+  "Mandai",   // D3
+  "Marina",   // D4
+  "Taipei"    // D5
+];
+
+/* Specific per-day chip label (shown on city-chapter day chips) */
+const DAY_CHIP_LABELS = [
+  "抵達 SIN",       // D1
+  "加東 · 哈芝巷",  // D2
+  "動物園",         // D3
+  "濱海灣 · MCR",   // D4
+  "返程"            // D5
+];
+
+function renderDateStrip() {
+  const strip = document.getElementById("dateStrip");
+  strip.innerHTML = itineraryData.map((d, i) => {
+    const dateParts = d.date.split("/");
+    const m  = parseInt(dateParts[1], 10);  // strip leading zero
+    const dd = parseInt(dateParts[2], 10);
+    const city = DAY_CITY_LABELS[i] || "";
+    return `
+      <button class="date-card ${i === currentDayIdx ? "is-active" : ""}" data-day-idx="${i}" data-phase="${d.phase}" type="button">
+        <div class="date-card__top"></div>
+        <div class="date-card__inner">
+          <div class="date-card__dow">${d.dow}</div>
+          <div class="date-card__day">D${i+1}</div>
+          <div class="date-card__date"><span class="date-card__mon">${m}</span><span class="date-card__sep">/</span><span class="date-card__num">${dd}</span></div>
+          <div class="date-card__city">${city}</div>
+        </div>
+      </button>
+    `;
+  }).join("");
+  strip.querySelectorAll(".date-card").forEach(btn => {
+    btn.addEventListener("click", () => gotoDay(Number(btn.dataset.dayIdx)));
+  });
+}
+
+function renderDayContent() {
+  const day = itineraryData[currentDayIdx];
+  const dateParts = day.date.split("/");
+  const html = `
+    <div class="postcard">
+      ${day.coverImage
+        ? `<img class="postcard__img" src="${escapeHTML(day.coverImage)}" alt="${escapeHTML(day.coverAlt || day.title)}" loading="lazy" />`
+        : `<div class="postcard__placeholder"></div>`
+      }
+      <div class="postcard__stamp">
+        ${day.dow}<br>
+        <strong>${dateParts[2]}</strong>
+        ${dateParts[1]}月
+      </div>
+      <p class="postcard__caption">${escapeHTML(day.routeCode || day.title)}</p>
+    </div>
+
+    <div class="day-meta">
+      <span class="day-meta__phase">${PHASE_LABEL[day.phase]}</span>
+      <h2 class="day-meta__title">${escapeHTML(day.title)}</h2>
+      <p class="day-meta__subtitle">${escapeHTML(day.subtitle || "")}</p>
+    </div>
+
+    <nav class="day-tabs" role="tablist">
+      <button class="day-tab is-active" data-tab="schedule" type="button">行程</button>
+      <button class="day-tab" data-tab="intro" type="button">介紹</button>
+      <button class="day-tab" data-tab="notes" type="button">備註</button>
+    </nav>
+
+    <div class="day-panel" data-panel="schedule">
+      ${(day.schedule || []).map(renderTripCard).join("")}
+      ${day.hotel && day.hotel.name ? renderHotel(day.hotel) : ""}
+    </div>
+
+    <div class="day-panel" data-panel="intro" hidden>
+      ${(day.introCards || []).length
+        ? (day.introCards || []).map(renderIntroCard).join("")
+        : `<div class="empty">— 尚無介紹 —</div>`}
+    </div>
+
+    <div class="day-panel" data-panel="notes" hidden>
+      ${(day.extraNotes || []).length
+        ? `<ul class="notes-list">${day.extraNotes.map(n => `<li>${escapeHTML(n)}</li>`).join("")}</ul>`
+        : ((day.notesPanels || []).length ? "" : `<div class="empty">— 尚無備註 —</div>`)}
+      ${(day.notesPanels || []).map(p => `
+        <div class="notes-panel">
+          ${p.title ? `<h4 class="notes-panel__title">${escapeHTML(p.title)}</h4>` : ""}
+          ${p.text ? `<p class="notes-panel__text">${applyInlineLinks(escapeHTML(p.text), p.links)}</p>` : ""}
+          ${(p.mapImages || []).length
+            ? `<div class="notes-panel__actions">${p.mapImages.map(m => `<button class="btn-chip" type="button" data-mapimg="${escapeHTML(m.image)}" data-mapimg-title="${escapeHTML(m.title || p.title || "圖示")}">🗺️ ${escapeHTML(m.label || "圖示")}</button>`).join("")}</div>`
+            : ""}
+        </div>
+      `).join("")}
+    </div>
+  `;
+  document.getElementById("dayContent").innerHTML = html;
+
+  // tab switching
+  const panels = document.querySelectorAll(".day-panel");
+  const tabs = document.querySelectorAll(".day-tab");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+      const target = tab.dataset.tab;
+      panels.forEach(p => {
+        if (p.dataset.panel === target) p.hidden = false;
+        else p.hidden = true;
+      });
+    });
+  });
+}
+
+/* ---------- Trip card render ---------- */
+function renderTripCard(item) {
+  if (item.type === "transit") {
+    const hasFrom = !!item.from;
+    const hasTo = !!item.to;
+    const flightLbl = escapeHTML(item.flightNo || item.train || "");
+
+    // Dual-time mode (opt-in): one card, two timestamps on left timeline
+    if (item.dualTime && hasFrom && hasTo) {
+      const m = (item.timeRange || "").match(/(\d{1,2}:\d{2})\s*[–-]\s*(\d{1,2}:\d{2}(?:\s*\(\+?\d+\))?)/);
+      const departT = m ? m[1] : (item.time || "");
+      const arriveT = m ? m[2] : "";
+      return `
+        <div class="trip-card trip-card--dual trip-card--transit">
+          <div class="trip-card__dual-main">
+            <div class="trip-card__time-col">
+              <span class="trip-card__time--depart">${escapeHTML(departT)}</span>
+              <span class="trip-card__time--arrive">${escapeHTML(arriveT)}</span>
+            </div>
+            <div class="ticket-row">
+              <div class="ticket-row__route">
+                <span class="ticket-row__from">${escapeHTML(item.from)}</span>
+                <span class="ticket-row__arrow">→</span>
+                <span class="ticket-row__to">${escapeHTML(item.to)}</span>
+                <div class="ticket-row__num">${flightLbl}</div>
+              </div>
+            </div>
+          </div>
+          ${item.note ? `<p class="trip-card__note trip-card__note--dual">${escapeHTML(item.note)}</p>` : ""}
+        </div>
+      `;
+    }
+
+    if (hasFrom && hasTo) {
+      // Double-endpoint: keep original ticket-row design
+      return `
+        <div class="trip-card trip-card--transit">
+          <div class="trip-card__time">${escapeHTML(item.time || "")}</div>
+          <div class="trip-card__content">
+            <div class="ticket-row">
+              <div class="ticket-row__route">
+                <span class="ticket-row__from">${escapeHTML(item.from)}</span>
+                <span class="ticket-row__arrow">→</span>
+                <span class="ticket-row__to">${escapeHTML(item.to)}</span>
+                <div class="ticket-row__num">${flightLbl}</div>
+              </div>
+              <div class="ticket-row__time">
+                <strong>${escapeHTML(item.timeRange || "")}</strong>
+              </div>
+            </div>
+            ${item.note ? `<p class="trip-card__note">${escapeHTML(item.note)}</p>` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    // Single-endpoint: time on left rendered as ticket-stub badge,
+    // right side is a clean trip-card body (no ticket-row)
+    const loc = hasFrom ? item.from : item.to;
+    const label = hasFrom ? "起飛 ↗" : "↘ 抵達";
+    return `
+      <div class="trip-card">
+        <div class="trip-card__time trip-card__time--stub">${escapeHTML(item.time || "")}</div>
+        <div class="trip-card__content">
+          <h3 class="trip-card__name">
+            <span class="trip-card__leg-loc">${escapeHTML(loc)}</span><span class="trip-card__leg-label">${label}</span>
+          </h3>
+          ${flightLbl ? `<p class="trip-card__sub">${flightLbl}</p>` : ""}
+          ${item.note ? `<p class="trip-card__note">${escapeHTML(item.note)}</p>` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  const time = (item.time || "").trim();
+  const hasTime = time.length > 0;
+  const timeHTML = hasTime
+    ? `<div class="trip-card__time">${escapeHTML(time)}</div>`
+    : `<div class="trip-card__time trip-card__time--empty">—</div>`;
+
+  // Optional / flexible item: strip the (optional) marker from the name
+  // and surface it as a small badge in the card's top-right corner.
+  const OPT_RE = /[（(]\s*optional\s*[）)]/i;
+  const isOptional = item.optional === true || OPT_RE.test(item.place || "");
+  const displayPlace = (item.place || "").replace(OPT_RE, "").trim();
+  const optBadge = isOptional ? `<span class="trip-card__opt">彈性</span>` : "";
+
+  // Meal rows (breakfast/lunch/dinner) get a soft-colour wash so they read as
+  // morning / afternoon / evening dividers.
+  const isMeal = /早餐|午餐|中餐|晚餐/.test((item.time || "") + (item.place || ""));
+
+  const placeHTML = item.mapLink
+    ? `<a href="${escapeHTML(item.mapLink)}" target="_blank" rel="noopener">${escapeHTML(displayPlace)}</a>`
+    : applyInlineLinks(escapeHTML(displayPlace), item.placeLinks);
+
+  // Business hours: shown inline right after the name, smaller + muted (never the city accent color).
+  // Leading space gives a line-break opportunity so long/multi-period hours can wrap below the name;
+  // each HH:MM–HH:MM range is wrapped in .nb so a single time slot never breaks mid-range.
+  const hoursHTML = item.hours
+    ? ` <span class="trip-card__hours">${escapeHTML(item.hours).replace(/(\d{1,2}:\d{2}\s*[–-]\s*\d{1,2}:\d{2})/g, '<span class="nb">$1</span>')}</span>`
+    : "";
+
+  const foodsJson = JSON.stringify(item.foods || []);
+  const foodsLabel = item.foodsLabel || "附近吃食";
+  const foodBtn = (item.foods && item.foods.length)
+    ? `<button class="btn-chip" type="button"
+         data-food='${escapeHTML(foodsJson)}'
+         data-food-title="${escapeHTML(displayPlace)} · ${escapeHTML(foodsLabel)}">🍜 ${escapeHTML(foodsLabel)}</button>`
+    : "";
+
+  const tipBtn = (item.tip && item.tip.title && Array.isArray(item.tip.steps) && item.tip.steps.length)
+    ? `<button class="btn-chip btn-chip--tip" type="button"
+         data-tip-title="${escapeHTML(item.tip.title)}"
+         data-tip-steps='${escapeHTML(JSON.stringify(item.tip.steps))}'
+         data-tip-links='${escapeHTML(JSON.stringify(item.tip.links || []))}'>📸 ${escapeHTML(item.tip.title)}</button>`
+    : "";
+
+  const mapImgList = Array.isArray(item.mapImages)
+    ? item.mapImages
+    : (item.mapImage ? [{ image: item.mapImage, title: item.mapImageTitle, label: item.mapImageLabel }] : []);
+  const mapBtn = mapImgList.map(m =>
+    `<button class="btn-chip" type="button"
+       data-mapimg="${escapeHTML(m.image)}"
+       data-mapimg-title="${escapeHTML(m.title || displayPlace)}">🗺️ ${escapeHTML(m.label || "路線圖")}</button>`
+  ).join("");
+
+  const actions = foodBtn + tipBtn + mapBtn;
+
+  return `
+    <div class="trip-card${isOptional ? " trip-card--opt" : ""}${isMeal ? " trip-card--meal" : ""}">
+      ${optBadge}
+      ${timeHTML}
+      <div class="trip-card__content">
+        <h3 class="trip-card__name">${placeHTML}${hoursHTML}</h3>
+        ${item.description ? `<p class="trip-card__desc">${applyInlineLinks(escapeHTML(item.description), item.descriptionLinks)}</p>` : ""}
+        ${item.note ? `<p class="trip-card__note">${applyInlineLinks(escapeHTML(item.note), item.noteLinks)}</p>` : ""}
+        ${actions ? `<div class="trip-card__actions">${actions}</div>` : ""}
+      </div>
+    </div>
+  `;
+}
+
+/* ---------- Intro card render ---------- */
+function renderIntroCard(card) {
+  const imgHTML = card.image
+    ? `<img class="intro-card__img" src="${escapeHTML(card.image)}" alt="${escapeHTML(card.title)}" loading="lazy" />`
+    : `<div class="intro-card__img-placeholder"></div>`;
+  const titleHTML = card.mapLink
+    ? `<a href="${escapeHTML(card.mapLink)}" target="_blank" rel="noopener">${escapeHTML(card.title)}</a>`
+    : escapeHTML(card.title);
+  return `
+    <article class="intro-card">
+      ${imgHTML}
+      <div class="intro-card__body">
+        <h4 class="intro-card__title">${titleHTML}</h4>
+        <p class="intro-card__text">${applyInlineLinks(escapeHTML(card.text || ""), card.links)}</p>
+      </div>
+    </article>
+  `;
+}
+
+/* ---------- Hotel render ---------- */
+function renderHotel(hotel) {
+  return `
+    <div class="day-hotel">
+      <span class="day-hotel__label">HOTEL · 住宿</span>
+      ${hotel.mapLink
+        ? `<a class="day-hotel__name" href="${escapeHTML(hotel.mapLink)}" target="_blank" rel="noopener">${escapeHTML(hotel.name)}</a>`
+        : `<span class="day-hotel__name">${escapeHTML(hotel.name)}</span>`}
+    </div>
+  `;
+}
+
+/* ---------- Inline link helper ---------- */
+function applyInlineLinks(escapedText, links) {
+  if (!Array.isArray(links) || !links.length) return escapedText;
+  const sorted = [...links]
+    .filter(l => l && l.name && l.url)
+    .sort((a, b) => b.name.length - a.name.length);
+  const tokens = [];
+  let out = escapedText;
+  sorted.forEach((link, i) => {
+    const safeName = escapeHTML(link.name);
+    if (out.indexOf(safeName) !== -1) {
+      const token = ` LINK_${i} `;
+      const anchor = `<a href="${escapeHTML(link.url)}" target="_blank" rel="noopener">${safeName}</a>`;
+      out = out.split(safeName).join(token);
+      tokens.push({ token, anchor });
+    }
+  });
+  tokens.forEach(({ token, anchor }) => { out = out.split(token).join(anchor); });
+  return out;
+}
+
+/* ---------- Food modal ---------- */
+function bindFoodModal() {
+  const modal = document.getElementById("foodModal");
+  const titleEl = document.getElementById("foodModalTitle");
+  const subEl = document.getElementById("foodModalSubtitle");
+  const listEl = document.getElementById("foodModalList");
+
+  function open(title, foods) {
+    titleEl.textContent = title;
+    subEl.textContent = "NEARBY EATS";
+    listEl.innerHTML = foods.map(f => {
+      const nameHTML = f.mapLink
+        ? `<a class="modal__food-name" href="${escapeHTML(f.mapLink)}" target="_blank" rel="noopener">${escapeHTML(f.name)}</a>`
+        : `<span class="modal__food-name">${escapeHTML(f.name)}</span>`;
+      return `<div class="modal__food-item">
+        ${nameHTML}
+        ${f.info ? `<div class="modal__food-info">${escapeHTML(f.info)}</div>` : ""}
+      </div>`;
+    }).join("");
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest("[data-food]");
+    if (btn) {
+      const foods = JSON.parse(btn.dataset.food || "[]");
+      const title = btn.dataset.foodTitle || "附近吃食";
+      open(title, foods);
+    }
+    if (e.target.closest("[data-close]")) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") close();
+  });
+}
+
+/* ---------- Tip modal (numbered steps) ---------- */
+function bindTipModal() {
+  const modal = document.getElementById("tipModal");
+  if (!modal) return;
+  const titleEl = document.getElementById("tipModalTitle");
+  const stepsEl = document.getElementById("tipModalSteps");
+
+  function open(title, steps, links) {
+    titleEl.textContent = title || "小提示";
+    stepsEl.innerHTML = (steps || []).map(s =>
+      `<li>${applyInlineLinks(escapeHTML(s), links)}</li>`
+    ).join("");
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    const sheet = modal.querySelector(".modal__sheet");
+    if (sheet) sheet.scrollTop = 0;
+  }
+  function close() {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest("[data-tip-steps]");
+    if (btn) {
+      let steps = [], links = [];
+      try { steps = JSON.parse(btn.dataset.tipSteps || "[]"); } catch (_) { steps = []; }
+      try { links = JSON.parse(btn.dataset.tipLinks || "[]"); } catch (_) { links = []; }
+      open(btn.dataset.tipTitle || "小提示", steps, links);
+    }
+    if (e.target.closest("[data-tip-close]")) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+  });
+}
+
+/* ---------- Map image modal (route map lightbox) ---------- */
+function bindMapModal() {
+  const modal = document.getElementById("mapModal");
+  if (!modal) return;
+  const titleEl = document.getElementById("mapModalTitle");
+  const imgEl = document.getElementById("mapModalImg");
+
+  function open(title, src) {
+    titleEl.textContent = title || "路線圖";
+    imgEl.src = src;
+    imgEl.alt = title || "路線圖";
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    const sheet = modal.querySelector(".modal__sheet");
+    if (sheet) sheet.scrollTop = 0;
+  }
+  function close() {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    imgEl.src = "";
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest("[data-mapimg]");
+    if (btn) open(btn.dataset.mapimgTitle || "路線圖", btn.dataset.mapimg);
+    if (e.target.closest("[data-map-close]")) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+  });
+}
+
+/* ---------- Travel French phrasebook (TTS) ---------- */
+function bindPhrasebook() {
+  if (!("speechSynthesis" in window)) return;
+  window.speechSynthesis.getVoices();
+  document.addEventListener("click", e => {
+    const btn = e.target.closest(".phrase__say[data-say]");
+    if (!btn) return;
+    const text = btn.getAttribute("data-say");
+    if (!text) return;
+    try {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "fr-FR";
+      u.rate = 0.9;
+      const voices = window.speechSynthesis.getVoices();
+      const fr = voices.find(v => v.lang && v.lang.toLowerCase().indexOf("fr") === 0);
+      if (fr) u.voice = fr;
+      btn.classList.add("is-speaking");
+      u.onend = u.onerror = () => btn.classList.remove("is-speaking");
+      window.speechSynthesis.speak(u);
+    } catch (err) { /* no-op */ }
+  });
+}
+
+function renderPhrasebook(list) {
+  if (!Array.isArray(list) || !list.length) return "";
+  return `
+    <section class="phrasebook">
+      <header class="phrasebook__head">
+        <p class="phrasebook__eyebrow">— Travel French —</p>
+        <h2 class="phrasebook__title">旅行法語小抄</h2>
+        <p class="phrasebook__sub">點 🔊 聽發音</p>
+      </header>
+      <ul class="phrasebook__list">
+        ${list.map(p => `
+          <li class="phrase">
+            <button class="phrase__say" type="button" data-say="${escapeHTML(p.fr)}" aria-label="播放發音">🔊</button>
+            <div class="phrase__text"><span class="phrase__fr">${escapeHTML(p.fr)}</span>${p.zh ? `<span class="phrase__zh">${escapeHTML(p.zh)}</span>` : ""}</div>
+          </li>
+        `).join("")}
+      </ul>
+      <p class="phrasebook__note">發音由裝置內建語音合成播放，需開聲音；少數舊瀏覽器可能不支援。</p>
+    </section>`;
+}
+
+/* ---------- Utils ---------- */
+function escapeHTML(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+  }[c]));
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  renderHome();
+  renderCityList();
+  bindFoodModal();
+  bindTipModal();
+  bindMapModal();
+  bindQuickNav();
+  bindPhrasebook();
+
+  // Inject hero deco
+  const inject = (id, svg) => { const el = document.getElementById(id); if (el) el.innerHTML = svg; };
+  inject("heroPlane",     HERO_PLANE);
+  inject("heroChampagne", HERO_CHAMPAGNE);
+  inject("heroSeagull",   HERO_SEAGULL);
+  inject("heroChair",     HERO_CHAIR);
+  inject("heroCoconut",   HERO_COCONUT);
+  inject("heroShell",     HERO_SHELL);
+  inject("heroUmbrella",  HERO_UMBRELLA);
+  inject("heroPalm",      HERO_PALM);
+
+  // Inject decorative ornaments (between sections)
+  inject("ornamentBouquet", ORNAMENT_BOUQUET);
+  inject("ornamentLemon",   ORNAMENT_LEMON);
+
+  document.getElementById("btnHome").addEventListener("click", gotoHome);
+  document.getElementById("btnCityHome").addEventListener("click", gotoHome);
+
+  // initial phase color on home view
+  document.body.setAttribute("data-phase", "singapore");
+});
+
+/* ---------- Quick nav handlers ---------- */
+function bindQuickNav() {
+  const pretripModal = document.getElementById("pretripModal");
+
+  function openPretrip() {
+    pretripModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    const sheet = pretripModal.querySelector(".modal__sheet");
+    if (sheet) sheet.scrollTop = 0;
+  }
+  function closePretrip() {
+    pretripModal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  // Pre-trip button → open pre-trip modal
+  document.getElementById("btnPretrip").addEventListener("click", openPretrip);
+
+  // Close pre-trip modal
+  pretripModal.querySelectorAll("[data-close]").forEach(el => {
+    el.addEventListener("click", closePretrip);
+  });
+}
+</script>
+
+</body>
+</html>
