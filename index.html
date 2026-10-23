@@ -68,20 +68,13 @@ body {
   box-shadow: 0 0 28px rgba(80,55,30,0.18);
   overflow: clip;  /* allow sticky descendants */
 }
+/* 乾淨平滑的紙面（像磁磚釉面）：不用點紋與舊紙暈染，只留極淡的粉紅／孔雀綠漸層 */
 .paper {
   position: relative;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255,250,235,0.6) 0%, transparent 40%),
-    radial-gradient(circle at 80% 88%, rgba(170,130,75,0.07) 0%, transparent 45%),
+    radial-gradient(circle at 15% 8%, rgba(233,163,184,0.10) 0%, transparent 45%),
+    radial-gradient(circle at 85% 92%, rgba(95,184,166,0.08) 0%, transparent 50%),
     var(--paper);
-}
-.paper::before {
-  content: "";
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle at 1px 1px, rgba(120,85,40,0.05) 1px, transparent 1px);
-  background-size: 4px 4px;
-  mix-blend-mode: multiply;
 }
 .paper > * { position: relative; z-index: 1; }
 
@@ -2406,6 +2399,7 @@ const itineraryData = [
         from: "TPE",
         to: "SIN",
         flightNo: "JX771",
+        mapImages: [{ image: "images/singapore/changi-terminal-map.png", title: "樟宜機場航廈地圖", label: "航廈地圖" }],
         timeRange: "08:25 – 13:25",
         dualTime: true,
         note: "星宇航空，抵達樟宜機場第二航廈（T2）。"
@@ -2597,6 +2591,7 @@ const itineraryData = [
         type: "fixed",
         time: "上午",
         place: "新加坡動物園 Singapore Zoo",
+        mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
         description: "",
@@ -2737,6 +2732,7 @@ const itineraryData = [
         type: "fixed",
         time: "",
         place: "星耀樟宜 Jewel：森林谷／雨漩渦",
+        mapImages: [{ image: "images/singapore/changi-terminal-map.png", title: "樟宜機場航廈地圖", label: "航廈地圖" }],
         mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
         hours: "雨漩渦 10:00–22:00",
         description: "",
@@ -3374,6 +3370,7 @@ function renderTripCard(item) {
             </div>
           </div>
           ${item.note ? `<p class="trip-card__note trip-card__note--dual">${escapeHTML(item.note)}</p>` : ""}
+          ${(item.mapImages || []).length ? `<div class="trip-card__actions">${item.mapImages.map(m => `<button class="btn-chip" type="button" data-mapimg="${escapeHTML(m.image)}" data-mapimg-title="${escapeHTML(m.title || flightLbl)}">🗺️ ${escapeHTML(m.label || "地圖")}</button>`).join("")}</div>` : ""}
         </div>
       `;
     }
