@@ -3195,13 +3195,24 @@ const itineraryData = [
     schedule: [
       {
         type: "fixed",
+        time: "",
+        place: "POUT Rooftop Cafe",
+        transit: [{ mode: "walk", text: "10 分" }],
+        mapLink: "https://maps.google.com/?q=POUT+Rooftop+Cafe+50+South+Bridge+Road+Singapore",
+        hours: "09:00–21:00（週一）",
+        description: "",
+        note: "★4.5 六樓天台咖啡，看新加坡河、克拉碼頭和遠方的金沙；巴斯克乳酪蛋糕、抹茶拿鐵常被推。\n☀ 戶外座位沒遮蔽，早上去比較不曬。",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "早餐",
         place: "早餐：松發肉骨茶 Song Fa Bak Kut Teh",
-        transit: [{ mode: "walk", text: "10 分" }],
+        transit: [{ mode: "walk", text: "8 分" }],
         mapLink: "https://maps.google.com/?q=Song+Fa+Bak+Kut+Teh+11+New+Bridge+Road+Singapore",
         hours: "09:30–21:30",
         description: "",
-        note: "米其林推薦的潮州胡椒肉骨茶，湯頭胡椒味足、可以續湯；11 New Bridge Rd 本店，從住宿步行約 10 分。\n⚠ 09:30 才開門，吃完再去動物園，大約 11 點前後才會到（動物園 08:30 開）。",
+        note: "米其林推薦的潮州胡椒肉骨茶，湯頭胡椒味足、可以續湯；11 New Bridge Rd 本店。\n⚠ 09:30 才開門，吃完再去動物園，大約 11:30 前後才會到（動物園 08:30 開）。",
         foods: []
       },
       {
@@ -3229,7 +3240,7 @@ const itineraryData = [
       {
         type: "fixed",
         time: "",
-        place: "好奇心之灣 Curiosity Cove",
+        place: "好奇心之灣 Curiosity Cove（optional）",
         mapImages: [{ image: "images/singapore/curiosity-cove-map.jpg", title: "好奇心之灣 Curiosity Cove 館內地圖", label: "地圖" }],
         transit: [{ mode: "walk", text: "5 分" }],
         route: "就在動物園入口旁的 Mandai Wildlife EAST。",
@@ -3237,6 +3248,15 @@ const itineraryData = [
         hours: "平日 10:00–17:30（最後入場 16:30）",
         description: "",
         note: "萬禮園區內的互動式展館。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "17:20",
+        place: "最晚 17:20 搭上 Grab 出發晚餐",
+        mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
+        description: "",
+        note: "",
         foods: []
       },
       {
