@@ -2588,6 +2588,22 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   background: color-mix(in srgb, var(--accent) 22%, #ffffff);
   color: color-mix(in srgb, var(--accent) 88%, #3b2a1e);
 }
+
+/* 彈性行程的替代交通：收在「↳ 沒去○○時」小按鈕裡，點了才展開 */
+.move-alt-btn {
+  font: inherit;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  background: none;
+  border: none;
+  border-bottom: 1px dashed var(--line);
+  padding: 0 1px;
+  cursor: pointer;
+}
+.move-alt-btn.is-open { color: var(--text-soft); }
+.move-alt { margin-top: 6px; padding-left: 10px; border-left: 2px solid var(--line-soft); }
+.move-alt-label { display: block; font-family: var(--font-sans); font-size: 11px; color: var(--text-faint); margin-bottom: 3px; }
 </style>
 </head>
 
@@ -2904,6 +2920,7 @@ const itineraryData = [
         place: "牛車水 中國城 Chinatown",
         transit: [{ mode: "mrt", text: "聖淘沙捷運＋NE 線 35 分" }],
         route: "聖淘沙捷運回 VivoCity，HarbourFront 搭 NE 線到 Chinatown（2 站）。",
+        transitAlt: { label: "沒去巴拉灣時", from: "從住宿出發：", transit: [{ mode: "mrt", text: "NE 線 1 站" }, { mode: "walk", text: "20 分" }], route: "Clarke Quay 搭 NE 線到 Chinatown（1 站）；或從住宿沿新加坡河步行約 20 分。" },
         mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
         description: "",
         note: "牛車水景點很多，點下方「可逛景點」看。",
@@ -2941,6 +2958,7 @@ const itineraryData = [
     introCards: [
       {
         title: "巴拉灣海灘｜亞洲大陸最南端的小島",
+        image: "images/singapore/intro-palawan.jpg",
         mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
         text: "巴拉灣海灘（Palawan Beach）位在聖淘沙島南岸，是島上最適合散步、玩水的海灘之一，沙灘柔軟、浪不大，傍晚很適合看夕陽。\n\n海灘前方有一座小島，走過木造吊橋就能登上，島上的兩座瞭望台號稱「亞洲大陸最南端」，是聖淘沙最經典的拍照點。\n\n從市區搭地鐵到 HarbourFront，再轉聖淘沙捷運就能抵達；海灘沒什麼遮蔭，記得防曬、帶水。"
       },
@@ -3031,6 +3049,7 @@ const itineraryData = [
         place: "哈芝巷 Haji Lane",
         transit: [{ mode: "car", text: "Grab 10 分" }, { mode: "mrt", text: "EW 線 2 站" }],
         route: "步行到 Kallang 站搭 EW 線到 Bugis（2 站），出站再步行 5 分。",
+        transitAlt: { label: "沒去 G7 時", from: "從如切出發：", transit: [{ mode: "car", text: "Grab 15 分" }, { mode: "mrt", text: "EW 線 4 站" }], route: "步行約 12 分到 Paya Lebar 站，搭 EW 線到 Bugis（4 站），出站步行 5 分。" },
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         description: "",
         note: "彩色壁畫與個性小店的窄巷。",
@@ -3179,11 +3198,13 @@ const itineraryData = [
     introCards: [
       {
         title: "新加坡動物園｜沒有柵欄的雨林動物園",
+        image: "images/singapore/intro-singapore-zoo.jpg",
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         text: "新加坡動物園（Singapore Zoo）位在萬禮（Mandai）野生動物保育區內，以「開放式」展示聞名，盡量用溝渠、水道與植栽取代鐵籠，讓動物在接近自然的環境中生活。\n\n園內最具代表性的是紅毛猩猩，牠們會在遊客頭頂的樹林與繩索間自由移動；另外還有長頸鹿、白老虎、大象等，也有動物表演與餵食時段，可以先查好場次。\n\n園區很大，可以搭遊園車節省體力；熱帶天氣悶熱，記得防曬、防蚊、多喝水。"
       },
       {
         title: "好奇心之灣｜室內的自然遊樂場",
+        image: "images/singapore/intro-curiosity-cove.jpg",
         mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
         text: "好奇心之灣（Curiosity Cove）位在萬禮野生動物保育區的 Mandai Wildlife EAST，是新加坡最大的室內自然主題遊樂空間，主要對象是 12 歲以下的小朋友。\n\n館內分成濕地、森林、草原、乾地四個主題區，透過攀爬、觸摸與互動裝置，認識動物如何適應不同的環境；冷氣房裡玩，剛好躲避戶外的炎熱或午後雷陣雨。\n\n入場需穿止滑襪（可自備或現場購買），鞋子要放在入口的鞋架；每位大人一次最多陪同兩位小朋友。"
       }
@@ -3282,11 +3303,13 @@ const itineraryData = [
     introCards: [
       {
         title: "魚尾獅公園｜新加坡的城市象徵",
+        image: "images/singapore/intro-merlion.jpg",
         mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
         text: "魚尾獅（Merlion）是新加坡最知名的象徵：獅頭代表「獅城」新加坡（Singapura）的由來，魚身則象徵這座城市最早作為漁村的歷史。\n\n魚尾獅公園的主雕像高約 8.6 公尺，從口中噴出水柱，背後是濱海灣金沙酒店與海灣景色，是到新加坡必拍的經典畫面。\n\n早上人比較少、光線也柔和；拍照時站遠一點、找好角度，就能拍出「接水柱」的趣味照片。"
       },
       {
         title: "濱海灣花園｜未來感的超級樹與溫室",
+        image: "images/singapore/intro-gardens.jpg",
         mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
         text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園，最有名的是一棵棵高聳的擎天樹（Supertree），樹身爬滿數萬株植物，晚上還有燈光音樂秀。\n\n園內兩座冷卻溫室是重點：花穹（Flower Dome）展示來自地中海與乾燥地區的花卉，是世界最大的玻璃溫室之一；雲霧林（Cloud Forest）則有一座約 35 公尺高的室內瀑布，目前結合了侏羅紀主題的恐龍展。\n\n溫室裡溫度約 23–25°C，帶件薄外套；雲霧林每隔兩小時有人造雲霧，可以算好時間進場。"
       }
@@ -3364,6 +3387,7 @@ const itineraryData = [
     introCards: [
       {
         title: "星耀樟宜｜世界最高的室內瀑布",
+        image: "images/singapore/intro-jewel.jpg",
         mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
         text: "星耀樟宜（Jewel Changi Airport）於 2019 年開幕，由建築師 Moshe Safdie 設計，是一座連接樟宜機場航廈的玻璃圓頂綜合設施，裡面有商店、餐廳與大片室內森林。\n\n正中央的雨漩渦（Rain Vortex）是世界最高的室內瀑布，水從圓頂中央約 40 公尺高處傾瀉而下；四周的森林谷種滿上千棵樹與植物，很適合在登機前散步。\n\n晚上瀑布會有燈光音樂秀，但返程當天看不到，白天看瀑布就很壯觀；從 T1 可直接走進來，T2、T3 則走連通橋約 5–10 分鐘。"
       }
@@ -4093,18 +4117,36 @@ function renderDayContent() {
 const TRANSIT_ICON = { walk: "🚶", car: "🚕", mrt: "🚇", pin: "📍" };
 function renderTransit(it) {
   if (!Array.isArray(it.transit) || !it.transit.length) return "";
-  const chips = it.transit.map(c =>
+  const chipsOf = list => list.map(c =>
     `<span class="move-chip move-chip--${escapeHTML(c.mode)}">${TRANSIT_ICON[c.mode] || ""} ${escapeHTML(c.text)}</span>`).join("");
-  const more = it.route
-    ? `<button class="move-more" type="button" aria-expanded="false">路線 ›</button>`
+  const group = (list, route, extra = "", cls = "", head = "") => {
+    const more = route ? `<button class="move-more" type="button" aria-expanded="false">路線 ›</button>` : "";
+    const detail = route ? `<p class="move-detail" hidden>${escapeHTML(route)}</p>` : "";
+    return `<div class="move-group${cls}">${head}<div class="move-chips">${chipsOf(list)}${more}${extra}</div>${detail}</div>`;
+  };
+  /* 前一站是彈性行程時：替代走法收進小按鈕，點了才展開 */
+  const a = it.transitAlt;
+  const hasAlt = a && Array.isArray(a.transit) && a.transit.length;
+  const altBtn = hasAlt ? `<button class="move-alt-btn" type="button" aria-expanded="false">↳ ${escapeHTML(a.label || "跳過彈性行程時")}</button>` : "";
+  const altBox = hasAlt
+    ? `<div class="move-alt" hidden>${group(a.transit, a.route, "", " move-group--alt", a.from ? `<span class="move-alt-label">${escapeHTML(a.from)}</span>` : "")}</div>`
     : "";
-  const detail = it.route ? `<p class="move-detail" hidden>${escapeHTML(it.route)}</p>` : "";
-  return `<div class="trip-move"><span class="trip-move__line"></span><div class="trip-move__body"><div class="move-chips">${chips}${more}</div>${detail}</div></div>`;
+  return `<div class="trip-move"><span class="trip-move__line"></span><div class="trip-move__body">${group(it.transit, it.route, altBtn)}${altBox}</div></div>`;
 }
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".move-alt-btn");
+  if (!btn) return;
+  const box = btn.closest(".trip-move__body").querySelector(".move-alt");
+  if (!box) return;
+  const open = box.hidden;
+  box.hidden = !open;
+  btn.setAttribute("aria-expanded", String(open));
+  btn.classList.toggle("is-open", open);
+});
 document.addEventListener("click", e => {
   const btn = e.target.closest(".move-more");
   if (!btn) return;
-  const d = btn.closest(".trip-move__body").querySelector(".move-detail");
+  const d = btn.closest(".move-group").querySelector(".move-detail");
   if (!d) return;
   const open = d.hidden;
   d.hidden = !open;
