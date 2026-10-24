@@ -2575,6 +2575,19 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
 /* DAYS 標題改成跟 City Guides 同款（斜體大字＋兩側橫線＋白色線板邊），不帶五枚花磚 */
 .days-header .cities-header__title::after { content: none; }
 .days-header { margin-bottom: 12px; }
+
+/* 卡片上的按鈕（📍🍜☕🗺️📸）：改用當天主色的淡色版，不用對比色 */
+.btn-chip,
+.btn-chip--tip {
+  background: color-mix(in srgb, var(--accent) 11%, #ffffff);
+  border-color: color-mix(in srgb, var(--accent) 30%, #ffffff);
+  color: color-mix(in srgb, var(--accent) 82%, #3b2a1e);
+}
+.btn-chip:hover,
+.btn-chip--tip:hover {
+  background: color-mix(in srgb, var(--accent) 22%, #ffffff);
+  color: color-mix(in srgb, var(--accent) 88%, #3b2a1e);
+}
 </style>
 </head>
 
@@ -3166,7 +3179,6 @@ const itineraryData = [
     introCards: [
       {
         title: "新加坡動物園｜沒有柵欄的雨林動物園",
-        image: "images/singapore/day3-zoo.jpg",
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         text: "新加坡動物園（Singapore Zoo）位在萬禮（Mandai）野生動物保育區內，以「開放式」展示聞名，盡量用溝渠、水道與植栽取代鐵籠，讓動物在接近自然的環境中生活。\n\n園內最具代表性的是紅毛猩猩，牠們會在遊客頭頂的樹林與繩索間自由移動；另外還有長頸鹿、白老虎、大象等，也有動物表演與餵食時段，可以先查好場次。\n\n園區很大，可以搭遊園車節省體力；熱帶天氣悶熱，記得防曬、防蚊、多喝水。"
       },
@@ -3270,13 +3282,11 @@ const itineraryData = [
     introCards: [
       {
         title: "魚尾獅公園｜新加坡的城市象徵",
-        image: "images/singapore/singapore-cover.jpg",
         mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
         text: "魚尾獅（Merlion）是新加坡最知名的象徵：獅頭代表「獅城」新加坡（Singapura）的由來，魚身則象徵這座城市最早作為漁村的歷史。\n\n魚尾獅公園的主雕像高約 8.6 公尺，從口中噴出水柱，背後是濱海灣金沙酒店與海灣景色，是到新加坡必拍的經典畫面。\n\n早上人比較少、光線也柔和；拍照時站遠一點、找好角度，就能拍出「接水柱」的趣味照片。"
       },
       {
         title: "濱海灣花園｜未來感的超級樹與溫室",
-        image: "images/singapore/day4-gardens.jpg",
         mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
         text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園，最有名的是一棵棵高聳的擎天樹（Supertree），樹身爬滿數萬株植物，晚上還有燈光音樂秀。\n\n園內兩座冷卻溫室是重點：花穹（Flower Dome）展示來自地中海與乾燥地區的花卉，是世界最大的玻璃溫室之一；雲霧林（Cloud Forest）則有一座約 35 公尺高的室內瀑布，目前結合了侏羅紀主題的恐龍展。\n\n溫室裡溫度約 23–25°C，帶件薄外套；雲霧林每隔兩小時有人造雲霧，可以算好時間進場。"
       }
@@ -3354,7 +3364,6 @@ const itineraryData = [
     introCards: [
       {
         title: "星耀樟宜｜世界最高的室內瀑布",
-        image: "images/singapore/day5-jewel.jpg",
         mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
         text: "星耀樟宜（Jewel Changi Airport）於 2019 年開幕，由建築師 Moshe Safdie 設計，是一座連接樟宜機場航廈的玻璃圓頂綜合設施，裡面有商店、餐廳與大片室內森林。\n\n正中央的雨漩渦（Rain Vortex）是世界最高的室內瀑布，水從圓頂中央約 40 公尺高處傾瀉而下；四周的森林谷種滿上千棵樹與植物，很適合在登機前散步。\n\n晚上瀑布會有燈光音樂秀，但返程當天看不到，白天看瀑布就很壯觀；從 T1 可直接走進來，T2、T3 則走連通橋約 5–10 分鐘。"
       }
