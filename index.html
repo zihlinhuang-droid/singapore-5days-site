@@ -3028,8 +3028,14 @@ const itineraryData = [
         transit: [{ mode: "walk", text: "5 分" }],
         mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
         description: "",
-        note: "娘惹（Peranakan）文化發源地，彩色娘惹排屋最好拍。",
-        foods: []
+        note: "娘惹（Peranakan）文化發源地，彩色娘惹排屋最好拍。順路可以吃加東叻沙、買娘惹糕，見「附近吃食」。",
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "328 加東叻沙 328 Katong Laksa", info: "★3.9 · 每天 09:30–21:30 · 加東叻沙代表店，椰奶海鮮湯頭濃郁，米粉剪短用湯匙吃，很多人加點烏打（otah）；店面小，點餐用英文", mapLink: "https://maps.google.com/?q=328+Katong+Laksa+51+East+Coast+Road+Singapore" },
+          { name: "金珠肉粽 Kim Choo Kueh Chang", info: "★4.1 · 每天 09:00–21:00 · 老字號娘惹粽子與糕點店，娘惹糕、椰絲班蘭球（ondeh ondeh）不太甜很受好評，適合當伴手禮；樓上有娘惹文物可以參觀", mapLink: "https://maps.google.com/?q=Kim+Choo+Kueh+Chang+60+Joo+Chiat+Place+Singapore" },
+          { name: "東寶蝦麵 East Treasure Speciality Prawn Noodle", info: "★4.2 · 週日 11:00–19:00（週一休）· 蝦湯濃郁、蝦肉新鮮，乾湯都有、可選辣或不辣，常見加排骨或豬尾；一碗約 S$13–17", mapLink: "https://maps.google.com/?q=East+Treasure+Speciality+Prawn+Noodle+328+Joo+Chiat+Road" },
+          { name: "Birds of Paradise 義式冰淇淋（加東店）", info: "★4.5 · 週日 12:00–22:00 · 以花草、香料入味的天然口味義式冰淇淋，招牌是白菊花、草莓羅勒、百里香，也有焙茶、伯爵茶；甜筒是現烤的、很香脆，可以先試吃再點", mapLink: "https://maps.google.com/?q=Birds+of+Paradise+Gelato+Boutique+63+East+Coast+Road+Singapore" }
+        ]
       },
       {
         type: "fixed",
@@ -3056,25 +3062,32 @@ const itineraryData = [
       {
         type: "fixed",
         time: "中餐",
-        place: "中餐：G7 Frog Porridge & Live Seafood（optional）",
-        transit: [{ mode: "car", text: "Grab 10–15 分" }],
-        mapLink: "https://maps.google.com/?q=G7+Frog+Porridge+Live+Seafood+Singapore",
-        hours: "15:00–03:00",
+        place: "中餐：如切路找一家",
+        transit: [{ mode: "walk", text: "5 分" }],
+        mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
         description: "",
-        note: "田雞粥名店。⚠ 15:00 才開，中午吃不到；可改成下午點心或晚一點再來。",
-        foods: []
+        note: "如切路上的叻沙、蝦麵等店家，見上方「如切路」的附近吃食。",
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "G7 田雞粥 G7 Frog Porridge & Live Seafood", info: "⚠ 離如切較遠，在芽籠 Lorong 3，Grab 約 10–15 分 · 15:00–03:00 · 田雞粥名店；15:00 才開，中午吃不到，適合當下午點心", mapLink: "https://maps.google.com/?q=G7+Frog+Porridge+Live+Seafood+Singapore" }
+        ]
       },
       {
         type: "fixed",
         time: "",
         place: "哈芝巷 Haji Lane",
-        transit: [{ mode: "car", text: "Grab 10 分" }, { mode: "mrt", text: "EW 線 2 站" }],
-        route: "步行到 Kallang 站搭 EW 線到 Bugis（2 站），出站再步行 5 分。",
-        transitAlt: { label: "沒去 G7 時", from: "從如切出發：", transit: [{ mode: "car", text: "Grab 15 分" }, { mode: "mrt", text: "EW 線 4 站" }], route: "步行約 12 分到 Paya Lebar 站，搭 EW 線到 Bugis（4 站），出站步行 5 分。" },
+        transit: [{ mode: "car", text: "Grab 15 分" }, { mode: "mrt", text: "EW 線 4 站" }],
+        route: "從如切步行約 12 分到 Paya Lebar 站，搭 EW 線到 Bugis（4 站），出站步行 5 分。",
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         description: "",
         note: "彩色壁畫與個性小店的窄巷。",
-        foods: []
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "Tarik 拉茶店", info: "★4.5 · 週日 08:00–23:30 · 阿拉伯街上的拉茶小店，最多人推番紅花奶茶（Zhafran Teh）和斑蘭拉茶，也有咖椰吐司；店外牆面彩繪和長凳很好拍，離蘇丹回教堂很近", mapLink: "https://maps.google.com/?q=Tarik+92+Arab+St+Singapore" },
+          { name: "發財餐館 Fatt Choy Eating House", info: "★4.7 · 週日 11:00–22:30 · 就在哈芝巷內的摩登新加坡家常菜，常被點的是蝦麵、炒菜頭粿、伊比利豬和乾叻沙；叻沙幾乎不辣、帶椰香，店員對小孩很友善，可以先線上訂位", mapLink: "https://maps.google.com/?q=Fatt+Choy+Eating+House+10+Haji+Lane+Singapore" },
+          { name: "Birds of Paradise 義式冰淇淋（Beach Road 店）", info: "★4.7 · 週日 12:00–22:00 · 跟加東店同一家，花草系口味（白菊花、百里香、草莓羅勒、焙茶）可先試吃再點；如切已經吃過的話這裡可以跳過", mapLink: "https://maps.google.com/?q=Birds+of+Paradise+Gelato+Boutique+263+Beach+Road+Singapore" },
+          { name: "忘不了傳統大蝦麵 Wang Bu Liao Traditional Prawn Noodles", info: "★4.9 · ⚠ 週日公休（週六 12:30–18:00、週一至五 11:30–18:00） · 黃金大廈旁的福建大蝦麵，蝦大隻鮮甜、湯頭清甜不膩，排骨蝦麵和豬油渣也常被推；老闆很熱情。從哈芝巷步行約 10 分，這趟週日吃不到，先記著", mapLink: "https://maps.google.com/?q=Wang+Bu+Liao+Traditional+Prawn+Noodles+6001+Beach+Road+Singapore" }
+        ]
       },
       {
         type: "fixed",
@@ -3085,7 +3098,10 @@ const itineraryData = [
         hours: "參觀 10:00–12:00、14:00–16:00（週五不開放）",
         description: "",
         note: "金色圓頂清真寺；參觀請著有袖上衣與長褲／長裙。",
-        foods: []
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "Zam Zam 印度煎餅 Singapore Zam Zam Restaurant", info: "★4.2 · 週日 07:00–23:00 · 回教堂正對面、1908 年開業的百年印度穆斯林餐廳，招牌 Murtabak（肉餡煎餅）現場現煎，配一杯拉茶；份量大、價格實惠", mapLink: "https://maps.google.com/?q=Singapore+Zam+Zam+Restaurant+North+Bridge+Road" }
+        ]
       },
       {
         type: "fixed",
@@ -3111,10 +3127,21 @@ const itineraryData = [
       },
       {
         type: "fixed",
+        time: "",
+        place: "小印度 Little India（optional）",
+        transit: [{ mode: "walk", text: "8 分" }],
+        mapLink: "https://maps.google.com/?q=Little+India+Singapore",
+        description: "",
+        note: "色彩繽紛的印度街區，跟早上的娘惹、下午的馬來文化湊成一天三種文化。可以看看維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple）、彩色的陳東齡故居（House of Tan Teng Niah），以及竹腳中心（Tekka Centre）的市場。",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "晚餐",
         place: "晚餐：已訂位 18:45 JUMBO Seafood – The Riverwalk",
-        transit: [{ mode: "mrt", text: "DT 線 1 站" }, { mode: "car", text: "Grab 10 分" }],
-        route: "Bencoolen 搭 DT 線到 Fort Canning（1 站），出站步行約 8 分。",
+        transit: [{ mode: "mrt", text: "NE 線 2 站" }, { mode: "car", text: "Grab 10 分" }],
+        route: "Little India 站搭 NE 線到 Clarke Quay（2 站），出站步行約 5 分。",
+        transitAlt: { label: "沒去小印度時", from: "從 Apartment Coffee 出發：", transit: [{ mode: "mrt", text: "DT 線 1 站" }, { mode: "car", text: "Grab 10 分" }], route: "Bencoolen 搭 DT 線到 Fort Canning（1 站），出站步行約 8 分。" },
         mapLink: "https://maps.google.com/?q=JUMBO+Seafood+The+Riverwalk+Singapore",
         hours: "11:30–23:00",
         description: "",
@@ -3140,6 +3167,11 @@ const itineraryData = [
         image: "images/singapore/intro-sultan-mosque.jpg",
         mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
         text: "蘇丹回教堂（Masjid Sultan）是新加坡最重要的清真寺之一，最早建於 1824 年，現在看到的建築於 1932 年完工，金色洋蔥圓頂是甘榜格南最醒目的地標。\n\n仔細看圓頂底部，會發現一圈深色的玻璃瓶底裝飾，據說是當年由各地穆斯林捐獻的瓶子所做成。寺內的禱告大廳可容納約五千人。\n\n開放參觀時間外與禮拜時段不開放，週五不開放參觀；入內需穿有袖上衣與長褲或長裙，現場也可借罩袍，進入前要脫鞋。"
+      },
+      {
+        title: "小印度｜色彩繽紛的印度街區",
+        mapLink: "https://maps.google.com/?q=Little+India+Singapore",
+        text: "小印度（Little India）是新加坡印度裔社群的生活中心，街上滿是花環攤、香料店、紗麗布莊與印度餐館，空氣裡飄著香料與茉莉花的味道。\n\n可以看看塔樓上布滿彩色神像的維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple），以及外牆漆成八種顏色、很好拍的陳東齡故居（House of Tan Teng Niah）；竹腳中心（Tekka Centre）一樓是傳統市場與熟食中心。\n\n進入興都廟要脫鞋、穿著端莊；週末人潮較多，注意隨身物品。"
       }
     ],
     extraNotes: [
@@ -3164,17 +3196,20 @@ const itineraryData = [
       {
         type: "fixed",
         time: "早餐",
-        place: "早餐：住宿吃",
+        place: "早餐：松發肉骨茶 Song Fa Bak Kut Teh",
+        transit: [{ mode: "walk", text: "10 分" }],
+        mapLink: "https://maps.google.com/?q=Song+Fa+Bak+Kut+Teh+11+New+Bridge+Road+Singapore",
+        hours: "09:30–21:30",
         description: "",
-        note: "前一天先買好早餐。",
+        note: "米其林推薦的潮州胡椒肉骨茶，湯頭胡椒味足、可以續湯；11 New Bridge Rd 本店，從住宿步行約 10 分。\n⚠ 09:30 才開門，吃完再去動物園，大約 11 點前後才會到（動物園 08:30 開）。",
         foods: []
       },
       {
         type: "fixed",
         time: "上午",
         place: "新加坡動物園 Singapore Zoo",
-        transit: [{ mode: "mrt", text: "NS 線＋接駁車 45 分" }, { mode: "car", text: "Grab 25–30 分" }],
-        route: "City Hall 搭 NS 線到 Khatib（約 30 分），轉 Mandai Khatib Shuttle 接駁車（約 15 分）。",
+        transit: [{ mode: "mrt", text: "NE＋NS 線＋接駁車 50 分" }, { mode: "car", text: "Grab 25–30 分" }],
+        route: "從松發步行約 3 分到 Clarke Quay 站，搭 NE 線到 Dhoby Ghaut（2 站）轉 NS 線到 Khatib（約 30 分），再轉 Mandai Khatib Shuttle 接駁車（約 15 分）。",
         mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
