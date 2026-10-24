@@ -2567,6 +2567,14 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   pointer-events: none;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") left center / 10px 10px no-repeat, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") right center / 10px 10px no-repeat;
 }
+
+/* 新加坡介紹下方的花飾：娘惹華麗版（中間牡丹花＋菱形花磚、兩側捲草） */
+#ornamentLemon { opacity: 1; }
+#ornamentLemon svg { width: 150px; }
+
+/* DAYS 標題改成跟 City Guides 同款（斜體大字＋兩側橫線＋白色線板邊），不帶五枚花磚 */
+.days-header .cities-header__title::after { content: none; }
+.days-header { margin-bottom: 12px; }
 </style>
 </head>
 
@@ -2651,7 +2659,9 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
 
     <div class="home-ornament" id="ornamentLemon"></div>
 
-    <h2 class="section-label">DAYS</h2>
+    <header class="cities-header days-header">
+      <h2 class="cities-header__title"><span class="cities-header__text">Days</span></h2>
+    </header>
     <div class="roof-eave" aria-hidden="true"></div>
 
     <section class="day-tickets">
@@ -2883,8 +2893,25 @@ const itineraryData = [
         route: "聖淘沙捷運回 VivoCity，HarbourFront 搭 NE 線到 Chinatown（2 站）。",
         mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
         description: "",
-        note: "佛牙寺、牛車水大廈小販中心一帶可逛。",
-        foods: []
+        note: "牛車水景點很多，點下方「可逛景點」看。",
+        spots: [
+          { name: "佛牙寺龍華院 Buddha Tooth Relic Temple", info: "2007 年落成的唐朝風格佛寺，紅牆金頂，相傳供奉佛牙舍利；頂樓有蘭花屋頂花園和大型轉經輪。", mapLink: "https://maps.google.com/?q=Buddha+Tooth+Relic+Temple+Singapore" },
+          { name: "史密斯街 Smith Street", info: "牛車水美食街所在，兩旁是老店屋，傍晚攤位亮燈後最熱鬧。", mapLink: "https://maps.google.com/?q=Smith+Street+Chinatown+Singapore" },
+          { name: "馬里安曼廟 Sri Mariamman Temple", info: "1827 年創建，新加坡最古老的印度廟，入口高塔布滿彩色神像；入內需脫鞋。", mapLink: "https://maps.google.com/?q=Sri+Mariamman+Temple+Singapore" },
+          { name: "寶塔街 Pagoda Street", info: "從牛車水地鐵站出來的主要步行街，紀念品與伴手禮店最集中。", mapLink: "https://maps.google.com/?q=Pagoda+Street+Singapore" },
+          { name: "碩莪巷 Sago Lane", info: "早年俗稱「死人街」，曾聚集殯葬店；如今是安靜小巷，能感受老牛車水的歷史。", mapLink: "https://maps.google.com/?q=Sago+Lane+Singapore" },
+          { name: "麥士威熟食中心 Maxwell Food Centre", info: "牛車水最有名的小販中心，天天海南雞飯、老伴豆花都在這裡；人多時記得先佔位。", mapLink: "https://maps.google.com/?q=Maxwell+Food+Centre+Singapore" }
+        ],
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "天天海南雞飯 Tian Tian", info: "★3.9 · 08:30–20:00（週一休）· 米其林推薦、名廚也來過的排隊名店。雞肉滑嫩、雞油飯很香，附的辣椒醬很辣；排隊約 10–20 分，熟食中心只有電扇，中午很熱", mapLink: "https://maps.google.com/?q=Tian+Tian+Hainanese+Chicken+Rice+Maxwell+Food+Centre" },
+          { name: "老伴豆花 Lao Ban", info: "★4.5 · 週六 11:00–15:00、17:30–19:30（中間休息）· 滑嫩豆花，口感細得像布丁、甜度低，冰冰的很消暑；杏仁豆腐也很受推薦。只收現金", mapLink: "https://maps.google.com/?q=Lao+Ban+Soya+Beancurd+Maxwell+Food+Centre" },
+          { name: "queic by Olivia", info: "★4.6 · 週六 10:00–20:00 · 大推流心巴斯克！芝士內餡會流出來，帶點鹹香、不會太甜；藍紋乳酪、巧克力口味是評論最常提到的", mapLink: "https://maps.google.com/?q=queic+by+Olivia+Singapore" }
+        ],
+        cafes: [
+          { name: "Corner Corner (Coffee Concept)", info: "★4.6 · 週六 10:00–17:00（週一休）· 牆上擺滿黑膠唱片、放著爵士樂的溫暖小店，咖啡用玻璃小壺端上；蛋糕捲、焦糖布丁也有人推", mapLink: "https://maps.google.com/?q=Corner+Corner+Coffee+Concept+Duxton+Road+Singapore" },
+          { name: "Together &", info: "★4.3 · 每天 10:00–17:00 · 空間寬敞、適合坐下來休息；抹茶飲品和拿鐵最常被提到，也有布朗尼、香蕉麵包等甜點", mapLink: "https://maps.google.com/?q=Together+%26+24+Duxton+Rd+Singapore" }
+        ]
       },
       {
         type: "fixed",
@@ -3045,17 +3072,19 @@ const itineraryData = [
     introCards: [
       {
         title: "如切與加東｜彩色娘惹店屋街區",
-        image: "images/singapore/day2-koon-seng.jpg",
+        image: "images/singapore/intro-joo-chiat.jpg",
         mapLink: "https://maps.google.com/?q=Koon+Seng+Road+Singapore",
         text: "如切（Joo Chiat）與加東（Katong）是新加坡峇峇娘惹文化的大本營，保留了大量二十世紀初的娘惹店屋，粉彩外牆、白色線板、浮雕花磚與雕花半截門（pintu pagar）是最大的特色。\n\n最有名的拍照點是 Koon Seng Road 上一整排顏色各異的店屋；附近的街道也散落著娘惹糕點店、古董店與老咖啡店，很適合慢慢散步。\n\n這一帶也是叻沙與娘惹料理的發源地之一，逛累了可以順路吃碗加東叻沙、買些娘惹糕。這裡是住宅區，拍照時請別打擾到住戶。"
       },
       {
         title: "哈芝巷｜塗鴉與個性小店的窄巷",
+        image: "images/singapore/intro-haji-lane.jpg",
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         text: "哈芝巷（Haji Lane）位在甘榜格南（Kampong Glam），原本是馬來與阿拉伯商人聚居的老街區，如今兩側的雙層店屋改成了選物店、古著店、咖啡館與酒吧。\n\n整條巷子最吸睛的是牆上色彩鮮豔的大型壁畫，幾乎每一面牆都是拍照點；傍晚之後酒吧亮燈，氣氛也很不一樣。\n\n巷子很窄、白天人潮多，建議早一點來比較好拍；旁邊的阿拉伯街也有許多布料與地毯店可以順便逛。"
       },
       {
         title: "蘇丹回教堂｜金色圓頂的地標",
+        image: "images/singapore/intro-sultan-mosque.jpg",
         mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
         text: "蘇丹回教堂（Masjid Sultan）是新加坡最重要的清真寺之一，最早建於 1824 年，現在看到的建築於 1932 年完工，金色洋蔥圓頂是甘榜格南最醒目的地標。\n\n仔細看圓頂底部，會發現一圈深色的玻璃瓶底裝飾，據說是當年由各地穆斯林捐獻的瓶子所做成。寺內的禱告大廳可容納約五千人。\n\n開放參觀時間外與禮拜時段不開放，週五不開放參觀；入內需穿有袖上衣與長褲或長裙，現場也可借罩袍，進入前要脫鞋。"
       }
@@ -3603,15 +3632,37 @@ const HERO_COCONUT = `<svg viewBox="0 0 52 62" xmlns="http://www.w3.org/2000/svg
   </g>
 </svg>`;
 
-const ORNAMENT_LEMON = `<svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M 8 34 Q 38 20 60 24 Q 86 28 112 16" stroke="#3f9e7a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <g fill="#5fb8a6" opacity="0.9">
-    <path d="M 26 28 Q 18 20 20 12 Q 28 18 28 27 Z"/>
-    <path d="M 74 27 Q 82 36 92 36 Q 86 28 76 26 Z"/>
+const ORNAMENT_LEMON = `<svg viewBox="0 0 160 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g fill="none" stroke="#3f9e7a" stroke-width="1.3" stroke-linecap="round">
+    <path d="M62 24 Q48 14 34 22 Q24 28 16 22 Q12 19 14 15"/>
+    <path d="M98 24 Q112 14 126 22 Q136 28 144 22 Q148 19 146 15"/>
+    <path d="M60 28 Q46 36 32 30"/><path d="M100 28 Q114 36 128 30"/>
   </g>
-  <g transform="translate(42 19) scale(0.8)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
-  <g transform="translate(62 23) scale(0.95)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
-  <g transform="translate(98 16) scale(0.75)"><g fill="#e9a3b8"><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(0)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(144)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.6" rx="2.6" ry="4.8" transform="rotate(288)"/></g><ellipse cx="0" cy="2.6" rx="3.2" ry="2.6" fill="#c9506f"/><circle r="1.3" fill="#f2c14e"/></g>
+  <g fill="#5fb8a6">
+    <ellipse cx="44" cy="17" rx="5" ry="2.2" transform="rotate(-25 44 17)"/><ellipse cx="116" cy="17" rx="5" ry="2.2" transform="rotate(25 116 17)"/>
+    <ellipse cx="26" cy="26" rx="4.4" ry="2" transform="rotate(20 26 26)"/><ellipse cx="134" cy="26" rx="4.4" ry="2" transform="rotate(-20 134 26)"/>
+    <ellipse cx="42" cy="34" rx="4.4" ry="1.9" transform="rotate(15 42 34)"/><ellipse cx="118" cy="34" rx="4.4" ry="1.9" transform="rotate(-15 118 34)"/>
+  </g>
+  <g>
+    <g transform="translate(14 14)"><circle r="3.2" fill="#f6c3cf"/><circle r="1.3" fill="#e0607f"/></g>
+    <g transform="translate(146 14)"><circle r="3.2" fill="#f6c3cf"/><circle r="1.3" fill="#e0607f"/></g>
+    <g transform="translate(32 30)"><circle r="2.6" fill="#f8d6c2"/><circle r="1" fill="#ec6f45"/></g>
+    <g transform="translate(128 30)"><circle r="2.6" fill="#f8d6c2"/><circle r="1" fill="#ec6f45"/></g>
+  </g>
+  <g fill="#f2b632"><circle cx="54" cy="18" r="1.1"/><circle cx="106" cy="18" r="1.1"/><circle cx="22" cy="20" r="0.9"/><circle cx="138" cy="20" r="0.9"/><circle cx="50" cy="32" r="0.9"/><circle cx="110" cy="32" r="0.9"/></g>
+  <g transform="translate(80 23)">
+    <g fill="#f1a9c8">
+      <ellipse cx="0" cy="-11" rx="5.5" ry="8"/><ellipse cx="0" cy="11" rx="5.5" ry="8"/>
+      <ellipse cx="-11" cy="0" rx="8" ry="5.5"/><ellipse cx="11" cy="0" rx="8" ry="5.5"/>
+    </g>
+    <g fill="#e0607f">
+      <ellipse cx="-8" cy="-8" rx="4.5" ry="6.5" transform="rotate(-45 -8 -8)"/><ellipse cx="8" cy="-8" rx="4.5" ry="6.5" transform="rotate(45 8 -8)"/>
+      <ellipse cx="-8" cy="8" rx="4.5" ry="6.5" transform="rotate(45 -8 8)"/><ellipse cx="8" cy="8" rx="4.5" ry="6.5" transform="rotate(-45 8 8)"/>
+    </g>
+    <path d="M0 -8 L8 0 L0 8 L-8 0 Z" fill="#fffaf3" stroke="#2f86e0" stroke-width="1.1"/>
+    <circle r="4" fill="#f2b632"/><circle r="1.6" fill="#ec6f45"/>
+    <g fill="#3fa362"><circle cx="0" cy="-7.6" r="0.9"/><circle cx="0" cy="7.6" r="0.9"/><circle cx="-7.6" cy="0" r="0.9"/><circle cx="7.6" cy="0" r="0.9"/></g>
+  </g>
 </svg>`;
 
 const ORNAMENT_BOUQUET = `<svg viewBox="0 0 132 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(0 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g><g transform="translate(46 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g><g transform="translate(92 0)"><rect width="40" height="40" fill="#fffaf3"/><path d="M0 0H9A9 9 0 0 1 0 9Z" fill="#5fb8a6"/><path d="M40 0V9A9 9 0 0 1 31 0Z" fill="#5fb8a6"/><path d="M40 40H31A9 9 0 0 1 40 31Z" fill="#5fb8a6"/><path d="M0 40V31A9 9 0 0 1 9 40Z" fill="#5fb8a6"/><g fill="#3aa58f" opacity=".9"><ellipse cx="12" cy="12" rx="1.8" ry="4.2" transform="rotate(-45 12 12)"/><ellipse cx="28" cy="12" rx="1.8" ry="4.2" transform="rotate(45 28 12)"/><ellipse cx="28" cy="28" rx="1.8" ry="4.2" transform="rotate(-45 28 28)"/><ellipse cx="12" cy="28" rx="1.8" ry="4.2" transform="rotate(45 12 28)"/></g><g fill="#e9a3b8"><ellipse cx="20" cy="12.5" rx="3.6" ry="6"/><ellipse cx="20" cy="27.5" rx="3.6" ry="6"/><ellipse cx="12.5" cy="20" rx="6" ry="3.6"/><ellipse cx="27.5" cy="20" rx="6" ry="3.6"/></g><circle cx="20" cy="20" r="3.4" fill="#f2c14e"/><circle cx="20" cy="20" r="1.3" fill="#c9506f"/><rect x=".5" y=".5" width="39" height="39" fill="none" stroke="#2f7f9e" stroke-width="1"/></g></svg>`;
@@ -4164,6 +4215,19 @@ function renderTripCard(item) {
          data-food-title="${escapeHTML(displayPlace)} · ${escapeHTML(foodsLabel)}">🍜 ${escapeHTML(foodsLabel)}</button>`
     : "";
 
+  const cafeBtn = (item.cafes && item.cafes.length)
+    ? `<button class="btn-chip" type="button"
+         data-food='${escapeHTML(JSON.stringify(item.cafes))}'
+         data-food-title="${escapeHTML(displayPlace)} · 咖啡廳">☕ 咖啡廳</button>`
+    : "";
+
+  const spotBtn = (item.spots && item.spots.length)
+    ? `<button class="btn-chip" type="button"
+         data-food='${escapeHTML(JSON.stringify(item.spots))}'
+         data-food-sub="NEARBY SIGHTS"
+         data-food-title="${escapeHTML(displayPlace)} · 可逛景點">📍 可逛景點</button>`
+    : "";
+
   const tipBtn = (item.tip && item.tip.title && Array.isArray(item.tip.steps) && item.tip.steps.length)
     ? `<button class="btn-chip btn-chip--tip" type="button"
          data-tip-title="${escapeHTML(item.tip.title)}"
@@ -4180,7 +4244,7 @@ function renderTripCard(item) {
        data-mapimg-title="${escapeHTML(m.title || displayPlace)}">🗺️ ${escapeHTML(m.label || "路線圖")}</button>`
   ).join("");
 
-  const actions = foodBtn + tipBtn + mapBtn;
+  const actions = spotBtn + foodBtn + cafeBtn + tipBtn + mapBtn;
 
   return `
     <div class="trip-card${isOptional ? " trip-card--opt" : ""}${isMeal ? " trip-card--meal" : ""}${isMainMeal ? " trip-card--mainmeal" : ""}">
@@ -4255,9 +4319,9 @@ function bindFoodModal() {
   const subEl = document.getElementById("foodModalSubtitle");
   const listEl = document.getElementById("foodModalList");
 
-  function open(title, foods) {
+  function open(title, foods, sub) {
     titleEl.textContent = title;
-    subEl.textContent = "NEARBY EATS";
+    subEl.textContent = sub || "NEARBY EATS";
     listEl.innerHTML = foods.map(f => {
       const nameHTML = f.mapLink
         ? `<a class="modal__food-name" href="${escapeHTML(f.mapLink)}" target="_blank" rel="noopener">${escapeHTML(f.name)}</a>`
@@ -4280,7 +4344,7 @@ function bindFoodModal() {
     if (btn) {
       const foods = JSON.parse(btn.dataset.food || "[]");
       const title = btn.dataset.foodTitle || "附近吃食";
-      open(title, foods);
+      open(title, foods, btn.dataset.foodSub);
     }
     if (e.target.closest("[data-close]")) close();
   });
