@@ -2604,6 +2604,18 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
 .move-alt-btn.is-open { color: var(--text-soft); }
 .move-alt { margin-top: 6px; padding-left: 10px; border-left: 2px solid var(--line-soft); }
 .move-alt-label { display: block; font-family: var(--font-sans); font-size: 11px; color: var(--text-faint); margin-bottom: 3px; }
+
+/* 介紹卡內的小標（文字以「## 」開頭的行）：放大、加粗、用當天主色 */
+.intro-card__h {
+  display: block;
+  margin: 4px 0 2px;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  border-bottom: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  padding-bottom: 3px;
+}
 </style>
 </head>
 
@@ -2873,6 +2885,15 @@ const itineraryData = [
     coverAlt: "牛車水佛牙寺",
     hotel: { name: "lyf Funan Singapore", mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore" },
     schedule: [
+      {
+        type: "fixed",
+        time: "06:00",
+        place: "機場接送",
+        mapLink: "https://maps.google.com/?q=Taoyuan+International+Airport+Terminal+1",
+        description: "",
+        note: "接送前往桃園機場第一航廈，JX771 08:25 起飛。",
+        foods: []
+      },
       {
         type: "transit",
         time: "08:25",
@@ -3222,7 +3243,7 @@ const itineraryData = [
     dowZh: "二",
     phase: "marina",
     title: "濱海灣 · MCR 演唱會",
-    subtitle: "亞坤 → 魚尾獅 → 濱海灣花園 → 演唱會",
+    subtitle: "亞坤 → 魚尾獅 → 老巴剎 → 濱海灣花園 → 演唱會",
     routeCode: "MARINA BAY",
     coverImage: "images/singapore/day4-gardens.jpg",
     coverAlt: "濱海灣花園擎天樹",
@@ -3252,23 +3273,26 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "",
-        place: "濱海灣花園 Gardens by the Bay",
-        transit: [{ mode: "walk", text: "25–30 分" }, { mode: "car", text: "Grab 10 分" }],
-        route: "步行沿海灣經濱海灣金沙。",
-        mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
-        hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
+        time: "中餐",
+        place: "中餐：老巴剎 Lau Pa Sat",
+        transit: [{ mode: "walk", text: "10 分" }],
+        mapLink: "https://maps.google.com/?q=Lau+Pa+Sat+Singapore",
+        hours: "24 小時（各攤位時間不同）",
         description: "",
-        note: "導航設「濱海灣花園 花穹／雲霧林」（Flower Dome／Cloud Forest，恐龍主題區）。雲霧林人造霧 10、12、14、16 點整。",
+        note: "1894 年落成的八角形鑄鐵建築，維多利亞風格的百年熟食中心，就在金融區高樓之間；各式小販美食都有，晚上旁邊的沙嗲街最熱鬧。",
         foods: []
       },
       {
         type: "fixed",
-        time: "中餐",
-        place: "中餐：附近找一家",
-        transit: [{ mode: "walk", text: "花園內或金沙商場" }],
+        time: "",
+        place: "濱海灣花園 Gardens by the Bay",
+        mapImages: [{ image: "images/singapore/gardens-map.jpg", title: "濱海灣花園園區地圖（3 號花穹、4 號雲霧林）", label: "地圖" }],
+        transit: [{ mode: "mrt", text: "DT 線 1 站" }, { mode: "car", text: "Grab 10 分" }],
+        route: "老巴剎步行約 5 分到 Downtown 站，搭 DT 線到 Bayfront（1 站），出站沿指標步行約 10 分到花穹／雲霧林。",
+        mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
+        hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
         description: "",
-        note: "",
+        note: "🦖 恐龍在「雲霧林 Cloud Forest」（侏羅紀世界展），導航設 Cloud Forest 直接去。\n🎟 外國旅客不能單買雲霧林，要買「花穹＋雲霧林」聯票（成人 S$46），一張可進兩館、各限進一次。\n地圖上 3 號是花穹、4 號是雲霧林。\n雲霧林人造霧 10、12、14、16、18、20 點整；門票與兩館介紹見「介紹」分頁的濱海灣花園。",
         foods: []
       },
       {
@@ -3292,11 +3316,22 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "晚上",
-        place: "MCR 演唱會（My Chemical Romance）",
-        transit: [{ mode: "pin", text: "場館確認後再補" }],
+        time: "18:30",
+        place: "最晚 18:30 出門",
+        mapLink: "https://maps.google.com/?q=lyf+Funan+Singapore",
         description: "",
-        note: "",
+        note: "從住宿出發前往演唱會，預留排隊入場的時間。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "20:00",
+        place: "MCR 演唱會（My Chemical Romance）",
+        transit: [{ mode: "mrt", text: "CC 線 3 站" }, { mode: "car", text: "Grab 15 分" }],
+        route: "從住宿步行約 10 分到 Esplanade 站，搭 CC 線到 Stadium（3 站），出站就是體育館。",
+        mapLink: "https://maps.google.com/?q=Singapore+Indoor+Stadium",
+        description: "",
+        note: "🎤 新加坡室內體育館 Singapore Indoor Stadium · 20:00 開演\n🎟 220 區 13 排\n散場人潮多，回程 MRT 和 Grab 都可能要等，可以預留時間。",
         foods: []
       }
     ],
@@ -3311,11 +3346,11 @@ const itineraryData = [
         title: "濱海灣花園｜未來感的超級樹與溫室",
         image: "images/singapore/intro-gardens.jpg",
         mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
-        text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園，最有名的是一棵棵高聳的擎天樹（Supertree），樹身爬滿數萬株植物，晚上還有燈光音樂秀。\n\n園內兩座冷卻溫室是重點：花穹（Flower Dome）展示來自地中海與乾燥地區的花卉，是世界最大的玻璃溫室之一；雲霧林（Cloud Forest）則有一座約 35 公尺高的室內瀑布，目前結合了侏羅紀主題的恐龍展。\n\n溫室裡溫度約 23–25°C，帶件薄外套；雲霧林每隔兩小時有人造雲霧，可以算好時間進場。"
+        text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園。戶外的擎天樹（Supertree）園區與花園步道免費開放，需要買票的主要是兩座冷卻溫室：花穹（Flower Dome）和雲霧林（Cloud Forest）。\n\n## 🎟 門票（外國旅客，官網價格）\n・花穹＋雲霧林聯票：成人 S$46、兒童（3–12 歲）S$32。外國旅客不能單買雲霧林。\n・三館套票（花穹＋雲霧林＋迪士尼花藝展 Floral Fantasy＋接駁車）：成人 S$73、兒童 S$51，官網目前有優惠價（成人 S$58、兒童 S$41）。\n・票券限當天、每館只能進一次；擎天樹空中步道（OCBC Skyway）另外購票。建議先在官網買好。\n\n🕘 開放時間：兩館都是 09:00–21:00；花穹最後入場 20:30，雲霧林最後入場 20:00。每月固定維護休館一天，11/10 不受影響（花穹下次休館 11/16）。\n\n## 🦖 雲霧林 Cloud Forest（恐龍在這裡）\n模擬高山雲霧林的冷卻溫室，中央是一座長滿蕨類、蘭花與苔蘚的「山」，有一道約 35 公尺高的室內瀑布。目前整館結合《侏羅紀世界》主題展（Jurassic World: The Experience），山林間擺放實物大小、會動的恐龍模型，搭配瓦勒邁杉、水杉、蘇鐵、樹蕨等恐龍時代就存在的古老植物；展區有很大的吼聲、突然的音效與閃光燈。\n怎麼逛：先看大瀑布，上到山頂的「失落世界」（Lost World，有豬籠草等食蟲植物），再沿雲中步道（Cloud Walk）、樹梢步道（Tree Top Walk）往下走，途中經過水晶山的數位藝術展。人造雲霧在 10、12、14、16、18、20 點整最好拍；約 1 小時。\n\n## 🌸 花穹 Flower Dome\n世界最大的玻璃溫室之一，恆溫約 23–25°C，種著地中海、南非、澳洲、南美、加州等涼爽乾燥地區的植物。必看千年老橄欖樹、酒瓶造型的猴麵包樹、多肉植物園，以及中央隨節慶換主題的花海「Flower Field」（10/9–11/9 是葡萄牙主題向日葵展，11/10 剛好換展，以現場為準）。約 1 小時，冷氣強記得帶薄外套。\n\n建議先逛雲霧林、再逛花穹，兩館加起來約 2 小時。"
       }
     ],
     extraNotes: [
-      "演唱會前先查場館交通與入場時間。"
+      "演唱會在新加坡室內體育館，開演前記得確認電子票券與入場時間。"
     ]
   },
   {
@@ -4239,7 +4274,8 @@ function renderTripCard(item) {
   // and surface it as a small badge in the card's top-right corner.
   const OPT_RE = /[（(]\s*optional\s*[）)]/i;
   const isOptional = item.optional === true || OPT_RE.test(item.place || "");
-  const displayPlace = (item.place || "").replace(OPT_RE, "").trim();
+  /* 左側時間欄已經寫了「早餐／中餐／晚餐」，名稱裡的「早餐：」等字樣就不再重複顯示 */
+  const displayPlace = (item.place || "").replace(OPT_RE, "").replace(/^(早餐|中餐|午餐|晚餐)\s*[：:]\s*/, "").trim();
   const optBadge = isOptional ? `<span class="trip-card__opt">彈性</span>` : "";
 
   // Meal rows (breakfast/lunch/dinner) get a soft-colour wash so they read as
@@ -4324,7 +4360,7 @@ function renderIntroCard(card) {
       ${imgHTML}
       <div class="intro-card__body">
         <h4 class="intro-card__title">${titleHTML}</h4>
-        <p class="intro-card__text">${applyInlineLinks(escapeHTML(card.text || ""), card.links)}</p>
+        <p class="intro-card__text">${applyInlineLinks(escapeHTML(card.text || ""), card.links).replace(/^## (.+)\n?/gm, '<span class="intro-card__h">$1</span>')}</p>
       </div>
     </article>
   `;
