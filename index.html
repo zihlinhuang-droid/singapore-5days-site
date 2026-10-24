@@ -961,6 +961,26 @@ body {
 .day-tab:hover { color: var(--text); }
 
 
+/* 每日頁分頁：選中的按鈕左上、右下各一叢娘惹牡丹（花苞＋葉），像 kebaya 衣角刺繡；每天花色跟分頁色對比 */
+body[data-phase="arrive"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 27'><g transform='translate(22 7) rotate(10)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(3.5 20) rotate(75)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(31 5) rotate(60)'><path d='M0 -5.5C3.5 -3 3 2 0 3C-3 2 -3.5 -3 0 -5.5Z' fill='%23e3a21a'/><path d='M-2.4 2.2Q0 6 2.4 2.2Q0 3.6 -2.4 2.2Z' fill='%232f8f6f'/></g><g transform='translate(10 10)'><g fill='%23e3a21a'><path d='M0 -9C4 -9 5 -4 0 -2C-5 -4 -4 -9 0 -9Z'/><path d='M8.5 -2.8C9.8 1 5.6 3.6 1.9 .6C2.6 -4.4 7.3 -6.6 8.5 -2.8Z'/><path d='M5.3 7.3C2 9.6 -1.6 6.4 .1 2C5 1.5 8.6 5 5.3 7.3Z'/><path d='M-5.3 7.3C-8.6 5 -5 1.5 -.1 2C1.6 6.4 -2 9.6 -5.3 7.3Z'/><path d='M-8.5 -2.8C-7.3 -6.6 -2.6 -4.4 -1.9 .6C-5.6 3.6 -9.8 1 -8.5 -2.8Z'/></g><g fill='%23f8d77a'><circle cx='0' cy='-4.6' r='2.2'/><circle cx='4.4' cy='-1.4' r='2.2'/><circle cx='2.7' cy='3.7' r='2.2'/><circle cx='-2.7' cy='3.7' r='2.2'/><circle cx='-4.4' cy='-1.4' r='2.2'/></g><circle r='2.2' fill='%23d8506f'/></g></svg>"); }
+body[data-phase="katong"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 27'><g transform='translate(22 7) rotate(10)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(3.5 20) rotate(75)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(31 5) rotate(60)'><path d='M0 -5.5C3.5 -3 3 2 0 3C-3 2 -3.5 -3 0 -5.5Z' fill='%23e8708f'/><path d='M-2.4 2.2Q0 6 2.4 2.2Q0 3.6 -2.4 2.2Z' fill='%232f8f6f'/></g><g transform='translate(10 10)'><g fill='%23e8708f'><path d='M0 -9C4 -9 5 -4 0 -2C-5 -4 -4 -9 0 -9Z'/><path d='M8.5 -2.8C9.8 1 5.6 3.6 1.9 .6C2.6 -4.4 7.3 -6.6 8.5 -2.8Z'/><path d='M5.3 7.3C2 9.6 -1.6 6.4 .1 2C5 1.5 8.6 5 5.3 7.3Z'/><path d='M-5.3 7.3C-8.6 5 -5 1.5 -.1 2C1.6 6.4 -2 9.6 -5.3 7.3Z'/><path d='M-8.5 -2.8C-7.3 -6.6 -2.6 -4.4 -1.9 .6C-5.6 3.6 -9.8 1 -8.5 -2.8Z'/></g><g fill='%23f6bccb'><circle cx='0' cy='-4.6' r='2.2'/><circle cx='4.4' cy='-1.4' r='2.2'/><circle cx='2.7' cy='3.7' r='2.2'/><circle cx='-2.7' cy='3.7' r='2.2'/><circle cx='-4.4' cy='-1.4' r='2.2'/></g><circle r='2.2' fill='%23e9b236'/></g></svg>"); }
+body[data-phase="zoo"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 27'><g transform='translate(22 7) rotate(10)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(3.5 20) rotate(75)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(31 5) rotate(60)'><path d='M0 -5.5C3.5 -3 3 2 0 3C-3 2 -3.5 -3 0 -5.5Z' fill='%233a6fc4'/><path d='M-2.4 2.2Q0 6 2.4 2.2Q0 3.6 -2.4 2.2Z' fill='%232f8f6f'/></g><g transform='translate(10 10)'><g fill='%233a6fc4'><path d='M0 -9C4 -9 5 -4 0 -2C-5 -4 -4 -9 0 -9Z'/><path d='M8.5 -2.8C9.8 1 5.6 3.6 1.9 .6C2.6 -4.4 7.3 -6.6 8.5 -2.8Z'/><path d='M5.3 7.3C2 9.6 -1.6 6.4 .1 2C5 1.5 8.6 5 5.3 7.3Z'/><path d='M-5.3 7.3C-8.6 5 -5 1.5 -.1 2C1.6 6.4 -2 9.6 -5.3 7.3Z'/><path d='M-8.5 -2.8C-7.3 -6.6 -2.6 -4.4 -1.9 .6C-5.6 3.6 -9.8 1 -8.5 -2.8Z'/></g><g fill='%23b9cdf0'><circle cx='0' cy='-4.6' r='2.2'/><circle cx='4.4' cy='-1.4' r='2.2'/><circle cx='2.7' cy='3.7' r='2.2'/><circle cx='-2.7' cy='3.7' r='2.2'/><circle cx='-4.4' cy='-1.4' r='2.2'/></g><circle r='2.2' fill='%23e9b236'/></g></svg>"); }
+body[data-phase="marina"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 27'><g transform='translate(22 7) rotate(10)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(3.5 20) rotate(75)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%232f8f6f'/><path d='M-5 0H5' stroke='%239fd6bf' stroke-width='.5'/></g><g transform='translate(31 5) rotate(60)'><path d='M0 -5.5C3.5 -3 3 2 0 3C-3 2 -3.5 -3 0 -5.5Z' fill='%23e0683a'/><path d='M-2.4 2.2Q0 6 2.4 2.2Q0 3.6 -2.4 2.2Z' fill='%232f8f6f'/></g><g transform='translate(10 10)'><g fill='%23e0683a'><path d='M0 -9C4 -9 5 -4 0 -2C-5 -4 -4 -9 0 -9Z'/><path d='M8.5 -2.8C9.8 1 5.6 3.6 1.9 .6C2.6 -4.4 7.3 -6.6 8.5 -2.8Z'/><path d='M5.3 7.3C2 9.6 -1.6 6.4 .1 2C5 1.5 8.6 5 5.3 7.3Z'/><path d='M-5.3 7.3C-8.6 5 -5 1.5 -.1 2C1.6 6.4 -2 9.6 -5.3 7.3Z'/><path d='M-8.5 -2.8C-7.3 -6.6 -2.6 -4.4 -1.9 .6C-5.6 3.6 -9.8 1 -8.5 -2.8Z'/></g><g fill='%23f7c2a6'><circle cx='0' cy='-4.6' r='2.2'/><circle cx='4.4' cy='-1.4' r='2.2'/><circle cx='2.7' cy='3.7' r='2.2'/><circle cx='-2.7' cy='3.7' r='2.2'/><circle cx='-4.4' cy='-1.4' r='2.2'/></g><circle r='2.2' fill='%23e9b236'/></g></svg>"); }
+body[data-phase="depart"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 27'><g transform='translate(22 7) rotate(10)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%231f6f5a'/><path d='M-5 0H5' stroke='%238cc9b2' stroke-width='.5'/></g><g transform='translate(3.5 20) rotate(75)'><path d='M-6 0Q0 -3.4 6 0Q0 3.4 -6 0Z' fill='%231f6f5a'/><path d='M-5 0H5' stroke='%238cc9b2' stroke-width='.5'/></g><g transform='translate(31 5) rotate(60)'><path d='M0 -5.5C3.5 -3 3 2 0 3C-3 2 -3.5 -3 0 -5.5Z' fill='%23d8506f'/><path d='M-2.4 2.2Q0 6 2.4 2.2Q0 3.6 -2.4 2.2Z' fill='%231f6f5a'/></g><g transform='translate(10 10)'><g fill='%23d8506f'><path d='M0 -9C4 -9 5 -4 0 -2C-5 -4 -4 -9 0 -9Z'/><path d='M8.5 -2.8C9.8 1 5.6 3.6 1.9 .6C2.6 -4.4 7.3 -6.6 8.5 -2.8Z'/><path d='M5.3 7.3C2 9.6 -1.6 6.4 .1 2C5 1.5 8.6 5 5.3 7.3Z'/><path d='M-5.3 7.3C-8.6 5 -5 1.5 -.1 2C1.6 6.4 -2 9.6 -5.3 7.3Z'/><path d='M-8.5 -2.8C-7.3 -6.6 -2.6 -4.4 -1.9 .6C-5.6 3.6 -9.8 1 -8.5 -2.8Z'/></g><g fill='%23f5b3c3'><circle cx='0' cy='-4.6' r='2.2'/><circle cx='4.4' cy='-1.4' r='2.2'/><circle cx='2.7' cy='3.7' r='2.2'/><circle cx='-2.7' cy='3.7' r='2.2'/><circle cx='-4.4' cy='-1.4' r='2.2'/></g><circle r='2.2' fill='%23e9b236'/></g></svg>"); }
+.day-tab { position: relative; }
+.day-tab.is-active::before,
+.day-tab.is-active::after {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 26px;
+  background: var(--tab-flora) center / contain no-repeat;
+  pointer-events: none;
+}
+.day-tab.is-active::before { left: -9px; top: -11px; }
+.day-tab.is-active::after  { right: -9px; bottom: -11px; transform: rotate(180deg); }
+
+
 /* ---------- 地點之間的移動方式：灰階小膠囊，靠圖示區分交通方式 ---------- */
 .trip-move {
   display: grid;
@@ -1665,6 +1685,25 @@ body {
   background: color-mix(in srgb, var(--soft) 15%, var(--paper-warm));
   color: color-mix(in srgb, var(--soft) 82%, #3a2a18);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--soft) 34%, transparent);
+}
+
+/* 新加坡介紹分頁：選中的按鈕文字兩側各一枚珊瑚橘＋綠心的娘惹花磚 */
+.city-tab { display: inline-flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s, box-shadow 0.15s, flex-grow 0.2s; }
+.city-tab.is-active { flex-grow: 1.45; }
+.city-tab.is-active::before,
+.city-tab.is-active::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='2' fill='%23fffaf0'/><rect x='1' y='1' width='38' height='38' rx='2' fill='none' stroke='%23e0683a' stroke-width='2'/><g fill='%23e0683a'><path d='M0 0H9A9 9 0 0 1 0 9Z'/><path d='M40 0V9A9 9 0 0 1 31 0Z'/><path d='M40 40H31A9 9 0 0 1 40 31Z'/><path d='M0 40V31A9 9 0 0 1 9 40Z'/></g><g fill='%23f7c2a6'><path d='M20 6Q26 14 20 20Q14 14 20 6Z'/><path d='M20 34Q26 26 20 20Q14 26 20 34Z'/><path d='M6 20Q14 14 20 20Q14 26 6 20Z'/><path d='M34 20Q26 14 20 20Q26 26 34 20Z'/></g><g fill='%23e0683a'><circle cx='11' cy='11' r='2'/><circle cx='29' cy='11' r='2'/><circle cx='11' cy='29' r='2'/><circle cx='29' cy='29' r='2'/></g><circle cx='20' cy='20' r='4.5' fill='%232f8f6f'/><circle cx='20' cy='20' r='1.8' fill='%23fffaf0'/></svg>") center / contain no-repeat;
+}
+.city-tab.is-active::before { margin-right: 4px; }
+.city-tab.is-active::after  { margin-left: 4px; }
+@media (min-width: 600px) {
+  .city-tab.is-active::before, .city-tab.is-active::after { width: 14px; height: 14px; }
+  .city-tab.is-active::before { margin-right: 7px; }
+  .city-tab.is-active::after  { margin-left: 7px; }
 }
 
 .city-panel { padding-top: 4px; }
@@ -3472,7 +3511,21 @@ const itineraryData = [
         time: "中餐",
         place: "中餐：機場吃",
         description: "",
-        note: "在星耀樟宜或航廈內用餐。",
+        note: "在星耀樟宜或航廈內用餐，14:45 起飛，抓 12:30 前吃完。",
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "KANTIN 砂拉越料理（Jewel 5 樓）", info: "★4.7 · 週三 11:00–22:00 · 砂拉越叻沙、乾叻沙、雞肉沙嗲最多人點，鳳梨炒飯和椰子奶昔也常被推；雨林風裝潢，可訂位", mapLink: "https://maps.google.com/?q=KANTIN+Jewel+Changi+Airport" },
+          { name: "Hakka Yu 客家菜（Jewel 3 樓）", info: "★4.7 · 週三 11:30–22:00 · 招牌鹽焗雞，煲仔飯、豬肉湯、客家釀豆腐也常被點；坐得舒服，適合一家人慢慢吃，可訂位", mapLink: "https://maps.google.com/?q=Hakka+Yu+Jewel+Changi+Airport" }
+        ]
+      },
+      {
+        type: "fixed",
+        time: "",
+        place: "Bengawan Solo 斑斕蛋糕（伴手禮）",
+        mapLink: "https://maps.google.com/?q=Bengawan+Solo+Changi+Airport+Terminal+2",
+        hours: "06:00–01:00",
+        description: "",
+        note: "T2 2 樓 #02-159。評論提到只收現金，留一點新幣。斑斕戚風常溫約 2–3 天，回台儘早吃。",
         foods: []
       },
       {
