@@ -718,6 +718,7 @@ body {
 
 .day-nav__strip {
   display: flex;
+  justify-content: space-between;
   gap: 8px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -2493,6 +2494,27 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   padding-top: 26px;
 }
 
+/* 日期卡外框做成娘惹店屋的線板窗框：一圈主色窗框，內外各一道白色線板 */
+.date-card {
+  --frame: color-mix(in srgb, var(--phase-accent, var(--line)) 45%, #fff);
+  border: 3px solid var(--frame);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px #fff, 0 0 0 2px var(--frame);
+}
+.date-card.is-active {
+  --frame: color-mix(in srgb, var(--phase-accent, var(--accent)) 78%, #3a2a18);
+  border-color: var(--frame);
+}
+.date-card .date-card__top { display: none; }
+.day-nav__strip { padding-left: 3px; padding-right: 3px; padding-bottom: 5px; }
+/* 讓日期列在手機上矮一點：星期和 D1 併成一行、日期字小一號、上方列間距縮小 */
+.date-card .date-card__inner { padding: 4px 3px 4px; }
+.date-card .date-card__day { display: inline; margin-left: 4px; font-size: 8.5px; }
+.date-card .date-card__date { font-size: 17px; margin: 2px 0; }
+.date-card .date-card__city { margin-top: 1px; }
+.day-nav { padding-top: 8px; padding-bottom: 6px; }
+.day-nav__top { margin-bottom: 4px; }
+
 /* 4 每日頁日期列：目前選中的那天，頭上戴一個突出卡片的小屋頂（白邊屋瓦） */
 .day-nav__strip { padding-top: 12px; }
 .date-card.is-active { overflow: visible; }
@@ -2533,7 +2555,7 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   height: 18px;
   z-index: 3;
   pointer-events: none;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 18'><path d='M10 3.4 H74 L82 13.5 H2 Z' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'/><rect x='9' y='1' width='66' height='3.4' rx='1.4' fill='%23a8452f' stroke='%23ffffff' stroke-width='1.2'/><path d='M12 7.2 H72' stroke='%23a8452f' stroke-width='0.7'/><path d='M8 10.2 H76' stroke='%23a8452f' stroke-width='0.7'/><path d='M2.6 13.4 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.2' stroke-linejoin='round'/><circle cx='42' cy='2.7' r='1.4' fill='%23f2b632'/></svg>") center top / 100% 100% no-repeat;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 18' preserveAspectRatio='none'><path d='M10 3.4 H74 L82 13.5 H2 Z' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'/><rect x='9' y='1' width='66' height='3.4' rx='1.4' fill='%23a8452f' stroke='%23ffffff' stroke-width='1.2'/><path d='M12 7.2 H72' stroke='%23a8452f' stroke-width='0.7'/><path d='M8 10.2 H76' stroke='%23a8452f' stroke-width='0.7'/><path d='M2.6 13.4 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.2' stroke-linejoin='round'/><circle cx='42' cy='2.7' r='1.4' fill='%23f2b632'/></svg>") center top / 100% 100% no-repeat;
   filter: drop-shadow(0 1px 1px rgba(80,40,30,0.22));
 }
 /* 首頁插畫的小動畫：很慢、幅度很小 */
@@ -3209,6 +3231,7 @@ const itineraryData = [
       },
       {
         title: "小印度｜色彩繽紛的印度街區",
+        image: "images/singapore/intro-little-india.jpg",
         mapLink: "https://maps.google.com/?q=Little+India+Singapore",
         text: "小印度（Little India）是新加坡印度裔社群的生活中心，街上滿是花環攤、香料店、紗麗布莊與印度餐館，空氣裡飄著香料與茉莉花的味道。\n\n可以看看塔樓上布滿彩色神像的維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple），以及外牆漆成八種顏色、很好拍的陳東齡故居（House of Tan Teng Niah）；竹腳中心（Tekka Centre）一樓是傳統市場與熟食中心。\n\n進入興都廟要脫鞋、穿著端莊；週末人潮較多，注意隨身物品。"
       }
@@ -3583,14 +3606,14 @@ const cityData = {
     },
     intro: "新加坡位於馬來半島南端，是一座城市國家，國土不大卻以整潔、高效與綠化聞名，常被稱為「花園城市」。高樓、熱帶植物與水岸步道交織，讓整座城市即使現代，也處處有綠意。\n\n這裡是華人、馬來人、印度人與娘惹（Peranakan）文化交會之地。牛車水、甘榜格南、小印度與加東各有鮮明風貌，一天之內就能從中式廟宇走到清真寺，再到彩色娘惹排屋。\n\n新加坡也是美食之都。小販中心（Hawker Centre）是在地人的日常餐桌，海南雞飯、叻沙、辣椒螃蟹、咖椰吐司都是必吃；小販文化更已被列入聯合國教科文組織人類非物質文化遺產。\n\n濱海灣一帶則展現新加坡的未來感：濱海灣金沙、魚尾獅與濱海灣花園的超級樹，夜晚點燈後成為最具代表性的城市天際線。",
     foods: [
-      { local: "Hainanese Chicken Rice", image: "", romaji: "—", zh: "海南雞飯", desc: "嫩滑白斬雞配雞油飯，沾辣椒醬、薑蓉與黑醬油，新加坡國民美食。" },
-      { local: "Chilli Crab", image: "", romaji: "—", zh: "辣椒螃蟹", desc: "甜辣濃郁的番茄辣椒醬汁，必點炸饅頭（mantou）沾醬。" },
-      { local: "Laksa", image: "", romaji: "LAHK·sah", zh: "叻沙", desc: "椰奶咖哩湯底配粗米粉、蝦、魚餅，加東叻沙最有名。" },
-      { local: "Kaya Toast", image: "", romaji: "KAH·yah", zh: "咖椰吐司", desc: "烤吐司夾咖椰醬與奶油，配半熟蛋與 Kopi，是經典早餐。" },
-      { local: "Bak Kut Teh", image: "", romaji: "bak·kut·teh", zh: "肉骨茶", desc: "新加坡潮州式胡椒湯底，排骨燉得軟嫩，湯可續加。" },
-      { local: "Nyonya Kueh", image: "", romaji: "NYOHN·yah KWAY", zh: "娘惹糕", desc: "用糯米、椰奶、班蘭葉做成的彩色小糕點，層層分明，甜而不膩；D2 逛加東、如切時最適合順手買。" },
-      { local: "Ayam Buah Keluak", image: "", romaji: "AH·yahm BOO·ah KEH·loo·ahk", zh: "黑果雞", desc: "娘惹代表菜：用印尼黑果（buah keluak）與香料燉雞，帶有獨特的苦甜與堅果香，在娘惹餐廳才吃得到。" },
-      { local: "Kueh Pie Tee", image: "", romaji: "KWAY PIE·tee", zh: "小金杯", desc: "酥脆的小杯狀外皮，裝入沙葛絲、蝦等餡料，一口一個的娘惹開胃小點。" }
+      { local: "Hainanese Chicken Rice", image: "images/singapore/food-chicken-rice.jpg", romaji: "—", zh: "海南雞飯", desc: "嫩滑白斬雞配雞油飯，沾辣椒醬、薑蓉與黑醬油，新加坡國民美食。" },
+      { local: "Chilli Crab", image: "images/singapore/food-chilli-crab.jpg", romaji: "—", zh: "辣椒螃蟹", desc: "甜辣濃郁的番茄辣椒醬汁，必點炸饅頭（mantou）沾醬。" },
+      { local: "Laksa", image: "images/singapore/food-laksa.jpg", romaji: "LAHK·sah", zh: "叻沙", desc: "椰奶咖哩湯底配粗米粉、蝦、魚餅，加東叻沙最有名。" },
+      { local: "Kaya Toast", image: "images/singapore/food-kaya-toast.jpg", romaji: "KAH·yah", zh: "咖椰吐司", desc: "烤吐司夾咖椰醬與奶油，配半熟蛋與 Kopi，是經典早餐。" },
+      { local: "Bak Kut Teh", image: "images/singapore/food-bak-kut-teh.jpg", romaji: "bak·kut·teh", zh: "肉骨茶", desc: "新加坡潮州式胡椒湯底，排骨燉得軟嫩，湯可續加。" },
+      { local: "Nyonya Kueh", image: "images/singapore/food-nyonya-kueh.jpg", romaji: "NYOHN·yah KWAY", zh: "娘惹糕", desc: "用糯米、椰奶、班蘭葉做成的彩色小糕點，層層分明，甜而不膩；D2 逛加東、如切時最適合順手買。" },
+      { local: "Ayam Buah Keluak", image: "images/singapore/food-ayam-buah-keluak.jpg", romaji: "AH·yahm BOO·ah KEH·loo·ahk", zh: "黑果雞", desc: "娘惹代表菜：用印尼黑果（buah keluak）與香料燉雞，帶有獨特的苦甜與堅果香，在娘惹餐廳才吃得到。" },
+      { local: "Kueh Pie Tee", image: "images/singapore/food-kueh-pie-tee.jpg", romaji: "KWAY PIE·tee", zh: "小金杯", desc: "酥脆的小杯狀外皮，裝入沙葛絲、蝦等餡料，一口一個的娘惹開胃小點。" }
     ],
     transit: [
       { title: "MRT 地鐵", body: "路線清楚、冷氣強；可直接用感應式信用卡進出站（SimplyGo），不必另外買卡。住宿 lyf Funan 最近的站是 City Hall（EW／NS），Clarke Quay（NE）也很近。環線（CC）已在 2026 年 7 月全線通車，HarbourFront（聖淘沙）可直達濱海灣。點下方路線圖可放大。", svg: SG_MRT_SVG, link: { text: "LTA 官方互動路線圖", url: "https://www.lta.gov.sg/content/ltagov/en/map/train.html" } },
@@ -3605,11 +3628,10 @@ const cityData = {
       "室內冷氣強，帶薄外套"
     ],
     souvenirs: [
-      { local: "Bengawan Solo", romaji: "—", zh: "娘惹糕點", desc: "知名娘惹糕與鳳梨酥品牌，機場與商場都有分店。", image: "" },
-      { local: "TWG Tea", romaji: "—", zh: "TWG 茶葉", desc: "新加坡精品茶品牌，包裝精美適合送禮。", image: "" },
-      { local: "Irvins Salted Egg", romaji: "—", zh: "鹹蛋魚皮／洋芋片", desc: "人氣鹹蛋黃口味零食，機場有專櫃。", image: "" },
-      { local: "Kaya Jam", romaji: "—", zh: "咖椰醬", desc: "亞坤等店家有販售瓶裝咖椰醬，帶回家做咖椰吐司。", image: "" },
-      { local: "Bee Cheng Hiang", romaji: "—", zh: "美珍香肉乾", desc: "新加坡知名肉乾；注意肉製品帶回台灣有檢疫限制，建議當地享用。", image: "" }
+      { local: "Bengawan Solo", romaji: "—", zh: "娘惹糕點", desc: "知名娘惹糕點品牌，招牌是斑斕戚風蛋糕；機場與商場都有分店，回程在樟宜 T2 就買得到。", image: "images/singapore/souvenir-bengawan-solo.jpg" },
+      { local: "TWG Tea", romaji: "—", zh: "TWG 茶葉", desc: "新加坡精品茶品牌，包裝精美適合送禮。", image: "images/singapore/souvenir-twg.jpg" },
+      { local: "Irvins Salted Egg", romaji: "—", zh: "鹹蛋魚皮／洋芋片", desc: "人氣鹹蛋黃口味零食，機場有專櫃。", image: "images/singapore/souvenir-irvins.jpg" },
+      { local: "Kaya Jam", romaji: "—", zh: "咖椰醬", desc: "亞坤等店家有販售瓶裝咖椰醬，帶回家做咖椰吐司。", image: "images/singapore/souvenir-kaya-jam.jpg" }
     ]
   }
 };
@@ -4172,8 +4194,7 @@ function renderDateStrip() {
       <button class="date-card ${i === currentDayIdx ? "is-active" : ""}" data-day-idx="${i}" data-phase="${d.phase}" type="button">
         <div class="date-card__top"></div>
         <div class="date-card__inner">
-          <div class="date-card__dow">${d.dow}</div>
-          <div class="date-card__day">D${i+1}</div>
+          <div class="date-card__dow">${d.dow}<span class="date-card__day">D${i+1}</span></div>
           <div class="date-card__date"><span class="date-card__mon">${m}</span><span class="date-card__sep">/</span><span class="date-card__num">${dd}</span></div>
           <div class="date-card__city">${city}</div>
         </div>
@@ -4193,8 +4214,20 @@ function placeDateRoof(strip) {
   const roof = document.createElement("span");
   roof.className = "date-roof";
   roof.setAttribute("aria-hidden", "true");
-  roof.style.transform = `translateX(${card.offsetLeft + card.offsetWidth / 2 - 42}px)`;
+  const place = () => {
+    roof.style.width = `${card.offsetWidth + 12}px`;
+    roof.style.transform = `translateX(${card.offsetLeft - 6}px)`;
+  };
+  place();
   strip.appendChild(roof);
+  if (!window.__roofResize) {
+    window.__roofResize = true;
+    window.addEventListener("resize", () => {
+      const r = document.querySelector(".date-roof");
+      const c = document.querySelector(".date-card.is-active");
+      if (r && c) { r.style.width = `${c.offsetWidth + 12}px`; r.style.transform = `translateX(${c.offsetLeft - 6}px)`; }
+    });
+  }
 }
 
 function renderDayContent() {
