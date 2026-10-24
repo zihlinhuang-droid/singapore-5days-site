@@ -2554,6 +2554,19 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
 .todo-list input[type=checkbox]:checked { background: #2f86e0; }
 .todo-list input[type=checkbox]:checked::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -1px); }
 .todo-list input[type=checkbox]:checked + span { color: var(--text-faint); text-decoration: line-through; }
+
+/* 每一條行程分隔虛線的兩端，各鑲一枚縮小版花磚（同首頁長條四角的花紋） */
+.trip-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  height: 10px;
+  z-index: 1;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") left center / 10px 10px no-repeat, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") right center / 10px 10px no-repeat;
+}
 </style>
 </head>
 
@@ -2834,6 +2847,14 @@ const itineraryData = [
       },
       {
         type: "fixed",
+        time: "中餐",
+        place: "中餐：飛機上吃",
+        description: "",
+        note: "星宇航空機上餐。",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "下午",
         place: "飯店 Check in · lyf Funan Singapore",
         transit: [{ mode: "mrt", text: "EW 線 45 分" }, { mode: "car", text: "Grab 25 分" }],
@@ -2877,7 +2898,19 @@ const itineraryData = [
         foods: []
       }
     ],
-    introCards: [],
+    introCards: [
+      {
+        title: "巴拉灣海灘｜亞洲大陸最南端的小島",
+        mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
+        text: "巴拉灣海灘（Palawan Beach）位在聖淘沙島南岸，是島上最適合散步、玩水的海灘之一，沙灘柔軟、浪不大，傍晚很適合看夕陽。\n\n海灘前方有一座小島，走過木造吊橋就能登上，島上的兩座瞭望台號稱「亞洲大陸最南端」，是聖淘沙最經典的拍照點。\n\n從市區搭地鐵到 HarbourFront，再轉聖淘沙捷運就能抵達；海灘沒什麼遮蔭，記得防曬、帶水。"
+      },
+      {
+        title: "牛車水｜新加坡的老華人街區",
+        image: "images/singapore/intro-chinatown.jpg",
+        mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
+        text: "牛車水（Chinatown）是新加坡早期華人移民聚居的地方，名字來自當年用牛車載水供應街區的景象。保存下來的老店屋、廟宇與市集，讓這裡至今仍充滿南洋老城的氣氛。\n\n街區裡最醒目的是紅牆飛簷的佛牙寺龍華院，入夜點燈後特別壯觀；附近還有新加坡最古老的印度廟馬里安曼興都廟，以及熱鬧的牛車水大廈小販中心。\n\n寶塔街、丁加奴街一帶都是紀念品與小吃攤，很適合邊走邊逛；參觀寺廟時請穿著得體、輕聲細語。"
+      }
+    ],
     extraNotes: [
       "入境前 3 天內上網填寫 SG Arrival Card。",
       "樟宜機場到市區可搭 MRT 或 Grab，約 30 分鐘。"
@@ -3009,7 +3042,24 @@ const itineraryData = [
         foods: []
       }
     ],
-    introCards: [],
+    introCards: [
+      {
+        title: "如切與加東｜彩色娘惹店屋街區",
+        image: "images/singapore/day2-koon-seng.jpg",
+        mapLink: "https://maps.google.com/?q=Koon+Seng+Road+Singapore",
+        text: "如切（Joo Chiat）與加東（Katong）是新加坡峇峇娘惹文化的大本營，保留了大量二十世紀初的娘惹店屋，粉彩外牆、白色線板、浮雕花磚與雕花半截門（pintu pagar）是最大的特色。\n\n最有名的拍照點是 Koon Seng Road 上一整排顏色各異的店屋；附近的街道也散落著娘惹糕點店、古董店與老咖啡店，很適合慢慢散步。\n\n這一帶也是叻沙與娘惹料理的發源地之一，逛累了可以順路吃碗加東叻沙、買些娘惹糕。這裡是住宅區，拍照時請別打擾到住戶。"
+      },
+      {
+        title: "哈芝巷｜塗鴉與個性小店的窄巷",
+        mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
+        text: "哈芝巷（Haji Lane）位在甘榜格南（Kampong Glam），原本是馬來與阿拉伯商人聚居的老街區，如今兩側的雙層店屋改成了選物店、古著店、咖啡館與酒吧。\n\n整條巷子最吸睛的是牆上色彩鮮豔的大型壁畫，幾乎每一面牆都是拍照點；傍晚之後酒吧亮燈，氣氛也很不一樣。\n\n巷子很窄、白天人潮多，建議早一點來比較好拍；旁邊的阿拉伯街也有許多布料與地毯店可以順便逛。"
+      },
+      {
+        title: "蘇丹回教堂｜金色圓頂的地標",
+        mapLink: "https://maps.google.com/?q=Masjid+Sultan+Singapore",
+        text: "蘇丹回教堂（Masjid Sultan）是新加坡最重要的清真寺之一，最早建於 1824 年，現在看到的建築於 1932 年完工，金色洋蔥圓頂是甘榜格南最醒目的地標。\n\n仔細看圓頂底部，會發現一圈深色的玻璃瓶底裝飾，據說是當年由各地穆斯林捐獻的瓶子所做成。寺內的禱告大廳可容納約五千人。\n\n開放參觀時間外與禮拜時段不開放，週五不開放參觀；入內需穿有袖上衣與長褲或長裙，現場也可借罩袍，進入前要脫鞋。"
+      }
+    ],
     extraNotes: [
       "蘇丹回教堂有服裝規定，可帶一件薄外套或長裙。",
       "加東到甘榜格南建議搭 Grab，約 15–20 分鐘。",
@@ -3084,7 +3134,19 @@ const itineraryData = [
         foods: []
       }
     ],
-    introCards: [],
+    introCards: [
+      {
+        title: "新加坡動物園｜沒有柵欄的雨林動物園",
+        image: "images/singapore/day3-zoo.jpg",
+        mapLink: "https://maps.google.com/?q=Singapore+Zoo",
+        text: "新加坡動物園（Singapore Zoo）位在萬禮（Mandai）野生動物保育區內，以「開放式」展示聞名，盡量用溝渠、水道與植栽取代鐵籠，讓動物在接近自然的環境中生活。\n\n園內最具代表性的是紅毛猩猩，牠們會在遊客頭頂的樹林與繩索間自由移動；另外還有長頸鹿、白老虎、大象等，也有動物表演與餵食時段，可以先查好場次。\n\n園區很大，可以搭遊園車節省體力；熱帶天氣悶熱，記得防曬、防蚊、多喝水。"
+      },
+      {
+        title: "好奇心之灣｜室內的自然遊樂場",
+        mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
+        text: "好奇心之灣（Curiosity Cove）位在萬禮野生動物保育區的 Mandai Wildlife EAST，是新加坡最大的室內自然主題遊樂空間，主要對象是 12 歲以下的小朋友。\n\n館內分成濕地、森林、草原、乾地四個主題區，透過攀爬、觸摸與互動裝置，認識動物如何適應不同的環境；冷氣房裡玩，剛好躲避戶外的炎熱或午後雷陣雨。\n\n入場需穿止滑襪（可自備或現場購買），鞋子要放在入口的鞋架；每位大人一次最多陪同兩位小朋友。"
+      }
+    ],
     extraNotes: [
       "萬禮園區交通：可搭 Mandai Khatib Shuttle 或 Grab。",
       "熱帶午後易下雨，帶傘與防蚊液。",
@@ -3160,6 +3222,14 @@ const itineraryData = [
       },
       {
         type: "fixed",
+        time: "晚餐",
+        place: "晚餐：住宿吃",
+        description: "",
+        note: "演唱會前在住宿簡單吃，留時間準備出門。",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "晚上",
         place: "MCR 演唱會（My Chemical Romance）",
         transit: [{ mode: "pin", text: "場館確認後再補" }],
@@ -3168,7 +3238,20 @@ const itineraryData = [
         foods: []
       }
     ],
-    introCards: [],
+    introCards: [
+      {
+        title: "魚尾獅公園｜新加坡的城市象徵",
+        image: "images/singapore/singapore-cover.jpg",
+        mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
+        text: "魚尾獅（Merlion）是新加坡最知名的象徵：獅頭代表「獅城」新加坡（Singapura）的由來，魚身則象徵這座城市最早作為漁村的歷史。\n\n魚尾獅公園的主雕像高約 8.6 公尺，從口中噴出水柱，背後是濱海灣金沙酒店與海灣景色，是到新加坡必拍的經典畫面。\n\n早上人比較少、光線也柔和；拍照時站遠一點、找好角度，就能拍出「接水柱」的趣味照片。"
+      },
+      {
+        title: "濱海灣花園｜未來感的超級樹與溫室",
+        image: "images/singapore/day4-gardens.jpg",
+        mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
+        text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園，最有名的是一棵棵高聳的擎天樹（Supertree），樹身爬滿數萬株植物，晚上還有燈光音樂秀。\n\n園內兩座冷卻溫室是重點：花穹（Flower Dome）展示來自地中海與乾燥地區的花卉，是世界最大的玻璃溫室之一；雲霧林（Cloud Forest）則有一座約 35 公尺高的室內瀑布，目前結合了侏羅紀主題的恐龍展。\n\n溫室裡溫度約 23–25°C，帶件薄外套；雲霧林每隔兩小時有人造雲霧，可以算好時間進場。"
+      }
+    ],
     extraNotes: [
       "演唱會前先查場館交通與入場時間。"
     ]
@@ -3188,13 +3271,21 @@ const itineraryData = [
     schedule: [
       {
         type: "fixed",
+        time: "早餐",
+        place: "早餐：住宿吃",
+        description: "",
+        note: "",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "早上",
         place: "退房 · 出發樟宜機場",
         transit: [{ mode: "mrt", text: "EW 線 45 分" }, { mode: "car", text: "Grab 25 分" }],
         route: "City Hall 搭 EW 線，在 Tanah Merah 同月台轉車到 Changi Airport。",
         mapLink: "https://maps.google.com/?q=Changi+Airport",
         description: "",
-        note: "一起床就出發，到機場玩星耀樟宜。",
+        note: "吃完早餐就退房出發，到機場玩星耀樟宜。",
         foods: []
       },
       {
@@ -3211,6 +3302,14 @@ const itineraryData = [
         foods: []
       },
       {
+        type: "fixed",
+        time: "中餐",
+        place: "中餐：機場吃",
+        description: "",
+        note: "在星耀樟宜或航廈內用餐。",
+        foods: []
+      },
+      {
         type: "transit",
         time: "14:45",
         from: "SIN",
@@ -3223,7 +3322,14 @@ const itineraryData = [
         note: "星宇航空返台。"
       }
     ],
-    introCards: [],
+    introCards: [
+      {
+        title: "星耀樟宜｜世界最高的室內瀑布",
+        image: "images/singapore/day5-jewel.jpg",
+        mapLink: "https://maps.google.com/?q=Jewel+Changi+Airport",
+        text: "星耀樟宜（Jewel Changi Airport）於 2019 年開幕，由建築師 Moshe Safdie 設計，是一座連接樟宜機場航廈的玻璃圓頂綜合設施，裡面有商店、餐廳與大片室內森林。\n\n正中央的雨漩渦（Rain Vortex）是世界最高的室內瀑布，水從圓頂中央約 40 公尺高處傾瀉而下；四周的森林谷種滿上千棵樹與植物，很適合在登機前散步。\n\n晚上瀑布會有燈光音樂秀，但返程當天看不到，白天看瀑布就很壯觀；從 T1 可直接走進來，T2、T3 則走連通橋約 5–10 分鐘。"
+      }
+    ],
     extraNotes: [
       "星耀樟宜在出境管制前的公共區，先逛完再過海關。"
     ]
@@ -4037,6 +4143,7 @@ function renderTripCard(item) {
   // Meal rows (breakfast/lunch/dinner) get a soft-colour wash so they read as
   // morning / afternoon / evening dividers.
   const isMeal = /早餐|午餐|中餐|晚餐/.test((item.time || "") + (item.place || ""));
+  const isMainMeal = /午餐|中餐|晚餐/.test((item.time || "") + (item.place || ""));
 
   const placeHTML = item.mapLink
     ? `<a href="${escapeHTML(item.mapLink)}" target="_blank" rel="noopener">${escapeHTML(displayPlace)}</a>`
@@ -4076,7 +4183,7 @@ function renderTripCard(item) {
   const actions = foodBtn + tipBtn + mapBtn;
 
   return `
-    <div class="trip-card${isOptional ? " trip-card--opt" : ""}${isMeal ? " trip-card--meal" : ""}">
+    <div class="trip-card${isOptional ? " trip-card--opt" : ""}${isMeal ? " trip-card--meal" : ""}${isMainMeal ? " trip-card--mainmeal" : ""}">
       ${optBadge}
       ${timeHTML}
       <div class="trip-card__content">
