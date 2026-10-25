@@ -2656,6 +2656,8 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   background: color-mix(in srgb, var(--accent) 35%, #fff);
 }
 .timeline .trip-card { border-bottom: none; padding: 10px 0; }
+/* 圓點跟標題之間留空隙，避免圓點看起來像標題前面的「O」 */
+.timeline .trip-card:not(.trip-card--main):not(.trip-card--dual):not(.trip-card--transit) .trip-card__content { margin-left: 8px; }
 .timeline .trip-card:not(:last-child)::after { display: none; }   /* 拿掉分隔虛線兩端的花磚 */
 .timeline .trip-move { padding: 2px 0 0; margin-bottom: -4px; }
 .tl-dot {
@@ -3167,7 +3169,7 @@ const itineraryData = [
       {
         type: "fixed",
         time: "18:30",
-        place: "晚餐：已訂位 18:30 Pastaria Abate",
+        place: "晚餐：已訂位 Pastaria Abate",
         transit: [{ mode: "walk", text: "10 分" }],
         mapLink: "https://maps.google.com/?q=Pastaria+Abate+Singapore",
         hours: "11:30–22:30（週五、六至 23:00）",
@@ -3250,7 +3252,8 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=big+short+coffee+2+Fowlie+Road+Singapore",
         hours: "08:00–17:00",
         description: "",
-        note: "★4.6 創意特調咖啡，菜單跟著季節換，常有很有梗的裝飾（評論提過吸了會變聲的糖果氣球）；價格偏高但很有儀式感。\n店面小、人多，建議外帶邊走邊喝。",
+        note: "★4.6 創意特調咖啡，建議外帶",
+        tip: { icon: "💡", title: "小提醒", steps: ["菜單跟著季節換，常有很有梗的裝飾（評論提過吸了會變聲的糖果氣球）", "價格偏高但很有儀式感", "店面小、人多，建議外帶邊走邊喝"] },
         foods: []
       },
       {
@@ -3262,7 +3265,7 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=SOJAO+Home+Goods+Store+Singapore",
         hours: "11:00–19:00",
         description: "",
-        note: "居家選物小店。⚠ 11:00 才開門，早上排在這裡可能還沒開，可挪到中午前後再來。",
+        note: "居家選物小店，11:00 開門",
         shops: [
           { name: "Crane Living（如切店）", info: "★3.5 · 週日 10:00–19:00 · 東南亞設計的可愛餐具、杯盤、鏡子等居家小物，旁邊就是 Cafe Natsu；評價兩極，有人覺得價格偏高，順路逛逛就好", mapLink: "https://maps.google.com/?q=Crane+Living+280+Joo+Chiat+Road+Singapore" },
           { name: "Grafunkt 設計家具", info: "★4.4 · 週日 10:00–20:00 · 北歐風高端設計家具與燈具展廳，店裡有咖啡角；週末偶爾有 Hay、Beams 等品牌快閃市集，喜歡居家設計的可以進去看看", mapLink: "https://maps.google.com/?q=Grafunkt+292+Joo+Chiat+Road+Singapore" },
@@ -3293,7 +3296,8 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=Apartment+Coffee+139+Selegie+Road+Singapore",
         hours: "10:00–16:30（週三、四休）",
         description: "",
-        note: "★4.6 常被評為亞洲頂尖的精品咖啡，極簡木質空間，手沖口感乾淨，也有熱可可。\n⏳ 常要排隊，16:30 就關門。",
+        note: "★4.6 亞洲頂尖精品咖啡 · ⏳ 常要排隊",
+        tip: { icon: "💡", title: "小提醒", steps: ["極簡木質空間，手沖口感乾淨，也有熱可可", "常要排隊，16:30 就關門（週三、四休）"] },
         foods: []
       },
       {
@@ -3321,7 +3325,8 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore",
         hours: "12:30–23:00（週二休）",
         description: "",
-        note: "★4.4 港式糖水，招牌珍多冰、楊枝甘露、芒果西米露，榴槤控可點榴槤系列。\n💵 不能刷卡，帶現金。",
+        note: "★4.4 港式糖水 · 💵 只收現金",
+        tip: { icon: "💡", title: "小提醒", steps: ["招牌珍多冰、楊枝甘露、芒果西米露", "榴槤控可點榴槤系列", "不能刷卡，記得帶現金"] },
         foods: []
       },
       {
@@ -3364,7 +3369,7 @@ const itineraryData = [
       {
         type: "fixed",
         time: "18:45",
-        place: "晚餐：已訂位 18:45 JUMBO Seafood – The Riverwalk",
+        place: "晚餐：已訂位 JUMBO Seafood – The Riverwalk",
         transit: [{ mode: "car", text: "Grab 15 分" }, { mode: "mrt", text: "DT 線 1 站" }],
         route: "步行約 12 分到 Bencoolen 站，搭 DT 線到 Fort Canning（1 站），出站步行約 8 分。",
         mapLink: "https://maps.google.com/?q=JUMBO+Seafood+The+Riverwalk+Singapore",
@@ -3428,7 +3433,8 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=POUT+Rooftop+Cafe+50+South+Bridge+Road+Singapore",
         hours: "09:00–21:00（週一）",
         description: "",
-        note: "★4.5 六樓天台咖啡，看新加坡河、克拉碼頭和遠方的金沙；巴斯克乳酪蛋糕、抹茶拿鐵常被推。\n☀ 戶外座位沒遮蔽，早上去比較不曬。",
+        note: "★4.5 六樓天台景觀咖啡",
+        tip: { icon: "💡", title: "小提醒", steps: ["看新加坡河、克拉碼頭和遠方的金沙", "巴斯克乳酪蛋糕、抹茶拿鐵常被推", "戶外座位沒遮蔽，早上去比較不曬"] },
         foods: []
       },
       {
@@ -3492,7 +3498,7 @@ const itineraryData = [
       {
         type: "fixed",
         time: "18:00",
-        place: "晚餐：已訂位 18:00 Mellben Seafood",
+        place: "晚餐：已訂位 Mellben Seafood",
         transit: [{ mode: "car", text: "Grab 15–20 分" }],
         mapLink: "https://maps.google.com/?q=Mellben+Seafood+232+Ang+Mo+Kio+Ave+3+Singapore",
         hours: "17:00–22:00（宏茂橋店）",
@@ -3705,7 +3711,7 @@ const itineraryData = [
         route: "City Hall 搭 EW 線，在 Tanah Merah 同月台轉車到 Changi Airport。",
         mapLink: "https://maps.google.com/?q=Changi+Airport",
         description: "",
-        note: "吃完早餐就退房出發，到機場玩星耀樟宜。",
+        note: "吃完早餐就退房出發",
         foods: []
       },
       {
@@ -3745,7 +3751,8 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=Bengawan+Solo+Changi+Airport+Terminal+2",
         hours: "06:00–01:00",
         description: "",
-        note: "T2 2 樓 #02-159。評論提到只收現金，留一點新幣。斑斕戚風常溫約 2–3 天，回台儘早吃。",
+        note: "T2 2 樓 #02-159 · 💵 只收現金",
+        tip: { icon: "💡", title: "小提醒", steps: ["斑斕戚風常溫約 2–3 天，回台儘早吃", "Google Maps 沒寫是在安檢前還是後，當天可先問店員，或在 Jewel 旗艦店先買"] },
         foods: []
       },
       {
@@ -4706,7 +4713,7 @@ function renderTripCard(item) {
     ? `<button class="btn-chip btn-chip--tip" type="button"
          data-tip-title="${escapeHTML(item.tip.title)}"
          data-tip-steps='${escapeHTML(JSON.stringify(item.tip.steps))}'
-         data-tip-links='${escapeHTML(JSON.stringify(item.tip.links || []))}'>📸 ${escapeHTML(item.tip.title)}</button>`
+         data-tip-links='${escapeHTML(JSON.stringify(item.tip.links || []))}'>${escapeHTML(item.tip.icon || "📸")} ${escapeHTML(item.tip.title)}</button>`
     : "";
 
   const mapImgList = Array.isArray(item.mapImages)
