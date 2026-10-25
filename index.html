@@ -2572,6 +2572,34 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 18' preserveAspectRatio='none'><path d='M10 3.4 H74 L82 13.5 H2 Z' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'/><rect x='9' y='1' width='66' height='3.4' rx='1.4' fill='%23a8452f' stroke='%23ffffff' stroke-width='1.2'/><path d='M12 7.2 H72' stroke='%23a8452f' stroke-width='0.7'/><path d='M8 10.2 H76' stroke='%23a8452f' stroke-width='0.7'/><path d='M2.6 13.4 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0 q2.6 4 5.2 0' fill='%23e07a55' stroke='%23ffffff' stroke-width='1.2' stroke-linejoin='round'/><circle cx='42' cy='2.7' r='1.4' fill='%23f2b632'/></svg>") center top / 100% 100% no-repeat;
   filter: drop-shadow(0 1px 1px rgba(80,40,30,0.22));
 }
+/* ===== 首頁開場動畫（只在第一次打開時播一次，約 2 秒）===== */
+@keyframes sgRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes sgPop  { 0% { opacity: 0; transform: scale(.55); } 65% { opacity: 1; transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes sgTrailDraw { to { stroke-dashoffset: 0; } }
+@keyframes sgTrailFade { to { opacity: 0; } }
+.is-intro .hero__season  { animation: sgRise .7s ease-out both; }
+.is-intro .hero__cities  { animation: sgRise .7s .12s ease-out both; }
+.is-intro .hero__dates   { animation: sgRise .7s .24s ease-out both; }
+.is-intro .hero__deco--champagne { animation: sgPop .6s .35s ease-out both; }
+.is-intro .hero__bottom-icon:nth-child(1) { animation: sgPop .6s .55s ease-out both; }
+.is-intro .hero__bottom-icon:nth-child(2) { animation: sgPop .6s .70s ease-out both; }
+.is-intro .hero__bottom-icon:nth-child(3) { animation: sgPop .6s .85s ease-out both; }
+.is-intro .overview-map  { animation: sgRise .8s 1s ease-out both; }
+.is-intro .hero__deco--plane svg { animation-delay: 2.2s; }   /* 飛到定位後才開始上下漂浮 */
+/* 飛機航跡：點點虛線一路畫出來，飛機停好後慢慢淡掉 */
+.hero__flight { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 1; overflow: visible; }
+.hero__flight .trail { fill: none; stroke: #e0607f; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 0.1 6; }
+.hero__flight .trail-mask { fill: none; stroke: #fff; stroke-width: 6; animation: sgTrailDraw 1.8s .2s ease-in-out forwards; }
+.hero__flight { animation: sgTrailFade 1s 2.6s ease-out forwards; }
+/* Days 長條：捲到時依序滑上來 */
+.ticket-stub.is-pre { opacity: 0; transform: translateY(16px); }
+.ticket-stub.is-in  { opacity: 1; transform: none; transition: opacity .5s ease-out, transform .5s ease-out; transition-delay: var(--d, 0s); }
+@media (prefers-reduced-motion: reduce) {
+  .is-intro .hero__season, .is-intro .hero__cities, .is-intro .hero__dates, .is-intro .hero__deco--champagne,
+  .is-intro .hero__bottom-icon, .is-intro .overview-map { animation: none; }
+  .hero__flight { display: none; }
+  .ticket-stub.is-pre { opacity: 1; transform: none; }
+}
 /* 首頁插畫的小動畫：很慢、幅度很小 */
 @keyframes sgFloat { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-4px) rotate(-2deg); } }
 @keyframes sgSway  { 0%,100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
@@ -4987,7 +5015,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // initial phase color on home view
   document.body.setAttribute("data-phase", "singapore");
+  playHomeIntro();
 });
+
+/* 首頁開場動畫：文字淡入、插畫依序彈出、飛機沿弧線飛進來並畫出點點航跡、Days 長條捲到時滑上來 */
+function playHomeIntro() {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (document.body.getAttribute("data-view") && document.body.getAttribute("data-view") !== "home") return;
+  const home = document.querySelector(".home-view");
+  const hero = document.querySelector(".hero");
+  const plane = document.getElementById("heroPlane");
+  if (!home || !hero || !plane) return;
+  home.classList.add("is-intro");
+  setTimeout(() => home.classList.remove("is-intro"), 4000);
+
+  // 飛行路線：從左側往上拱，降到飛機停靠的位置（飛機尾巴的起點）
+  const W = hero.clientWidth;
+  const pr = plane.offsetLeft, pt = plane.offsetTop, pw = plane.offsetWidth, ph = plane.offsetHeight;
+  const ex = pr + pw * 0.06, ey = pt + ph * 0.86;          // 停靠時尾巴起點
+  const sx = 46, sy = pt + ph * 0.86 + 6;                    // 起點：左側
+  const cx = W * 0.45, cy = -18;                             // 控制點：往上拱
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("class", "hero__flight");
+  svg.setAttribute("width", W); svg.setAttribute("height", pt + ph + 20);
+  svg.setAttribute("aria-hidden", "true");
+  const d = `M${sx} ${sy} Q${cx} ${cy} ${ex} ${ey}`;
+  svg.innerHTML = `<defs><mask id="flightMask" maskUnits="userSpaceOnUse"><path class="trail-mask" d="${d}"/></mask></defs><path class="trail" d="${d}" mask="url(#flightMask)"/>`;
+  hero.insertBefore(svg, hero.firstChild);
+  const mp = svg.querySelector(".trail-mask");
+  const len = mp.getTotalLength();
+  mp.style.strokeDasharray = len; mp.style.strokeDashoffset = len;
+  setTimeout(() => svg.remove(), 4000);
+
+  // 飛機沿同一條弧線飛：取樣 24 點，機頭跟著切線方向，最後拉回停靠時的角度
+  const q = (t, a, b, c) => (1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c;
+  const frames = [];
+  const N = 24, REST = -28;                                  // 飛機圖本身就是機頭朝右上 28°
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const x = q(t, sx, cx, ex), y = q(t, sy, cy, ey);
+    const dx = 2 * (1 - t) * (cx - sx) + 2 * t * (ex - cx);
+    const dy = 2 * (1 - t) * (cy - sy) + 2 * t * (ey - cy);
+    let ang = Math.atan2(dy, dx) * 180 / Math.PI - REST;
+    if (t > 0.85) ang = ang * (1 - (t - 0.85) / 0.15);       // 最後一段慢慢回正
+    frames.push({
+      transform: `translate(${x - ex}px, ${y - ey}px) rotate(${ang}deg)`,
+      opacity: t < 0.08 ? t / 0.08 : 1,
+      offset: t
+    });
+  }
+  plane.style.transformOrigin = "6% 86%";
+  plane.animate(frames, { duration: 1800, delay: 200, easing: "ease-in-out", fill: "backwards" });
+
+  // Days 長條：進入畫面時依序滑上來
+  const stubs = document.querySelectorAll("#ticketStrip .ticket-stub");
+  if ("IntersectionObserver" in window && stubs.length) {
+    stubs.forEach((s, i) => { s.classList.add("is-pre"); s.style.setProperty("--d", `${i * 0.08}s`); });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("is-in");
+        io.unobserve(en.target);
+        setTimeout(() => en.target.classList.remove("is-pre", "is-in"), 1200);
+      });
+    }, { threshold: 0.2 });
+    stubs.forEach(s => io.observe(s));
+  }
+}
+
 
 /* ---------- Quick nav handlers ---------- */
 function bindQuickNav() {
