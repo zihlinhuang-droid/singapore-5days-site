@@ -2029,6 +2029,20 @@ body[data-phase="depart"] { --tab-flora: url("data:image/svg+xml;utf8,<svg xmlns
   opacity: 0.85;
 }
 
+/* 新加坡介紹 Days 小卡：跟首頁、日期列一樣，每天用自己的代表色 */
+.city-day-chip[data-phase="arrive"] { --chip: #d4911a; }
+.city-day-chip[data-phase="katong"] { --chip: #e0607f; }
+.city-day-chip[data-phase="zoo"]    { --chip: #3fa362; }
+.city-day-chip[data-phase="marina"] { --chip: #ec6f45; }
+.city-day-chip[data-phase="depart"] { --chip: #2f86e0; }
+.city-day-chip[data-phase] {
+  border-left-color: var(--chip);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--chip) 9%, var(--paper-warm)), var(--paper-warm) 65%);
+}
+.city-day-chip[data-phase] .city-day-chip__d,
+.city-day-chip[data-phase] .city-day-chip__loc { color: color-mix(in srgb, var(--chip) 88%, #3a2a18); }
+
+
 /* ============================================================
    FOOD MODAL
    ============================================================ */
@@ -3474,6 +3488,12 @@ const itineraryData = [
         text: "魚尾獅（Merlion）是新加坡最知名的象徵：獅頭代表「獅城」新加坡（Singapura）的由來，魚身則象徵這座城市最早作為漁村的歷史。\n\n魚尾獅公園的主雕像高約 8.6 公尺，從口中噴出水柱，背後是濱海灣金沙酒店與海灣景色，是到新加坡必拍的經典畫面。\n\n早上人比較少、光線也柔和；拍照時站遠一點、找好角度，就能拍出「接水柱」的趣味照片。"
       },
       {
+        title: "老巴剎｜百年鑄鐵八角市場",
+        image: "images/singapore/intro-lau-pa-sat.jpg",
+        mapLink: "https://maps.google.com/?q=Lau+Pa+Sat+Singapore",
+        text: "老巴剎（Lau Pa Sat）福建話意思是「老市場」，正式名稱是直落亞逸市場（Telok Ayer Market）。最早是 1820 年代海邊的木造魚市，後來因填海拆除；現在的建築由市政工程師 James MacRitchie 設計，1894 年完工，維多利亞風格的八角形結構用的是從蘇格蘭格拉斯哥運來的預製鑄鐵。\n\n1973 年被列為國家古蹟。1980 年代興建地鐵時曾整棟拆解、之後原樣組回，現在是金融區高樓之間的熟食中心，抬頭可以看中央的鐘樓與細緻的鑄鐵雕花。\n\n大部分攤位白天就有營業，各攤時間不同；旁邊 Boon Tat Street 的沙嗲街要到晚上才封街開賣（官網寫平日 19:00 起），中午來吃不到沙嗲街。"
+      },
+      {
         title: "濱海灣花園｜未來感的超級樹與溫室",
         image: "images/singapore/intro-gardens.jpg",
         mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
@@ -4001,7 +4021,7 @@ function renderCityContent() {
           const d = itineraryData[i];
           const dp = d.date.split("/");
           const loc = DAY_CHIP_LABELS[i] || "";
-          return `<button class="city-day-chip" data-goto-day-idx="${i}" type="button">
+          return `<button class="city-day-chip" data-goto-day-idx="${i}" data-phase="${d.phase}" type="button">
             <div class="city-day-chip__d">D${i+1}</div>
             <div class="city-day-chip__date">${parseInt(dp[1],10)}/${parseInt(dp[2],10)}</div>
             <div class="city-day-chip__loc">${loc}</div>
