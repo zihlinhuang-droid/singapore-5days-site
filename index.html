@@ -3255,6 +3255,11 @@ const itineraryData = [
         time: "09:30",
         place: "如切路 Joo Chiat Road",
         level: "main",
+        photoSpots: [
+          { name: "Rumah Bebe 娘惹珠繡店", info: "東海岸路（East Coast Rd）上的娘惹店屋，正面拍整棟彩色外牆與雕花窗；店內是娘惹珠繡鞋與 kebaya 的老店", mapLink: "https://maps.google.com/?q=Rumah+Bebe+113+East+Coast+Road+Singapore" },
+          { name: "MICRO red house 紅屋", info: "加東著名的紅色老洋樓 Red House；站在對街拍紅色外牆與拱窗，離 Rumah Bebe 走路約 2 分", mapLink: "https://maps.google.com/?q=MICRO+red+house+Singapore" },
+          { name: "Joo Chiat Terrace × Everitt Road 壁畫", info: "兩條路交叉口的大面牆壁畫，站在路口斜對面把整面牆拍進去；離 Koon Seng Road 走路約 5 分", mapLink: "https://maps.google.com/?q=Joo+Chiat+Terrace+%26+Everitt+Road+Singapore" }
+        ],
         mapImages: [{ image: "images/singapore/joo-chiat-map.jpg", title: "如切 Joo Chiat 手繪地圖", label: "地圖" }],
         transit: [{ mode: "walk", text: "5 分" }],
         mapLink: "https://maps.google.com/?q=Joo+Chiat+Road+Singapore",
@@ -3263,8 +3268,6 @@ const itineraryData = [
         foodsLabel: "附近吃食",
         foods: [
           { name: "328 加東叻沙 328 Katong Laksa", info: "★3.9 · 每天 09:30–21:30 · 加東叻沙代表店，椰奶海鮮湯頭濃郁，米粉剪短用湯匙吃，很多人加點烏打（otah）；店面小，點餐用英文", mapLink: "https://maps.google.com/?q=328+Katong+Laksa+51+East+Coast+Road+Singapore" },
-          { name: "金珠肉粽 Kim Choo Kueh Chang", info: "★4.1 · 每天 09:00–21:00 · 老字號娘惹粽子與糕點店，娘惹糕、椰絲班蘭球（ondeh ondeh）不太甜很受好評，適合當伴手禮；樓上有娘惹文物可以參觀", mapLink: "https://maps.google.com/?q=Kim+Choo+Kueh+Chang+60+Joo+Chiat+Place+Singapore" },
-          { name: "東寶蝦麵 East Treasure Speciality Prawn Noodle", info: "★4.2 · 週日 11:00–19:00（週一休）· 蝦湯濃郁、蝦肉新鮮，乾湯都有、可選辣或不辣，常見加排骨或豬尾；一碗約 S$13–17", mapLink: "https://maps.google.com/?q=East+Treasure+Speciality+Prawn+Noodle+328+Joo+Chiat+Road" },
           { name: "Birds of Paradise 義式冰淇淋（加東店）", info: "★4.5 · 週日 12:00–22:00 · 以花草、香料入味的天然口味義式冰淇淋，招牌是白菊花、草莓羅勒、百里香，也有焙茶、伯爵茶；甜筒是現烤的、很香脆，可以先試吃再點", mapLink: "https://maps.google.com/?q=Birds+of+Paradise+Gelato+Boutique+63+East+Coast+Road+Singapore" }
         ]
       },
@@ -3374,7 +3377,8 @@ const itineraryData = [
         transit: [{ mode: "walk", text: "8 分" }],
         mapLink: "https://maps.google.com/?q=Little+India+Singapore",
         description: "",
-        note: "色彩繽紛的印度街區，跟早上的娘惹、下午的馬來文化湊成一天三種文化。可以看看維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple）、彩色的陳東齡故居（House of Tan Teng Niah），以及竹腳中心（Tekka Centre）的市場。",
+        note: "色彩繽紛的印度街區，跟早上的娘惹、下午的馬來文化湊成一天三種文化。\n🪔 11/8 正好是排燈節（Deepavali），街上燈飾與市集最熱鬧，人潮也最多。",
+        tip: { icon: "💡", title: "小提醒", steps: ["可以看看維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple）、彩色的陳東齡故居（House of Tan Teng Niah），以及竹腳中心（Tekka Centre）的市場", "排燈節當天興都廟會擠滿參拜的人，進廟要脫鞋、穿著端莊，可以在外面看就好", "人潮多，背包背前面、看好小孩；部分店家營業時間可能調整"] },
         foods: []
       },
       {
@@ -3452,7 +3456,7 @@ const itineraryData = [
         title: "小印度｜色彩繽紛的印度街區",
         image: "images/singapore/intro-little-india.jpg",
         mapLink: "https://maps.google.com/?q=Little+India+Singapore",
-        text: "小印度（Little India）是新加坡印度裔社群的生活中心，街上滿是花環攤、香料店、紗麗布莊與印度餐館，空氣裡飄著香料與茉莉花的味道。\n\n可以看看塔樓上布滿彩色神像的維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple），以及外牆漆成八種顏色、很好拍的陳東齡故居（House of Tan Teng Niah）；竹腳中心（Tekka Centre）一樓是傳統市場與熟食中心。\n\n進入興都廟要脫鞋、穿著端莊；週末人潮較多，注意隨身物品。"
+        text: "小印度（Little India）是新加坡印度裔社群的生活中心，街上滿是花環攤、香料店、紗麗布莊與印度餐館，空氣裡飄著香料與茉莉花的味道。\n\n可以看看塔樓上布滿彩色神像的維拉瑪卡里亞曼興都廟（Sri Veeramakaliamman Temple），以及外牆漆成八種顏色、很好拍的陳東齡故居（House of Tan Teng Niah）；竹腳中心（Tekka Centre）一樓是傳統市場與熟食中心。\n\n進入興都廟要脫鞋、穿著端莊；週末人潮較多，注意隨身物品。\n\n## 🪔 排燈節 Deepavali（2026/11/8）\n排燈節是印度教最重要的節日，又稱「光明節」，象徵光明戰勝黑暗、善戰勝惡。家家戶戶點油燈、在門口用彩色米粉畫 kolam 花紋，穿新衣、拜訪親友、分送甜點。\n\n節日前後，小印度的實龍崗路（Serangoon Road）會掛滿大型燈飾，周邊有排燈節市集，賣花環、油燈、印度甜點與服飾，是一年中最熱鬧的時候。\n\n當天是星期日，隔天 11/9（一）是新加坡的補假，景點人潮可能比平常多。"
       }
     ],
     extraNotes: [
@@ -3476,10 +3480,25 @@ const itineraryData = [
     schedule: [
       {
         type: "fixed",
+        time: "08:45",
+        place: "Old Hill Street Police Station（順路拍照）",
+        level: "minor",
+        photoSpots: [
+          { name: "舊禧街警察局 彩色窗戶", info: "站在 Hill Street 對街，把整排彩虹色窗戶拍進去；早上光線柔、人少", mapLink: "https://maps.google.com/?q=Old+Hill+Street+Police+Station+Singapore" }
+        ],
+        transit: [{ mode: "walk", text: "5 分" }],
+        mapLink: "https://maps.google.com/?q=Old+Hill+Street+Police+Station+Singapore",
+        description: "",
+        note: "彩色窗戶的老警察局，不進去，拍完直接走去 POUT",
+        foods: []
+      },
+      {
+        type: "fixed",
         time: "09:00",
         place: "POUT Rooftop Cafe",
         level: "minor",
-        transit: [{ mode: "walk", text: "10 分" }],
+        transit: [{ mode: "walk", text: "7 分" }],
+        route: "從舊禧街警察局過 Elgin Bridge 或沿新加坡河走到 South Bridge Rd。",
         mapLink: "https://maps.google.com/?q=POUT+Rooftop+Cafe+50+South+Bridge+Road+Singapore",
         hours: "09:00–21:00（週一）",
         description: "",
@@ -3510,7 +3529,7 @@ const itineraryData = [
         hours: "08:30–18:00（最後入園 17:00）",
         description: "",
         note: "🎟 已購買家庭套票（2 大 1 小）＋ 1 大 1 小門票。\n🛒 可租兒童拖車 Wagon，S$18（最多 2 個小孩、合計 35kg）。",
-        tip: { icon: "💡", title: "小提醒", steps: ["位於萬禮（Mandai）野生動物保育區", "非洲企鵝館整修中，11/30 前不開放", "拖車 Wagon 租金 S$18，可坐 2 個小孩（合計最多 35kg），園區大、走累了很好用"] },
+        tip: { icon: "💡", title: "小提醒", steps: ["位於萬禮（Mandai）野生動物保育區", "11/9 是排燈節補假（新加坡國定假日），園區人潮可能比平日多","非洲企鵝館整修中，11/30 前不開放", "拖車 Wagon 租金 S$18，可坐 2 個小孩（合計最多 35kg），園區大、走累了很好用"] },
         foods: []
       },
       {
