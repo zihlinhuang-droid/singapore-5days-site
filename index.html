@@ -2986,7 +2986,7 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
           <li><label><input type="checkbox" data-todo="apps"><span>安裝 Grab、下載 Google Maps 離線地圖</span></label></li>
           <li><label><input type="checkbox" data-todo="plug"><span>準備英式三孔轉接頭（Type G）</span></label></li>
           <li><label><input type="checkbox" data-todo="cash"><span>換一些新加坡幣現金（小販中心用）</span></label></li>
-          <li><label><input type="checkbox" data-todo="zoo"><span>買好動物園／好奇心之灣門票</span></label></li>
+          <li><label><input type="checkbox" data-todo="zoo"><span>買好動物園門票（好奇心之灣當天再決定）</span></label></li>
           <li><label><input type="checkbox" data-todo="backup"><span>機票、訂房、演唱會票券截圖備份</span></label></li>
         </ul>
       </section>
@@ -3316,11 +3316,29 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "13:30",
-        place: "Apartment Coffee",
+        time: "13:15",
+        place: "一家人甜品 Yat Ka Yan Dessert",
         level: "minor",
         transit: [{ mode: "car", text: "Grab 15 分" }, { mode: "mrt", text: "EW 線 4 站" }],
-        route: "從如切步行約 12 分到 Paya Lebar 站，搭 EW 線到 Bugis（4 站），出站步行約 10 分。",
+        route: "從如切步行約 12 分到 Paya Lebar 站，搭 EW 線到 Bugis（4 站），出站步行約 10 分到 Fortune Centre。",
+        mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Fortune+Centre+190+Middle+Road+Singapore",
+        hours: "週日 13:00–22:00（週二休）",
+        description: "",
+        note: "★4.6 港式糖水，只收現金；先去 Fortune Centre 本店，人多再走 10 分到陳桂蘭街店",
+        tip: { icon: "💡", title: "小提醒", steps: ["招牌珍多冰、楊枝甘露、芒果西米露，榴槤控可點榴槤系列", "不能刷卡，記得帶現金", "本店在 Fortune Centre 2 樓，店面小；陳桂蘭街店較寬敞，菜單幾乎一樣"] },
+        foodsLabel: "兩間分店",
+        foods: [
+          { name: "Fortune Centre 本店（優先）", info: "★4.6 · 週日 13:00–22:00 · 2020 年開的第一家，在 Fortune Centre 2 樓；離 Apartment Coffee 步行約 5 分", mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Fortune+Centre+190+Middle+Road+Singapore" },
+          { name: "陳桂蘭街店 Tan Quee Lan（備案）", info: "★4.4 · 週日 12:30–23:00 · 2024 年開的二店、空間較大；離本店步行約 10 分，離哈芝巷更近", mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore" }
+        ]
+      },
+      {
+        type: "fixed",
+        time: "14:00",
+        place: "Apartment Coffee",
+        level: "minor",
+        transit: [{ mode: "walk", text: "5 分" }],
+        route: "從 Fortune Centre 沿 Middle Rd 走到 Selegie Rd，約 400 公尺。",
         mapLink: "https://maps.google.com/?q=Apartment+Coffee+139+Selegie+Road+Singapore",
         hours: "10:00–16:30（週三、四休）",
         description: "",
@@ -3344,28 +3362,15 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "15:15",
-        place: "Yat Ka Yan Dessert（Tan Quee Lan）",
-        level: "minor",
-        transit: [{ mode: "mrt", text: "DT 線 2 站" }, { mode: "car", text: "Grab 8 分" }],
-        route: "Little India 站搭 DT 線到 Bugis（2 站），出站步行約 5 分。",
-        transitAlt: { label: "沒去小印度時", from: "從 Apartment Coffee 出發：", transit: [{ mode: "walk", text: "10 分" }], route: "沿 Selegie Rd 往東南走到 Tan Quee Lan St，約 800 公尺。" },
-        mapLink: "https://maps.google.com/?q=Yat+Ka+Yan+Dessert+Tan+Quee+Lan+Singapore",
-        hours: "12:30–23:00（週二休）",
-        description: "",
-        note: "★4.4 港式糖水 · 💵 只收現金",
-        tip: { icon: "💡", title: "小提醒", steps: ["招牌珍多冰、楊枝甘露、芒果西米露", "榴槤控可點榴槤系列", "不能刷卡，記得帶現金"] },
-        foods: []
-      },
-      {
-        type: "fixed",
         time: "15:45",
         place: "哈芝巷 Haji Lane",
         level: "main",
         photoSpots: [
           { name: "哈芝巷 Beach Rd 端", info: "從 Beach Rd 這頭往巷內拍：兩側壁畫＋狹長巷道的延伸感；壁畫偶爾會換", mapLink: "https://maps.google.com/?q=Haji+Lane+Beach+Road+Singapore" }
         ],
-        transit: [{ mode: "walk", text: "8 分" }],
+        transit: [{ mode: "mrt", text: "DT 線 2 站" }, { mode: "car", text: "Grab 8 分" }],
+        route: "Little India 站搭 DT 線到 Bugis（2 站），出站步行約 5 分。",
+        transitAlt: { label: "沒去小印度時", from: "從 Apartment Coffee 出發：", transit: [{ mode: "walk", text: "15 分" }, { mode: "car", text: "Grab 6 分" }], route: "沿 Selegie Rd／Rochor 往東南走到 Beach Rd 端進巷，約 1.2 公里。" },
         mapLink: "https://maps.google.com/?q=Haji+Lane+Singapore",
         description: "",
         note: "彩色壁畫與個性小店的窄巷。",
@@ -3435,7 +3440,7 @@ const itineraryData = [
     ],
     extraNotes: [
       "蘇丹回教堂有服裝規定，可帶一件薄外套或長裙。",
-      "如切到 Apartment Coffee 建議搭 Grab，約 15–20 分鐘。",
+      "如切到一家人甜品（Fortune Centre）建議搭 Grab，約 15–20 分鐘。",
       "晚餐後回住宿：從 Riverwalk 過河步行約 10 分。"
     ]
   },
@@ -3483,11 +3488,12 @@ const itineraryData = [
         level: "main",
         transit: [{ mode: "mrt", text: "NE＋NS 線＋接駁車 50 分" }, { mode: "car", text: "Grab 25–30 分" }],
         route: "從松發步行約 3 分到 Clarke Quay 站，搭 NE 線到 Dhoby Ghaut（2 站）轉 NS 線到 Khatib（約 30 分），再轉 Mandai Khatib Shuttle 接駁車（約 15 分）。",
-        mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }],
+        mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }, { image: "images/singapore/zoo-wagon.jpg", title: "兒童拖車 Wagon（S$18，最多 2 個小孩、合計 35kg）", label: "拖車樣式", icon: "🛒" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
         description: "",
-        note: "位於萬禮（Mandai）野生動物保育區。非洲企鵝館整修中，11/30 前不開放。",
+        note: "🎟 已購買家庭套票（2 大 1 小）＋ 1 大 1 小門票。\n🛒 可租兒童拖車 Wagon，S$18（最多 2 個小孩、合計 35kg）。",
+        tip: { icon: "💡", title: "小提醒", steps: ["位於萬禮（Mandai）野生動物保育區", "非洲企鵝館整修中，11/30 前不開放", "拖車 Wagon 租金 S$18，可坐 2 個小孩（合計最多 35kg），園區大、走累了很好用"] },
         foods: []
       },
       {
@@ -3510,7 +3516,7 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
         hours: "平日 10:00–17:30（最後入場 16:30）",
         description: "",
-        note: "萬禮園區內的互動式展館。",
+        note: "萬禮園區內的互動式展館。\n🎟 還沒買票，當天看小孩體力再決定；要去的話用 Mandai 官網或現場買（現場視名額）。",
         foods: []
       },
       {
@@ -3582,7 +3588,7 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "09:30",
+        time: "10:00",
         place: "魚尾獅公園 Merlion Park",
         level: "main",
         photoSpots: [
@@ -3592,12 +3598,12 @@ const itineraryData = [
         transit: [{ mode: "walk", text: "10 分" }],
         mapLink: "https://maps.google.com/?q=Merlion+Park+Singapore",
         description: "",
-        note: "",
+        note: "10:00–10:45 濱海灣周邊散步、欣賞城市景觀。",
         foods: []
       },
       {
         type: "fixed",
-        time: "11:30",
+        time: "11:00",
         place: "中餐：老巴剎 Lau Pa Sat",
         photoSpots: [
           { name: "老巴剎鐘樓", info: "在 Boon Tat St 與 Robinson Rd 路口仰拍：鑄鐵八角屋頂＋鐘樓，背後是金融區高樓", mapLink: "https://maps.google.com/?q=Lau+Pa+Sat+Boon+Tat+Street+Singapore" }
@@ -3606,25 +3612,25 @@ const itineraryData = [
         mapLink: "https://maps.google.com/?q=Lau+Pa+Sat+Singapore",
         hours: "24 小時（各攤位時間不同）",
         description: "",
-        note: "百年鑄鐵熟食中心，各式小販美食都有。",
+        note: "11:00–11:50 午餐。百年鑄鐵熟食中心，各式小販美食都有。",
         foods: []
       },
       {
         type: "fixed",
-        time: "13:00",
+        time: "12:15",
         place: "濱海灣花園 Gardens by the Bay",
         level: "main",
         photoSpots: [
           { name: "超級樹叢 Supertree Grove", info: "站在樹叢中間往正上方拍，一圈超級樹圍成一圈", mapLink: "https://maps.google.com/?q=Supertree+Grove+Gardens+by+the+Bay" },
           { name: "蜻蜓橋 Dragonfly Bridge", info: "在橋上往超級樹方向拍：湖面＋超級樹＋金沙酒店同框", mapLink: "https://maps.google.com/?q=Dragonfly+Bridge+Gardens+by+the+Bay" }
         ],
-        mapImages: [{ image: "images/singapore/gardens-map.jpg", title: "濱海灣花園園區地圖（3 號花穹、4 號雲霧林）", label: "地圖" }],
+        mapImages: [{ image: "images/singapore/gardens-map.jpg", title: "濱海灣花園園區地圖（3 號花穹、4 號雲霧林）", label: "地圖" }, { image: "images/singapore/supertree-observatory-view.jpg", title: "擎天樹展望台 Supertree Observatory 的視角", label: "展望台視角", icon: "📷" }],
         transit: [{ mode: "mrt", text: "DT 線 1 站" }, { mode: "car", text: "Grab 10 分" }],
         route: "老巴剎步行約 5 分到 Downtown 站，搭 DT 線到 Bayfront（1 站），出站沿指標步行約 10 分到花穹／雲霧林。",
         mapLink: "https://maps.google.com/?q=Flower+Dome+Gardens+by+the+Bay",
         hours: "花穹／雲霧林 09:00–21:00（雲霧林最後入場 20:00）",
         description: "",
-        note: "🦖 恐龍在雲霧林 Cloud Forest，導航設 Cloud Forest 直接去。\n🎟 買「花穹＋雲霧林」聯票（成人 S$46）。",
+        note: "🦖 恐龍在雲霧林 Cloud Forest，導航設 Cloud Forest 直接去。\n🎟 已購買 3 大 2 小「花穹＋雲霧林」聯票。\n🌇 擎天樹展望台（Supertree Observatory）可視當天天氣與時間現場購票，頂樓可看到金沙、花穹與摩天輪同框。",
         tip: { title: "人造霧時間", steps: ["雲霧林人造霧每天 10、12、14、16、18、20 點整，這天行程抓 14:00 或 16:00 前最順。", "外國旅客不能單買雲霧林，聯票兩館各限進一次。", "門票與兩館介紹見「介紹」分頁的濱海灣花園。"] },
         foods: []
       },
@@ -3702,7 +3708,7 @@ const itineraryData = [
         title: "濱海灣花園｜未來感的超級樹與溫室",
         image: "images/singapore/intro-gardens.jpg",
         mapLink: "https://maps.google.com/?q=Gardens+by+the+Bay",
-        text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園。戶外的擎天樹（Supertree）園區與花園步道免費開放，需要買票的主要是兩座冷卻溫室：花穹（Flower Dome）和雲霧林（Cloud Forest）。\n\n## 🎟 門票（外國旅客，官網價格）\n・花穹＋雲霧林聯票：成人 S$46、兒童（3–12 歲）S$32。外國旅客不能單買雲霧林。\n・三館套票（花穹＋雲霧林＋迪士尼花藝展 Floral Fantasy＋接駁車）：成人 S$73、兒童 S$51，官網目前有優惠價（成人 S$58、兒童 S$41）。\n・票券限當天、每館只能進一次；擎天樹空中步道（OCBC Skyway）另外購票。建議先在官網買好。\n\n🕘 開放時間：兩館都是 09:00–21:00；花穹最後入場 20:30，雲霧林最後入場 20:00。每月固定維護休館一天，11/10 不受影響（花穹下次休館 11/16）。\n\n## 🦖 雲霧林 Cloud Forest（恐龍在這裡）\n模擬高山雲霧林的冷卻溫室，中央是一座長滿蕨類、蘭花與苔蘚的「山」，有一道約 35 公尺高的室內瀑布。目前整館結合《侏羅紀世界》主題展（Jurassic World: The Experience），山林間擺放實物大小、會動的恐龍模型，搭配瓦勒邁杉、水杉、蘇鐵、樹蕨等恐龍時代就存在的古老植物；展區有很大的吼聲、突然的音效與閃光燈。\n怎麼逛：先看大瀑布，上到山頂的「失落世界」（Lost World，有豬籠草等食蟲植物），再沿雲中步道（Cloud Walk）、樹梢步道（Tree Top Walk）往下走，途中經過水晶山的數位藝術展。人造雲霧在 10、12、14、16、18、20 點整最好拍；約 1 小時。\n\n## 🌸 花穹 Flower Dome\n世界最大的玻璃溫室之一，恆溫約 23–25°C，種著地中海、南非、澳洲、南美、加州等涼爽乾燥地區的植物。必看千年老橄欖樹、酒瓶造型的猴麵包樹、多肉植物園，以及中央隨節慶換主題的花海「Flower Field」（10/9–11/9 是葡萄牙主題向日葵展，11/10 剛好換展，以現場為準）。約 1 小時，冷氣強記得帶薄外套。\n\n建議先逛雲霧林、再逛花穹，兩館加起來約 2 小時。"
+        text: "濱海灣花園（Gardens by the Bay）於 2012 年開幕，是填海造地而成的大型花園。戶外的擎天樹（Supertree）園區與花園步道免費開放，需要買票的主要是兩座冷卻溫室：花穹（Flower Dome）和雲霧林（Cloud Forest）。\n\n## 🎟 門票（外國旅客，官網價格）\n・花穹＋雲霧林聯票：成人 S$46、兒童（3–12 歲）S$32。外國旅客不能單買雲霧林。\n・三館套票（花穹＋雲霧林＋迪士尼花藝展 Floral Fantasy＋接駁車）：成人 S$73、兒童 S$51，官網目前有優惠價（成人 S$58、兒童 S$41）。\n・票券限當天、每館只能進一次；擎天樹空中步道（OCBC Skyway）另外購票。花穹＋雲霧林聯票已購買（3 大 2 小）。\n\n🕘 開放時間：兩館都是 09:00–21:00；花穹最後入場 20:30，雲霧林最後入場 20:00。每月固定維護休館一天，11/10 不受影響（花穹下次休館 11/16）。\n\n## 🦖 雲霧林 Cloud Forest（恐龍在這裡）\n模擬高山雲霧林的冷卻溫室，中央是一座長滿蕨類、蘭花與苔蘚的「山」，有一道約 35 公尺高的室內瀑布。目前整館結合《侏羅紀世界》主題展（Jurassic World: The Experience），山林間擺放實物大小、會動的恐龍模型，搭配瓦勒邁杉、水杉、蘇鐵、樹蕨等恐龍時代就存在的古老植物；展區有很大的吼聲、突然的音效與閃光燈。\n怎麼逛：先看大瀑布，上到山頂的「失落世界」（Lost World，有豬籠草等食蟲植物），再沿雲中步道（Cloud Walk）、樹梢步道（Tree Top Walk）往下走，途中經過水晶山的數位藝術展。人造雲霧在 10、12、14、16、18、20 點整最好拍；約 1 小時。\n\n## 🌸 花穹 Flower Dome\n世界最大的玻璃溫室之一，恆溫約 23–25°C，種著地中海、南非、澳洲、南美、加州等涼爽乾燥地區的植物。必看千年老橄欖樹、酒瓶造型的猴麵包樹、多肉植物園，以及中央隨節慶換主題的花海「Flower Field」（10/9–11/9 是葡萄牙主題向日葵展，11/10 剛好換展，以現場為準）。約 1 小時，冷氣強記得帶薄外套。\n\n建議先逛雲霧林、再逛花穹，兩館加起來約 2 小時。"
       }
     ],
     extraNotes: [
@@ -4750,7 +4756,7 @@ function renderTripCard(item) {
   const mapBtn = mapImgList.map(m =>
     `<button class="btn-chip" type="button"
        data-mapimg="${escapeHTML(m.image)}"
-       data-mapimg-title="${escapeHTML(m.title || displayPlace)}">🗺️ ${escapeHTML(m.label || "路線圖")}</button>`
+       data-mapimg-title="${escapeHTML(m.title || displayPlace)}">${escapeHTML(m.icon || "🗺️")} ${escapeHTML(m.label || "路線圖")}</button>`
   ).join("");
 
   const actions = photoBtn + spotBtn + shopBtn + foodBtn + cafeBtn + tipBtn + mapBtn;
