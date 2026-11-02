@@ -2671,6 +2671,9 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") left center / 10px 10px no-repeat, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><rect x='0.5' y='0.5' width='11' height='11' fill='%23fffaf3' stroke='%232f86e0' stroke-width='1'/><g fill='%233fa362'><circle cx='2.6' cy='2.6' r='1'/><circle cx='9.4' cy='2.6' r='1'/><circle cx='2.6' cy='9.4' r='1'/><circle cx='9.4' cy='9.4' r='1'/></g><circle cx='6' cy='6' r='2.4' fill='%23e0607f'/><circle cx='6' cy='6' r='0.9' fill='%23f2b632'/></svg>") right center / 10px 10px no-repeat;
 }
 
+/* 清單分區小標（例如「園區內」「入口外」） */
+.modal__food-group { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px dashed var(--line); margin-bottom: 4px; }
+.modal__food-group:first-child { padding-top: 0; }
 /* 必拍機位清單：有照片時在名稱上方顯示 */
 .modal__food-img { display: block; width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; border: 1px solid var(--line-soft); }
 
@@ -3548,8 +3551,18 @@ const itineraryData = [
         place: "中餐：園內用餐",
         transit: [{ mode: "walk", text: "園區內" }],
         description: "",
-        note: "",
-        foods: []
+        note: "園區內或入口外的 Mandai Wildlife East 都有吃的；要出去吃再回來，出園前先問清楚能不能再入場。",
+        foodsLabel: "附近吃食",
+        foods: [
+          { group: "🎟 園區內（需門票）" },
+          { name: "Ah Meng Restaurant 阿明餐廳", info: "★4.1 · 週一約 10:30–16:00 · 遊園列車 1 號站附近、靠入口的美食廣場，海南雞飯、香料飯等；只有電扇比較悶熱，用餐尖峰要排隊", mapLink: "https://maps.google.com/?q=Ah+Meng+Restaurant+Singapore+Zoo" },
+          { name: "KidzWorld Cafe 兒童世界咖啡廳", info: "★4.8 · 週一營業至 17:30 · 遊園列車 4 號站對面、KidzWorld 一樓，旁邊就是兒童遊戲區，大人吃飯、小孩放電；評論提到店員很親切、會說中文", mapLink: "https://maps.google.com/?q=KidzWorld+Cafe+Singapore+Zoo" },
+          { group: "🚶 Mandai Wildlife East（入口外、不用門票）" },
+          { name: "松發肉骨茶 Song Fa Bak Kut Teh（Mandai 店）", info: "★4.8 · 週一營業至 21:00 · Dining Alley 一樓，跟市區本店同樣的胡椒肉骨茶、可以續湯，油條沾湯很受好評；早餐已經吃過松發的話，中午可以換別家", mapLink: "https://maps.google.com/?q=Song+Fa+Bak+Kut+Teh+Mandai+Wildlife+East" },
+          { name: "CHICHA San Chen 吃茶三千", info: "★4.7 · 週一營業至 20:00 · 台灣手搖飲，評論推鮮蜂蜜奶茶，還有 Mandai 店限定口味", mapLink: "https://maps.google.com/?q=CHICHA+San+Chen+Mandai+Wildlife+East" },
+          { name: "Boost Juice 果汁冰沙", info: "★3.9 · 週一營業至 20:00 · 新鮮果汁與冰沙，熱天很解渴；評論提過有時會比標示時間早收", mapLink: "https://maps.google.com/?q=Boost+Juice+Mandai+Wildlife+Reserve" },
+          { name: "Munchi Pancakes 曼煎粿（Mandai Wildlife East 店）", info: "★4.9 · 週一 09:00–20:00 · 厚實鬆軟的曼煎粿包內餡，花生最多人推，也有黑芝麻、榛果等口味；評論常說進園前、出園後買來當點心很適合，小孩也愛", mapLink: "https://maps.google.com/?q=Munchi+Pancakes+Mandai+Wildlife+East" }
+        ]
       },
       {
         type: "fixed",
@@ -3659,7 +3672,11 @@ const itineraryData = [
         hours: "24 小時（各攤位時間不同）",
         description: "",
         note: "11:00–11:50 午餐。百年鑄鐵熟食中心，各式小販美食都有。",
-        foods: []
+        foodsLabel: "附近吃食",
+        foods: [
+          { name: "擂茶飯 Thunder Tea Rice x Thunder Spize（25 號攤）", info: "★4.3 · 午餐時段有開 · 客家擂茶飯：糙米飯配一大盤切碎的青菜、豆干、花生、小魚乾，再淋上用九層塔、薄荷等香草磨成的綠色茶湯；清爽健康，跟一般重口味小吃很不一樣。清真認證", mapLink: "https://maps.google.com/?q=Thunder+Tea+Rice+Lau+Pa+Sat" },
+          { name: "Warong Pak Sapari 馬來滷麵（58 號攤）", info: "★4.3 · 週二 09:00–21:00 · 馬來小吃攤，招牌是 mee rebus（黃麵淋上濃稠的番薯咖哩醬汁）和 soto ayam（香料雞湯），一份約 S$5 多、在老巴剎算平價；評論提過曾獲米其林推薦", mapLink: "https://maps.google.com/?q=Warong+Pak+Sapari+Lau+Pa+Sat" }
+        ]
       },
       {
         type: "fixed",
@@ -4887,6 +4904,7 @@ function bindFoodModal() {
     titleEl.textContent = title;
     subEl.textContent = sub || "NEARBY EATS";
     listEl.innerHTML = foods.map(f => {
+      if (f.group) return `<div class="modal__food-group">${escapeHTML(f.group)}</div>`;
       const nameHTML = f.mapLink
         ? `<a class="modal__food-name" href="${escapeHTML(f.mapLink)}" target="_blank" rel="noopener">${escapeHTML(f.name)}</a>`
         : `<span class="modal__food-name">${escapeHTML(f.name)}</span>`;
