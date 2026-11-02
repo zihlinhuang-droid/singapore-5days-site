@@ -2733,6 +2733,29 @@ body[data-phase="depart"] .day-content::after { background-image: url("data:imag
   height: 1.5px;
   background: color-mix(in srgb, var(--accent) 55%, #fff);
 }
+/* 區域分組（例如 D1 牛車水）：淡色底區塊＋區域看板，區塊內不顯示時間 */
+.tl-area {
+  position: relative;
+  margin: 14px -8px 10px;
+  padding: 6px 8px 6px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.tl-area__head { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 2px 0 4px 22px; }
+.tl-area__pill {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 5px 12px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.tl-area__sub { font-family: var(--font-sans); font-size: 11.5px; color: color-mix(in srgb, var(--accent) 70%, #3a2a18); }
+.tl-area .trip-card__time { visibility: hidden; }
 /* 時段小標：上午／中午／下午／晚上 */
 .tl-sec {                       /* 時段小標：小膠囊壓在時間線上，右側拉一條淡分隔線 */
   position: relative;
@@ -3104,7 +3127,7 @@ const itineraryData = [
     dowZh: "六",
     phase: "arrive",
     title: "台北 → 新加坡",
-    subtitle: "JX771 抵達 · 中國城散步 · Pastaria Abate",
+    subtitle: "JX771 抵達 · 牛車水散步吃小吃",
     routeCode: "TPE → SIN",
     coverImage: "images/singapore/day1-chinatown.jpg",
     coverAlt: "牛車水佛牙寺",
@@ -3154,71 +3177,129 @@ const itineraryData = [
       {
         type: "fixed",
         time: "15:45",
-        place: "巴拉灣海灘 Palawan Beach（optional）",
-        level: "main",
-        photoSpots: [
-          { name: "亞洲大陸最南端 吊橋與瞭望塔", info: "站在沙灘上，拍吊橋連到小島、後方兩座木造瞭望塔", mapLink: "https://maps.google.com/?q=Southernmost+Point+of+Continental+Asia+Sentosa" }
-        ],
-        transit: [{ mode: "mrt", text: "NE 線＋聖淘沙捷運 40 分" }],
-        route: "Clarke Quay 搭 NE 線到 HarbourFront，轉 VivoCity 3 樓聖淘沙捷運到 Beach 站，再步行 5 分。",
-        mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
+        place: "Corner Corner 外帶咖啡",
+        area: "牛車水 Chinatown",
+        areaSub: "15:45 起・不趕時間，慢慢逛、邊走邊吃",
+        level: "minor",
+        transit: [{ mode: "car", text: "Grab 10 分" }],
+        route: "從住宿搭 Grab 到 Duxton Rd，牛車水最南端。",
+        mapLink: "https://maps.google.com/?q=Corner+Corner+Coffee+Concept+16+Duxton+Road+Singapore",
+        hours: "週六 10:00–17:00（週一休）",
         description: "",
-        note: "聖淘沙島上，走吊橋到「亞洲大陸最南端」小島觀景台。",
+        note: "★4.6 黑膠唱片咖啡小店，外帶一杯；⚠ 17:00 關門",
+        tip: { icon: "💡", title: "小提醒", steps: ["牆上擺滿黑膠唱片、放爵士樂，咖啡用玻璃小壺端上", "蛋糕捲、焦糖布丁也有人推"] },
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "16:05",
+        place: "queic by Olivia 巴斯克",
+        area: "牛車水 Chinatown",
+        level: "minor",
+        transit: [{ mode: "walk", text: "3 分" }],
+        mapLink: "https://maps.google.com/?q=queic+by+Olivia+41+Kreta+Ayer+Road",
+        hours: "週六 10:00–20:00",
+        description: "",
+        note: "大推流心巴斯克！★4.6，可以外帶",
+        tip: { icon: "💡", title: "小提醒", steps: ["芝士內餡會流出來，帶點鹹香、不會太甜", "藍紋乳酪、巧克力口味是評論最常提到的"] },
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "16:20",
+        place: "佛牙寺龍華院 Buddha Tooth Relic Temple",
+        area: "牛車水 Chinatown",
+        level: "main",
+        photoSpots: [{ name: "佛牙寺正面", info: "站到 South Bridge Rd 對面，正面拍整座紅色寺院", mapLink: "https://maps.google.com/?q=Buddha+Tooth+Relic+Temple+Singapore" }],
+        transit: [{ mode: "walk", text: "4 分" }],
+        mapLink: "https://maps.google.com/?q=Buddha+Tooth+Relic+Temple+Singapore",
+        description: "",
+        note: "建築外觀、拍照。2007 年落成的唐朝風格佛寺，紅牆金頂",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "16:40",
+        place: "東興餅店 Tong Heng 菱形蛋撻",
+        area: "牛車水 Chinatown",
+        level: "minor",
+        transit: [{ mode: "walk", text: "1 分" }],
+        mapLink: "https://maps.google.com/?q=Tong+Heng+Traditional+Cantonese+Pastries+285+South+Bridge+Road",
+        hours: "週六 09:00–19:00",
+        description: "",
+        note: "★4.1 近百年廣式老餅家，菱形蛋撻現場吃（只能放約一天，帶不回台灣）",
+        tip: { icon: "💡", title: "小提醒", steps: ["酥皮薄、蛋香濃", "也有老婆餅、咖哩角"] },
         foods: []
       },
       {
         type: "fixed",
         time: "17:00",
-        place: "牛車水 中國城 Chinatown",
+        place: "牛車水大廈熟食中心 Chinatown Complex",
+        area: "牛車水 Chinatown",
         level: "main",
-        photoSpots: [
-          { name: "寶塔街 Pagoda Street", info: "從 South Bridge Rd 街口往巷內拍：頭頂紅燈籠＋兩側店屋；轉身就是馬里安曼興都廟的彩色塔門", mapLink: "https://maps.google.com/?q=Pagoda+Street+Singapore" },
-          { name: "佛牙寺 Buddha Tooth Relic Temple", info: "站到 South Bridge Rd 對面，正面拍整座紅色寺院", mapLink: "https://maps.google.com/?q=Buddha+Tooth+Relic+Temple+Singapore" }
-        ],
-        transit: [{ mode: "mrt", text: "聖淘沙捷運＋NE 線 35 分" }],
-        route: "聖淘沙捷運回 VivoCity，HarbourFront 搭 NE 線到 Chinatown（2 站）。",
-        transitAlt: { label: "沒去巴拉灣時", from: "從住宿出發：", transit: [{ mode: "mrt", text: "NE 線 1 站" }, { mode: "walk", text: "20 分" }], route: "Clarke Quay 搭 NE 線到 Chinatown（1 站）；或從住宿沿新加坡河步行約 20 分。" },
-        mapLink: "https://maps.google.com/?q=Chinatown+Singapore",
+        transit: [{ mode: "walk", text: "3 分" }],
+        mapLink: "https://maps.google.com/?q=Chinatown+Complex+Market+and+Food+Centre",
+        hours: "每天 07:00–22:00",
         description: "",
-        note: "牛車水景點很多，點下方「可逛景點」看。",
-        spots: [
-          { name: "佛牙寺龍華院 Buddha Tooth Relic Temple", info: "2007 年落成的唐朝風格佛寺，紅牆金頂，相傳供奉佛牙舍利；頂樓有蘭花屋頂花園和大型轉經輪。", mapLink: "https://maps.google.com/?q=Buddha+Tooth+Relic+Temple+Singapore" },
-          { name: "史密斯街 Smith Street", info: "牛車水美食街所在，兩旁是老店屋，傍晚攤位亮燈後最熱鬧。", mapLink: "https://maps.google.com/?q=Smith+Street+Chinatown+Singapore" },
-          { name: "馬里安曼廟 Sri Mariamman Temple", info: "1827 年創建，新加坡最古老的印度廟，入口高塔布滿彩色神像；入內需脫鞋。", mapLink: "https://maps.google.com/?q=Sri+Mariamman+Temple+Singapore" },
-          { name: "寶塔街 Pagoda Street", info: "從牛車水地鐵站出來的主要步行街，紀念品與伴手禮店最集中。", mapLink: "https://maps.google.com/?q=Pagoda+Street+Singapore" },
-          { name: "碩莪巷 Sago Lane", info: "早年俗稱「死人街」，曾聚集殯葬店；如今是安靜小巷，能感受老牛車水的歷史。", mapLink: "https://maps.google.com/?q=Sago+Lane+Singapore" },
-          { name: "麥士威熟食中心 Maxwell Food Centre", info: "牛車水最有名的小販中心，天天海南雞飯、老伴豆花都在這裡；人多時記得先佔位。", mapLink: "https://maps.google.com/?q=Maxwell+Food+Centre+Singapore" }
-        ],
+        note: "逛熟食中心＋安珍薄餅（晚餐第一攤）。2 樓兩百多個攤位，1 樓是傳統菜市場",
         foodsLabel: "附近吃食",
-        foods: [
-          { name: "天天海南雞飯 Tian Tian", info: "★3.9 · 08:30–20:00（週一休）· 米其林推薦、名廚也來過的排隊名店。雞肉滑嫩、雞油飯很香，附的辣椒醬很辣；排隊約 10–20 分，熟食中心只有電扇，中午很熱", mapLink: "https://maps.google.com/?q=Tian+Tian+Hainanese+Chicken+Rice+Maxwell+Food+Centre" },
-          { name: "老伴豆花 Lao Ban", info: "★4.5 · 週六 11:00–15:00、17:30–19:30（中間休息）· 滑嫩豆花，口感細得像布丁、甜度低，冰冰的很消暑；杏仁豆腐也很受推薦。只收現金", mapLink: "https://maps.google.com/?q=Lao+Ban+Soya+Beancurd+Maxwell+Food+Centre" },
-          { name: "queic by Olivia", info: "★4.6 · 週六 10:00–20:00 · 大推流心巴斯克！芝士內餡會流出來，帶點鹹香、不會太甜；藍紋乳酪、巧克力口味是評論最常提到的", mapLink: "https://maps.google.com/?q=queic+by+Olivia+Singapore" }
-        ],
-        cafes: [
-          { name: "Corner Corner (Coffee Concept)", info: "★4.6 · 週六 10:00–17:00（週一休）· 牆上擺滿黑膠唱片、放著爵士樂的溫暖小店，咖啡用玻璃小壺端上；蛋糕捲、焦糖布丁也有人推", mapLink: "https://maps.google.com/?q=Corner+Corner+Coffee+Concept+Duxton+Road+Singapore" },
-          { name: "Together &", info: "★4.3 · 每天 10:00–17:00 · 空間寬敞、適合坐下來休息；抹茶飲品和拿鐵最常被提到，也有布朗尼、香蕉麵包等甜點", mapLink: "https://maps.google.com/?q=Together+%26+24+Duxton+Rd+Singapore" }
-        ]
+        foods: [{ name: "安珍薄餅 Ann Chin Popiah", info: "★4.3 · 週六 08:00–20:00 · 在 2 樓，福建薄餅（類似台灣潤餅，包炒蘿蔔絲，口感清爽）一份約 S$2，娘惹小金杯（kueh pie tee）和炸春捲也很受歡迎", mapLink: "https://maps.google.com/?q=Ann+Chin+Popiah+Chinatown+Complex" }]
+      },
+      {
+        type: "fixed",
+        time: "17:45",
+        place: "晚餐：Maxwell 熟食中心（天天雞飯＋老伴豆花）",
+        area: "牛車水 Chinatown",
+        transit: [{ mode: "walk", text: "5 分" }],
+        mapLink: "https://maps.google.com/?q=Maxwell+Food+Centre+Singapore",
+        description: "",
+        note: "晚餐第二攤；老伴豆花 17:30 才重新開，到時剛好",
+        tip: { icon: "💡", title: "小提醒", steps: ["熟食中心只有電扇，人多時先佔位（放包面紙是當地習慣）"] },
+        foodsLabel: "附近吃食",
+        foods: [{ name: "天天海南雞飯 Tian Tian", info: "★3.9 · 週六 08:30–20:00（週一休）· 米其林推薦的排隊名店，雞肉滑嫩、雞油飯很香，辣椒醬很辣；排隊約 10–20 分", mapLink: "https://maps.google.com/?q=Tian+Tian+Hainanese+Chicken+Rice+Maxwell+Food+Centre" }, { name: "老伴豆花 Lao Ban", info: "★4.5 · 週六 11:00–15:00、17:30–19:30（中間休息）· 滑嫩豆花像布丁、甜度低，杏仁豆腐也很受推薦。只收現金", mapLink: "https://maps.google.com/?q=Lao+Ban+Soya+Beancurd+Maxwell+Food+Centre" }]
       },
       {
         type: "fixed",
         time: "18:30",
-        place: "晚餐：已訂位 Pastaria Abate",
-        transit: [{ mode: "walk", text: "10 分" }],
-        mapLink: "https://maps.google.com/?q=Pastaria+Abate+Singapore",
-        hours: "11:30–22:30（週五、六至 23:00）",
+        place: "史密斯街 Smith Street",
+        area: "牛車水 Chinatown",
+        level: "minor",
+        transit: [{ mode: "walk", text: "5 分" }],
+        mapLink: "https://maps.google.com/?q=Smith+Street+Chinatown+Singapore",
         description: "",
-        note: "已訂位 18:30。",
+        note: "牛車水美食街，老店屋前的攤位傍晚亮燈後最熱鬧",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "19:00",
+        place: "味香園甜品 Mei Heong Yuen Dessert",
+        area: "牛車水 Chinatown",
+        level: "minor",
+        transit: [{ mode: "walk", text: "2 分" }],
+        mapLink: "https://maps.google.com/?q=Mei+Heong+Yuen+Dessert+Temple+Street",
+        hours: "週六 11:30–21:30（週一休）",
+        description: "",
+        note: "★4.1 老字號甜品店，雪花冰、珍多冰、楊枝甘露；先找位子再到櫃檯報桌號點餐",
+        tip: { icon: "💡", title: "小提醒", steps: ["招牌雪花冰有花生、芒果口味", "也有腐竹薏仁、桃膠銀耳等熱甜湯"] },
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "19:30",
+        place: "寶塔街 Pagoda Street",
+        area: "牛車水 Chinatown",
+        level: "main",
+        photoSpots: [{ name: "寶塔街 Pagoda Street", info: "從 South Bridge Rd 街口往巷內拍：頭頂紅燈籠＋兩側店屋；轉身就是馬里安曼興都廟的彩色塔門", mapLink: "https://maps.google.com/?q=Pagoda+Street+Singapore" }],
+        transit: [{ mode: "walk", text: "2 分" }],
+        mapLink: "https://maps.google.com/?q=Pagoda+Street+Singapore",
+        description: "",
+        note: "掛滿紅燈籠的步行街，紀念品店最集中；逛完從街尾的 Chinatown 站搭 NE 線 1 站回住宿",
+        spots: [{ name: "馬里安曼廟 Sri Mariamman Temple", info: "1827 年創建，新加坡最古老的印度廟，入口高塔布滿彩色神像；入內需脫鞋。", mapLink: "https://maps.google.com/?q=Sri+Mariamman+Temple+Singapore" }, { name: "碩莪巷 Sago Lane", info: "早年俗稱「死人街」，曾聚集殯葬店；如今是安靜小巷，能感受老牛車水的歷史。", mapLink: "https://maps.google.com/?q=Sago+Lane+Singapore" }],
         foods: []
       }
     ],
     introCards: [
-      {
-        title: "巴拉灣海灘｜亞洲大陸最南端的小島",
-        image: "images/singapore/intro-palawan.jpg",
-        mapLink: "https://maps.google.com/?q=Palawan+Beach+Sentosa",
-        text: "巴拉灣海灘（Palawan Beach）位在聖淘沙島南岸，是島上最適合散步、玩水的海灘之一，沙灘柔軟、浪不大，傍晚很適合看夕陽。\n\n海灘前方有一座小島，走過木造吊橋就能登上，島上的兩座瞭望台號稱「亞洲大陸最南端」，是聖淘沙最經典的拍照點。\n\n從市區搭地鐵到 HarbourFront，再轉聖淘沙捷運就能抵達；海灘沒什麼遮蔭，記得防曬、帶水。"
-      },
       {
         title: "牛車水｜新加坡的老華人街區",
         image: "images/singapore/intro-chinatown.jpg",
@@ -3485,7 +3566,7 @@ const itineraryData = [
     dowZh: "一",
     phase: "zoo",
     title: "新加坡動物園",
-    subtitle: "日間動物園 → 好奇心之灣 → Mellben 螃蟹",
+    subtitle: "好奇心之灣 → 動物園・長頸鹿餵食 → Mellben 螃蟹",
     routeCode: "MANDAI",
     coverImage: "images/singapore/day3-zoo.jpg",
     coverAlt: "新加坡動物園",
@@ -3533,10 +3614,24 @@ const itineraryData = [
       {
         type: "fixed",
         time: "11:30",
+        place: "好奇心之灣 Curiosity Cove（optional）",
+        level: "main",
+        mapImages: [{ image: "images/singapore/curiosity-cove-map.jpg", title: "好奇心之灣 Curiosity Cove 館內地圖", label: "地圖" }],
+        transit: [{ mode: "mrt", text: "NE＋NS 線＋接駁車 50 分" }, { mode: "car", text: "Grab 25–30 分" }],
+        route: "從松發步行約 3 分到 Clarke Quay 站，搭 NE 線到 Dhoby Ghaut（2 站）轉 NS 線到 Khatib（約 30 分），再轉 Mandai Khatib Shuttle 接駁車（約 15 分），下車就是 Mandai Wildlife EAST。",
+        mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
+        hours: "平日 10:00–17:30（最後入場 16:30）",
+        description: "",
+        note: "一到萬禮就先來，大約玩 1 小時；孩子累的話可以跳過、直接進動物園。\n🎟 還沒買票，當天看小孩體力再決定；要去的話用 Mandai 官網或現場買（現場視名額）。",
+        foods: []
+      },
+      {
+        type: "fixed",
+        time: "12:30",
         place: "新加坡動物園 Singapore Zoo",
         level: "main",
-        transit: [{ mode: "mrt", text: "NE＋NS 線＋接駁車 50 分" }, { mode: "car", text: "Grab 25–30 分" }],
-        route: "從松發步行約 3 分到 Clarke Quay 站，搭 NE 線到 Dhoby Ghaut（2 站）轉 NS 線到 Khatib（約 30 分），再轉 Mandai Khatib Shuttle 接駁車（約 15 分）。",
+        transit: [{ mode: "walk", text: "5 分" }],
+        route: "從 Mandai Wildlife EAST 走到動物園入口。",
         mapImages: [{ image: "images/singapore/singapore-zoo-map.jpg", title: "新加坡動物園園區地圖", label: "園區地圖" }, { image: "images/singapore/zoo-wagon.jpg", title: "兒童拖車 Wagon（S$18，最多 2 個小孩、合計 35kg）", label: "拖車樣式", icon: "🛒" }, { image: "images/singapore/zoo-tram-map.jpg", title: "遊園列車搭乘站點與行駛方向（示意圖，以園區當日公告為準）", label: "遊園列車", icon: "🚃" }],
         mapLink: "https://maps.google.com/?q=Singapore+Zoo",
         hours: "08:30–18:00（最後入園 17:00）",
@@ -3566,16 +3661,14 @@ const itineraryData = [
       },
       {
         type: "fixed",
-        time: "15:30",
-        place: "好奇心之灣 Curiosity Cove（optional）",
+        time: "15:45",
+        place: "長頸鹿餵食秀＋拍照（已預訂）",
         level: "main",
-        mapImages: [{ image: "images/singapore/curiosity-cove-map.jpg", title: "好奇心之灣 Curiosity Cove 館內地圖", label: "地圖" }],
-        transit: [{ mode: "walk", text: "5 分" }],
-        route: "就在動物園入口旁的 Mandai Wildlife EAST。",
-        mapLink: "https://maps.google.com/?q=Curiosity+Cove+Mandai+Singapore",
-        hours: "平日 10:00–17:30（最後入場 16:30）",
+        transit: [{ mode: "pin", text: "園區內" }],
+        route: "長頸鹿在非洲區（Wild Africa），可搭遊園列車到 3 號站，或從入口步行約 15 分。",
+        mapLink: "https://maps.google.com/?q=Giraffe+Singapore+Zoo+Wild+Africa",
         description: "",
-        note: "萬禮園區內的互動式展館。\n🎟 還沒買票，當天看小孩體力再決定；要去的話用 Mandai 官網或現場買（現場視名額）。",
+        note: "🎟 已預訂。提早約 10 分鐘到集合點，帶好預約確認畫面。",
         foods: []
       },
       {
@@ -4657,13 +4750,21 @@ function timeBucket(it) {
   return "晚上";
 }
 function renderScheduleWithSections(list) {
-  let cur = null;
-  return `<div class="timeline">${list.map(it => {
-    const b = timeBucket(it);
+  let cur = null, curArea = null;
+  const out = list.map(it => {
     let head = "";
-    if (b && b !== cur) { cur = b; head = `<div class="tl-sec"><span>${b}</span></div>`; }
+    /* 區域分組：同一個 area 的連續站點包成一個淡色區塊，上方一個區域看板；區塊內不顯示時間與時段小標 */
+    if (it.area !== curArea) {
+      if (curArea) head += `</div>`;
+      if (it.area) head += `<div class="tl-area"><div class="tl-area__head"><span class="tl-area__pill">📍 ${escapeHTML(it.area)}</span>${it.areaSub ? `<span class="tl-area__sub">${escapeHTML(it.areaSub)}</span>` : ""}</div>`;
+      curArea = it.area || null;
+    }
+    const b = timeBucket(it);
+    if (it.area) { cur = b || cur; }
+    else if (b && b !== cur) { cur = b; head += `<div class="tl-sec"><span>${b}</span></div>`; }
     return head + renderTransit(it) + renderTripCard(it);
-  }).join("")}</div>`;
+  }).join("");
+  return `<div class="timeline">${out}${curArea ? "</div>" : ""}</div>`;
 }
 
 /* ---------- Trip card render ---------- */
